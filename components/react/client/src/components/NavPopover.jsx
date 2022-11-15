@@ -46,7 +46,7 @@ const popover = (
         trigger={"click"}
         placement="right"
         overlay={popover}>
-          <a className='btn'>{name}</a>
+          <p className='nav-link'>{name}</p>
         </OverlayTrigger>
    </div>
   )
