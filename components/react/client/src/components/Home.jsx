@@ -38,10 +38,6 @@ function Home() {
       <div className='container me-3'>
         <div className='row'>
           <div className='col w-25'>
-              <div className='wallet-details-holder'>
-              <p className='wallet-details w-25'>{name} {address}</p>
-              <button className='disconnect-keplr-home' onClick={disconnect}>Disconnect</button>
-            </div>
           </div>
         </div>
         <div className="row">
