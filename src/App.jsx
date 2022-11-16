@@ -25,7 +25,7 @@ import Vote from "./components/Vote";
 function App() {
   return (
     <ChakraProvider>
-    <WalletManagerProvider defaultChainId={ChainInfoID.Juno1}
+    <WalletManagerProvider defaultChainId={ChainInfoID.Athena2}
     enabledWalletTypes={[WalletType.Keplr, WalletType.WalletConnectKeplr]}
     walletConnectClientMeta={{
       name: "CosmodalExampleDAPP",

@@ -2,6 +2,7 @@ import React from 'react'
 import { Box } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Container } from '@chakra-ui/react'
 import { Center, Square, Circle } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
@@ -14,6 +15,7 @@ import rectangle8 from "../assets/rectangle8.png";
 import sponsors1 from "../assets/sponsors1.png";
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
+import keplrLogo from "../assets/keplrlogo.png";
 import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -41,18 +43,19 @@ function Home() {
   return status === WalletConnectionStatus.Connected ? (
     <div className='base'>
     
-      <Flex>
-      <Navbar />
       
-      <div>
+      <Navbar />
+      <Center><div>
         <img className="title-gold-bg" src={titleGoldBg}/>
-      </div>
-      </Flex>
-      <Flex>
+      </div></Center>
+    
+      <Center><Heading mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
+
       <div className='container me-3'>
         <div className="row">
           <div className='col'>          
 </div> 
+
 
 </div>
   <Box p='2'>
@@ -65,9 +68,9 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading size='md'>Display Your Event Access Token.</Heading>
+      <Heading size='md'>Display Your Ticket QR.</Heading>
       <Text py='2'>
-      Ensure you have already installed Keplr Mobile.
+      Ensure you have already installed & imported your Legends Event Mnemonic Seed to Keplr Mobile.
       </Text>
     </CardBody>
     <CardFooter>
@@ -171,39 +174,42 @@ function Home() {
       </Modal>
       
       
-      </div></Flex>
+      </div>
     
       <div className='holder'>
         <Center><p className="transparent-judging">
-          Transparent Judging for The Legends of Hashish: 2022
+          
         </p></Center>
         <p className="plain-text">
           This year, we have built the voting system with smart contract
           technology for judging entries. This is just one iteration of how we
           can build tooling that improves trust layers within our communities.
         </p>
-        <p className="huge-thank-you-to-al">
-          HUGE THANK YOU TO ALL OF THIS YEARS SPONORS!
-        </p>
+     <Center><Heading>HUGE THANK YOU TO ALL OF THIS YEARS SPONORS!</Heading></Center>
         <img className="sponsors-1" src={sponsors1} />
         </div>
           <img className="footer" src={$footer} />
          
     </div>
   ) : (
-    <div className='base pb-5'>
+   <Container> <div className='base pb-5'>
           <div>
-            <img className="connect-title-gold-bg" src={titleGoldBg}/>
+           <Center><Container><img className="connect-title-gold-bg" src={titleGoldBg}/>
+                       <Heading  px='7' mb={80} noOfLines={2}>Connect To Access Event Application </Heading></Container> </Center>
+
           </div>
+        
           <div className='container pb-5'>
-            <div className='holder'>
-            <p className='steps-to-mint'>Connect Keplr Wallet for access.</p>
-            <button className='connect-keplr-home' onClick={connect}>Connect Keplr</button>
+
+            <Center><img  borderRadius='full' className='icon' src={keplrLogo}/></Center>
+            <Center><Button colorScheme='whiteAlpha' color='white' mb={80} onClick={connect}>Connect Keplr</Button></Center>
+         
             {error && <p>{error instanceof Error ? error.message : `${error}`}</p>}
             </div>
           </div>
+          </Container>
 
-    </div>
+
   )
 }
 function BasicUsage() {
