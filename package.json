@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.12",
+    "@chakra-ui/layout": "^2.1.10",
     "@chakra-ui/react": "^2.4.1",
     "@cosmos-kit/core": "^0.25.1",
     "@cosmos-kit/keplr": "^0.29.1",

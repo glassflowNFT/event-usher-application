@@ -1,9 +1,14 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Flex, Spacer } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Popover } from 'react-bootstrap'
 import { useRef } from 'react'
 import { useEffect } from 'react'
 import NavPopover from './NavPopover'
+
 
 function Navbar() {
 
@@ -16,8 +21,10 @@ function Navbar() {
     function toHome() {
       navigate('/')
   }
+  
 
     return (
+      
         <div className='fixed-top'>
         <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -37,6 +44,7 @@ function Navbar() {
       </div>
     )
   }
+
   
 
 export default Navbar

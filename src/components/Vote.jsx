@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";

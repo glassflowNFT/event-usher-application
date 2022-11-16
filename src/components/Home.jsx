@@ -1,12 +1,20 @@
 import React from 'react'
-import sponsors1 from "../assets/sponsors1.png";
-import rectangle10 from "../assets/rectangle10.png";
-import rectangle9 from "../assets/rectangle9.png";
-import rectangle8 from "../assets/rectangle8.png";
+import { Box } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Center, Square, Circle } from '@chakra-ui/react'
+import { Flex, Spacer } from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
-import legendsqr1 from "../assets/legendsqr1.png";
-import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
+import { Heading } from '@chakra-ui/react'
+import { Image } from '@chakra-ui/react'
+import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react'
 import Navbar from './Navbar';
+import { Stack, HStack, VStack } from '@chakra-ui/react'
+import rectangle8 from "../assets/rectangle8.png";
+import sponsors1 from "../assets/sponsors1.png";
+import { Text } from '@chakra-ui/react'
+import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
+import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import {
   useWalletManager,
@@ -18,6 +26,7 @@ function Home() {
 
   const { connect, disconnect } = useWalletManager()
   const { status, error, name, address, signingCosmWasmClient } = useWallet()
+  const { isOpen, onOpen, onClose } = useDisclosure()
   
   let navigate = useNavigate()
   function toConnect() {
@@ -31,76 +40,143 @@ function Home() {
   }
   return status === WalletConnectionStatus.Connected ? (
     <div className='base'>
+    
+      <Flex>
       <Navbar />
+      
       <div>
         <img className="title-gold-bg" src={titleGoldBg}/>
       </div>
+      </Flex>
+      <Flex>
       <div className='container me-3'>
-        <div className='row'>
-          <div className='col w-25'>
-          </div>
-        </div>
         <div className="row">
-          <div className='col'>
-            <div className='card border-0'>
-              <div className='card-horizontal'>
-                  <img className='img-fluid' src={rectangle8}/>
-                    <div className='card-body'>
-                        <p className='card-title'>Connect and Display Your Token Event Access Token.</p>
-                        <p className='card-text'> Ensure you have installed Kepler, and imported your event wallet.
-                        </p>
-                        <button className='navigate-button' onClick={toConnect}> Connect </button>
-                    </div>
-              </div>
-              </div>
-            </div>
-            <div className='col'>
-          <div className='card border-0'>
-            <div className='card-horizontal'>
-                 <img className='img-fluid' src={rectangle8}/>
-                  <div className='card-body'>
-                      <p className='card-title'>Vote On Entries</p>
-                      <p className='card-text'> Judge allocates points for each of this years entries, not including their own.
-                      </p>
-                      <button  className='navigate-button' onClick={toVoteCategories}> Vote </button>
-                  </div>
-            </div>
-          </div>
-          </div>
-      </div>
-      <div className="row">
-          <div className='col'>
-            <div className='card border-0'>
-              <div className='card-horizontal'>
-                  <img className='img-fluid' src={rectangle8}/>
-                    <div className='card-body'>
-                        <p className='card-title'>The Mothership Token</p>
-                        <p className='card-text'> Ensure you have installed Kepler, and imported your event wallet.
-                        </p>
-                        <button className='navigate-button' onClick={toMothership}> Mint </button>
-                    </div>
-              </div>
-              </div>
-            </div>
-            <div className='col'>
-          <div className='card border-0'>
-            <div className='card-horizontal'>
-                 <img className='img-fluid' src={rectangle8}/>
-                  <div className='card-body'>
-                      <p className='card-title'>Info / FAQ</p>
-                      <p className='card-text'> Information and frequently asked questions.
-                      </p>
-                      <button className='navigate-button'> Learn More </button>
-                  </div>
-            </div>
-          </div>
-          </div>
-      </div>
-      </div>
+          <div className='col'>          
+</div> 
+
+</div>
+  <Box p='2'>
+<Card direction='row' overflow='hidden' variant='outline'>
+  <Image
+    objectFit='cover'
+    maxW='200px'
+    src={rectangle8}
+    alt='Caffe Latte'
+  />
+  <Stack>
+    <CardBody>
+      <Heading size='md'>Display Your Event Access Token.</Heading>
+      <Text py='2'>
+      Ensure you have already installed Keplr Mobile.
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button variant='solid' colorScheme='blue'  onClick={toConnect}>
+        Connect
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+</Box>
+
+<Box p='2'>
+<Card direction='row' overflow='hidden' variant='outline'>
+  <Image
+    objectFit='cover'
+    maxW='200px'
+    src={rectangle8}
+    alt='Caffe Latte'
+  />
+  <Stack>
+    <CardBody>
+      <Heading size='md'>Vote On Entries</Heading>
+      <Text py='2'>
+      Judge allocates points for each of this years entries, not including their own.
+      
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
+        Vote
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+</Box>
+
+<Box p='2'>
+<Card direction='row' overflow='hidden' variant='outline'>
+  <Image
+    objectFit='cover'
+    maxW='200px'
+    src={rectangle8}
+    alt='Caffe Latte'
+  />
+  <Stack>
+    <CardBody>
+      <Heading size='md'>Legends of Hashish x Mothership NFT's</Heading>
+      <Text py='2'>
+      Gain Access to the mothership
+      
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button variant='solid' colorScheme='blue' onClick={toMothership}>
+        Mint
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+</Box>
+
+<Box p='2'>
+
+<Card direction='row' overflow='hidden' variant='outline'>
+  <Image
+    objectFit='cover'
+    maxW='200px'
+    src={rectangle8}
+    alt='Caffe Latte'
+  />
+  <Stack>
+    <CardBody>
+      <Heading size='md'>Info / FAQ</Heading>
+      <Text py='2'>
+      Information and frequently asked questions.
+      
+      </Text>
+    </CardBody>
+    <CardFooter>
+    <Button variant='solid' colorScheme='blue' onClick={onOpen}>Learn More</Button> 
+    </CardFooter>
+  </Stack>
+</Card>
+</Box>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost'>Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      
+      
+      </div></Flex>
+    
       <div className='holder'>
-        <p className="transparent-judging">
+        <Center><p className="transparent-judging">
           Transparent Judging for The Legends of Hashish: 2022
-        </p>
+        </p></Center>
         <p className="plain-text">
           This year, we have built the voting system with smart contract
           technology for judging entries. This is just one iteration of how we
@@ -112,6 +188,7 @@ function Home() {
         <img className="sponsors-1" src={sponsors1} />
         </div>
           <img className="footer" src={$footer} />
+         
     </div>
   ) : (
     <div className='base pb-5'>
@@ -127,6 +204,14 @@ function Home() {
           </div>
 
     </div>
+  )
+}
+function BasicUsage() {
+  
+  return (
+    <>
+      
+    </>
   )
 }
 
