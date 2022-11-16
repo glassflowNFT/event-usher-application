@@ -14,7 +14,7 @@ function Connect() {
           </div>
           <div className='container'>
             <div className='connect-holder'>
-              <p className='connect-plain-text pb-3'>Connect and display your QR code for access to The legends Of Hashish. </p>
+              <p className='connect-plain-text pb-3'>Connect and display your QR code for access to The Legends Of Hashish Event. </p>
               <Button type='button' className='btn btn-warning'> Connect Keplr Wallet</Button>
               <img className='logo' src={keplrLogo}/>
             </div>

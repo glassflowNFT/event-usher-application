@@ -43,10 +43,10 @@ const popover = (
         {/* <a tabindex="0" class="btn btn-lg btn-danger" data-bs-toggle='popover' data-bs-trigger="focus" data-bs-title={name} data-bs-content={address}>{name}</a> */}
 
         <OverlayTrigger 
-        trigger={"click"}
+        trigger={"focus"}
         placement="right"
         overlay={popover}>
-          <p className='nav-link'>{name}</p>
+          <a tabindex="0" className='nav-link-pop' aria-labelledby="dropdownMenuButton">{name}</a>
         </OverlayTrigger>
    </div>
   )

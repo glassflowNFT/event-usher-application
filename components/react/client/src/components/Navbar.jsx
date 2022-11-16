@@ -27,7 +27,7 @@ function Navbar() {
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <p class="nav-link" href="/">GlassFlow</p>
+              <p class="nav-link">GlassFlow</p>
               <p class="nav-link" onClick={toConnect}>Connect</p>
               <NavPopover />
             </div>

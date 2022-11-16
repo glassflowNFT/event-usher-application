@@ -76,6 +76,20 @@
 .navbar p{
     color: #e25273;
 }
+.navbar p:hover{
+    color: #ffca7b;
+}
+
+.navbar a{
+    color: #e25273;
+    margin-left: 25%;
+    text-decoration: none;
+    font-size: large;
+}
+
+.navbar a:hover{
+    color: #ffca7b;
+}
 
 
 .transparent-judging{
@@ -134,6 +148,11 @@
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+.navigate-button:hover {
+    color: #f5f1f1;
+    background-color: #1c0062;
 }
 
 .wallet-details {
@@ -241,6 +260,10 @@
     bottom: 0;
     right: 20;
 }
+.ms-navigate-button:hover{
+    color: #f5f1f1;
+    background-color: #1c0062;
+}
 
 .ms-left-navigate-button{
     color: #e25273;
@@ -260,6 +283,11 @@
     width: 20%;
     position: absolute;
     bottom: 0;
+}
+
+.ms-left-navigate-button:hover{
+    color: #f5f1f1;
+    background-color: #1c0062;
 }
 
 .ms-card-horizontal {
@@ -534,6 +562,11 @@
     width: 60%;
     margin-left: 18%;
     margin-top: 8%;
+}
+
+.confirm-button:hover {
+    color: #f5f1f1;
+    background-color: #1c0062;
 }
 
 .holder-name-text {

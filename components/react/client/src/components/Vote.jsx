@@ -4,8 +4,15 @@ import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import rectangle8 from "../assets/rectangle8.png";
 import { useState } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function Vote() {
+
+    let navigate = useNavigate()
+
+    function toCategories() {
+        navigate('/Voting-Categories')
+    }
 
     const [lookValue, setLookValue] = useState('5')
     const [smellValue, setSmellValue] = useState('5')
@@ -25,7 +32,7 @@ function Vote() {
           </div>
           <div className='container'>
             <div className='holder'>
-                <a href='/Voting-Categories'>Return to Categories</a>
+                <p onClick={toCategories}>Return to Categories</p>
                 <div className='row mt-3'>
                     <div className='col me-5'>
                         <img className='img-fluid w-100 mb-3' src={rectangle8} />
