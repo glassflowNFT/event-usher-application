@@ -59,7 +59,7 @@ function Home() {
 <Card direction='row' overflow='hidden' variant='outline'>
   <Image
     objectFit='cover'
-    maxW='200px'
+    maxW='150px'
     src={rectangle8}
     alt='Caffe Latte'
   />
@@ -83,7 +83,7 @@ function Home() {
 <Card direction='row' overflow='hidden' variant='outline'>
   <Image
     objectFit='cover'
-    maxW='200px'
+    maxW='150px'
     src={rectangle8}
     alt='Caffe Latte'
   />
@@ -108,7 +108,7 @@ function Home() {
 <Card direction='row' overflow='hidden' variant='outline'>
   <Image
     objectFit='cover'
-    maxW='200px'
+    maxW='150px'
     src={rectangle8}
     alt='Caffe Latte'
   />
@@ -134,7 +134,7 @@ function Home() {
 <Card direction='row' overflow='hidden' variant='outline'>
   <Image
     objectFit='cover'
-    maxW='200px'
+    maxW='150px'
     src={rectangle8}
     alt='Caffe Latte'
   />
