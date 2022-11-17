@@ -3,10 +3,28 @@ import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import rectangle8 from "../assets/rectangle8.png";
-import Button from 'react-bootstrap/esm/Button';
+import { Center, Divider, Heading } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { useDisclosure } from '@chakra-ui/react'
+import { Stack, HStack, VStack } from '@chakra-ui/react'
+import { Image } from '@chakra-ui/react'
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
 
 
 function Mothership() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [scrollBehavior, setScrollBehavior] = React.useState('inside')
+  const btnRef = React.useRef(null)
   return (
     <div className='base'>
     <Navbar />
@@ -14,88 +32,96 @@ function Mothership() {
          <img className="title-gold-bg" src={titleGoldBg}/>
        </div>
        <div className='container'>
-          <div className='row'>
-              <div className='col'>
-                  <div className='card border-0'>
-                      <div className='card-horizontal'>
-                          <img className='img-fluid' src={rectangle8} />
-                          <div className='card-body'>
-                          <p className='card-title'>Mint Your Free Mothership x Legends Attendance Token.</p>
-                          <p className='card-text w-50'> Each Legends guest can mint one official attendance NFT in collaboartion with Mothership Glass.
-                        </p>
-                        <button className='ms-navigate-button'> Mint Free NFT </button>
-                        </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div className='row'>
-              <div className='col'>
-                  <div className='card border-0 w-100'>
-                      <div className='ms-card-horizontal'>
-                          <div className='row card-body'>
-                            <div className='col' align="right">
-                          <p className='ms-card-title'>Mint Your Free Mothership x Legends Attendance Token.</p>
-                          <p className='ms-card-text w-50'> 3 lucky guests will be walking away with both a pipe and NFT from GZ1 and Mothership Glass.
+       
+  <Card m={[2, 3]} direction={{ base: 'column', sm: 'row' }}  overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW={{ base: '100%', sm: '500px' }} src={rectangle8}  alt='Caffe Latte'/>
 
-                          This button only will work for the legends guest who has bought and now owns both the pipe and NFT!
-                        </p>
-                        <button className='ms-left-navigate-button' > Mint GZ1 Collab </button>
-                        </div>
-                        </div>
-                        <img className='img-fluid' src={rectangle8} />
-                      </div>
-                  </div>
-              </div>
-          </div>
-          </div>
-          <div className='ms-holder'>
-          <p className='buy-limited'>Buy Limited Mothership NFT
-          </p>
-            <img className='buy-pic img-fluid pb-3' src={rectangle8} />
-              <div className='minting-block'>
-                <div className='flex-container'>
-                  <p className='mint-price mt-2'><strong>Mint Price</strong></p>
-                  <p className='usdc'><strong>TBD $USDC</strong></p>
-                  <button className='confirm-mint w-50'>Confirm Mint</button>
-                  </div>
-              </div>
-              <div className='holder-benefits mt-4'>
-                <div className='flex-container'>
-                  <p className='mint-price mt-2'><strong>Holder Benefits</strong></p>
-                  <p className='usdc'><strong></strong></p>
-                  </div>
-              </div>
-              <div className='instructions'>
-                  <p className='steps-to-mint mt-5'>Steps To Mint</p>
-                  <div className='row ms-4'>
-                    <div className='col'>
-                        <div className='card border-0'>
-                          <img className='img-fluid' src={rectangle8}/>
-                          <div className='card-body'>
-                            <p className='c-card-title'>1. On Ramp USDC</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div className='col'>
-                        <div className='card border-0'>
-                          <img className='img-fluid' src={rectangle8}/>
-                          <div className='card-body'>
-                            <p className='c-card-title'>2. Transer USDC and JUNO to Juno Network</p>
-                          </div>
-                        </div>
-                    </div>
-                    <div className='col'>
-                        <div className='card border-0'>
-                          <img className='img-fluid' src={rectangle8}/>
-                          <div className='card-body'>
-                            <p className='c-card-title'>3. Mint</p>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
+  <Stack>
+    <CardBody>
+      <Heading size='xl'>Mint Your Free 2022 Mothership x Legends Attendance Token.</Heading>
+<Text py='2'>Each Legends guest can mint one official attendance NFT in collaboartion with Mothership Glass.</Text></CardBody>
+<Center><CardFooter>
+      <Button> Mint Free NFT</Button>
+</CardFooter></Center>
+  </Stack>
+
+</Card>
+
+<Card m={[2, 3]} direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW={{ base: '100%', sm: '500px' }} src={rectangle8}  alt='Caffe Latte'/>
+
+  <Stack>
+    <CardBody>
+      <Heading size='xl'>Gz-1 x Mothership Drop </Heading>
+<Text py='2'>3 lucky guests will be walking away with both a pipe and NFT from GZ1 and Mothership Glass.
+
+This button only will work for the legends guest who has bought and now owns both the pipe and NFT!.</Text></CardBody>
+<Center><CardFooter>
+      <Button> Mint Collab Drop</Button>
+</CardFooter></Center>
+  </Stack>
+
+</Card>
+ 
+<Card m={[2, 3]} direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW={{ base: '100%', sm: '500px' }} src={rectangle8}  alt='Caffe Latte'/>
+
+  <Stack>
+    <CardBody>
+      <Heading size='xl'>Buy Limited Mothership NFT.</Heading>
+<Text py='2'>Each Legends guest can mint one official attendance NFT in collaboartion with Mothership Glass.</Text>
+<Heading as='u'><strong>Holder Benefits</strong></Heading>
+</CardBody>
+<Divider/>
+
+<Divider/>
+<Center><CardFooter>
+      <Center><ButtonGroup gap='4'>
+      <Button onClick={onOpen} ref={btnRef} >Prepare For Mint-Off</Button>
+      <Button>Mint</Button>
+    </ButtonGroup></Center>
+</CardFooter></Center>
+  </Stack>
+
+  <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant='ghost'>Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      <Modal
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        isOpen={isOpen}
+        scrollBehavior={scrollBehavior}
+      >
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+</Card>
+</div>
+
+
+
+          
 
        <img className="footer" src={$footer} />
  </div>
