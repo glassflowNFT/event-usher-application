@@ -1,10 +1,18 @@
 import React from 'react'
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 import Navbar from './Navbar'
+import { Image } from '@chakra-ui/react'
+import { Stack, HStack, VStack } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react'
+import { Divider } from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Center, Square, Circle } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import rectangle8 from "../assets/rectangle8.png";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 function Vote() {
 
@@ -17,6 +25,11 @@ function Vote() {
     const handleSmellChange = e => setSmellValue(e.target.value)
     const handleTasteChange = e => setTasteValue(e.target.value)
     const handleMeltChange = e => setMeltValue(e.target.value)
+    
+    let navigate = useNavigate()
+    function toVoteCategories() {
+        navigate('/Voting-Categories')
+    }
 
   return (
     <div className='base'>
@@ -26,50 +39,70 @@ function Vote() {
           </div>
           <div className='container'>
             <div className='holder'>
-                <a href='/Voting-Categories'>Return to Categories</a>
+                <Center><Button  onClick={toVoteCategories}> Return to Categories</Button></Center>
+
                 <div className='row mt-3'>
-                    <div className='col me-5'>
-                        <img className='img-fluid w-100 mb-3' src={rectangle8} />
-                        <div className='hash-name mb-3'><p className='name-text'>Entry Name</p></div>
-                        <div className='hash-category mb-3'><p className='name-text'>Entry Category</p></div>
-                        <div className='hash-breeder mb-3'><p className='name-text'>Entry Breeder</p></div>
-                        <div className='hash-farmer mb-3'><p className='name-text'>Entry Farmer</p></div>
-                        <div className='hash-genetics mb-3'><p className='name-text'>Entry Genetics</p></div>
-                        <div className='description'><p className='desc-text'>Entry Description</p>
-                        <p className='small-des'>Description goes here</p></div>
-                    </div>
+                <Card maxW='sm'>
+  <CardBody>
+    <Image
+ src={rectangle8}
+       alt='Green double couch with wooden legs'
+      borderRadius='lg'
+    />
+    <Stack mt='6' spacing='3'>
+      <Heading size='md'>ENTRY_NAME</Heading>
+      <Divider />
+      <Heading size='l'> ENTRY_MAKER_NAME</Heading>
+      <Divider />
+      
+      <Text>ENTRY_DESCRIPTION</Text>
+
+      <Divider />
+      <Text>ENTRY CATEGORY</Text>
+      <Divider />
+      <Text>ENTRY BREEDER</Text>
+      <Divider />
+      <Text>ENTRY FARMER</Text>
+      <Divider />
+      <Text>ENTRY GENETICS</Text>
+      <Divider />
+      
+    </Stack>
+  </CardBody>
+
+  
+</Card>
+                   
                     <div className='col'>
                         <div className='row'>
                             <div className='col'>
-                                <p className='name-text'>Entry Maker</p>
-                                <p className='name-text'>Vote On Entry-Name Elements: </p>
+                           
+                                <p className='name-text'>Vote On Elements: </p>
                             </div>
-                            <div className='col'>
-                                <p className='holder-name-text'>Wallet Address</p>
-                            </div>
+                       
                         </div>
                     <div className='input-holder p-3 mb-3'>
-                            <p className='range-slider-text'>Entry Proposal Look</p>
+                            <p className='range-slider-text'>Entry's Look</p>
                             <p className='range-slider-text'>{lookValue}</p>
                             <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleLookChange} value={lookValue}></input>
                         </div>
                     <div className='input-holder p-3 mb-3'>
-                            <p className='range-slider-text'>Entry Proposal Look</p>
+                            <p className='range-slider-text'>Entry's Taste</p>
                             <p className='range-slider-text'>{smellValue}</p>
                             <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleSmellChange} value={smellValue}></input>
                         </div>
                     <div className='input-holder p-3 mb-3'>
-                            <p className='range-slider-text'>Entry Proposal Look</p>
+                            <p className='range-slider-text'>Entry's Smell</p>
                             <p className='range-slider-text'>{tasteValue}</p>
                             <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleTasteChange} value={tasteValue}></input>
                         </div>
                     <div className='input-holder p-3 mb-3'>
-                            <p className='range-slider-text'>Entry Proposal Look</p>
+                            <p className='range-slider-text'>Entry's After Banger</p>
                             <p className='range-slider-text'>{meltValue}</p>
                             <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleMeltChange} value={meltValue}></input>
                         </div>
 
-                        <button className='confirm-button'>Confrim Vote</button>
+                       <Button size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>
                     </div>
                 </div>
             </div>

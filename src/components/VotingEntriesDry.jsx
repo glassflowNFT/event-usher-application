@@ -8,7 +8,10 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Stack, HStack, VStack } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { Center, Square, Circle } from '@chakra-ui/react'
+import { Flex, Spacer } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
+import { Grid, GridItem } from '@chakra-ui/react'
+
 import { SimpleGrid } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
@@ -33,28 +36,41 @@ function VotingEntriesDry() {
   return (
     <div className='base'>
     <Navbar />
-       <div><img className="connect-title-gold-bg" src={titleGoldBg}/> </div>
-       <p className='water-hash-title me-5'>Dry Sift Entries</p>
+       <div><img className="connect-title-gold-bg" src={titleGoldBg}/> 
+       </div>
+       <Heading noOfLines={2} className='water-hash-title me-1' > Dry Sift Entries</Heading>
+       <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Dry Sift</Button>
+  <Spacer />
+<Button colorScheme='teal' onClick={nextCategory} variant='outline'> Hashish Rosin </Button>
+</Flex>         <Center> <div className='container me-3'>
+         <div className='holder'>
+         
+         </div>
+           
+
+
+</div>
+</Center>
        <Container s>
-       <SimpleGrid columns={[2,null,2]} spacing='20px'>
-<Card direction='row' overflow='hidden' variant='outline'>
+       <Grid templateRows='repeat(5, 1fr)' gap={6}>
+       <Card direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
+  <Stack onClick={toVoting} >
     <CardBody>
       <Heading size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
-      hjsgalhgjfskalghjfsaklfhdsjalkfhdajsklghdsajklghdasjklghdjkslFHAJSKHFGDJKAS FDSAHJKL GHDSJklghdsjaklhfgdsjaklhf
+      ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
         Vote
       </Button>
     </CardFooter>
   </Stack>
 </Card>
-
-<Card direction='row' overflow='hidden' variant='outline'>
+ 
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -71,7 +87,7 @@ function VotingEntriesDry() {
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -88,7 +104,24 @@ function VotingEntriesDry() {
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+  <Stack>
+    <CardBody>
+      <Heading size='md'>ENTRY_NAME</Heading>
+      <Text py='2'>
+      ENTRY_NAME::DESCRIPTION
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+        Vote
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+ 
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -105,7 +138,7 @@ function VotingEntriesDry() {
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -122,7 +155,7 @@ function VotingEntriesDry() {
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -139,7 +172,7 @@ function VotingEntriesDry() {
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -149,14 +182,14 @@ function VotingEntriesDry() {
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
         Vote
       </Button>
     </CardFooter>
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -166,14 +199,14 @@ function VotingEntriesDry() {
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
         Vote
       </Button>
     </CardFooter>
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -183,14 +216,14 @@ function VotingEntriesDry() {
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
         Vote
       </Button>
     </CardFooter>
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -200,14 +233,14 @@ function VotingEntriesDry() {
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
         Vote
       </Button>
     </CardFooter>
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
@@ -217,47 +250,13 @@ function VotingEntriesDry() {
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
         Vote
       </Button>
     </CardFooter>
   </Stack>
 </Card>
-
-<Card direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-</SimpleGrid>
+</Grid>
 </Container>
 <img className="footer" src={$footer} />
  </div>

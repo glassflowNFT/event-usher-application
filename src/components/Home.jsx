@@ -180,12 +180,7 @@ function Home() {
         <Center><p className="transparent-judging">
           
         </p></Center>
-        <p className="plain-text">
-          This year, we have built the voting system with smart contract
-          technology for judging entries. This is just one iteration of how we
-          can build tooling that improves trust layers within our communities.
-        </p>
-     <Center><Heading>HUGE THANK YOU TO ALL OF THIS YEARS SPONORS!</Heading></Center>
+       
         <img className="sponsors-1" src={sponsors1} />
         </div>
           <img className="footer" src={$footer} />
