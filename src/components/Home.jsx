@@ -4,7 +4,9 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import { Center, Square, Circle } from '@chakra-ui/react'
-import { Flex, Spacer } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/react'
+import { ExternalLinkIcon } from '@chakra-ui/icons'
+import {Accordion,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,} from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
 import { Heading } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
@@ -15,6 +17,7 @@ import rectangle8 from "../assets/rectangle8.png";
 import sponsors1 from "../assets/sponsors1.png";
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
+import waterHash from "../assets/waterhash.png";
 import keplrLogo from "../assets/keplrlogo.png";
 import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
@@ -158,17 +161,60 @@ function Home() {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>FAQ</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          
+          <Accordion defaultIndex={[0]} allowMultiple>
+  <AccordionItem>
+    <h2>
+      <AccordionButton>
+        <Box flex='1' textAlign='left'>
+          1.
+        </Box>
+        <AccordionIcon />
+      </AccordionButton>
+    </h2>
+    <AccordionPanel pb={4}>
+  Legends FAQ here.
+    </AccordionPanel>
+  </AccordionItem>
+
+  <AccordionItem>
+    <h2>
+      <AccordionButton>
+        <Box flex='1' textAlign='left'>
+          2.
+        </Box>
+        <AccordionIcon />
+      </AccordionButton>
+    </h2>
+    <AccordionPanel pb={4}>
+  Legends FAQ here.
+    </AccordionPanel>
+  </AccordionItem>
+
+<AccordionItem>
+<h2><AccordionButton>
+        <Box flex='1' textAlign='left'>3.</Box>
+<AccordionIcon />
+</AccordionButton>
+</h2>
+<AccordionPanel pb={4}>
+     Legends FAQ here
+    </AccordionPanel>
+  </AccordionItem>
+</Accordion>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme='blue' mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant='ghost'>Secondary Action</Button>
+            <Button variant='ghost'><Text>
+ 
+  <Link color='teal.500' href='https://iris-talon-1e3.notion.site/The-Official-Legends-Event-Judging-Ticket-Application-Wiki-72a7759568854729a137812f1a9d5e5a'>
+View Wiki   </Link>
+</Text></Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

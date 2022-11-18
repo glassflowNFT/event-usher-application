@@ -1,7 +1,19 @@
 import React from 'react'
 import Navbar from './Navbar'
+import { Container } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react'
+import { Select } from '@chakra-ui/react'
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+} from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
+import { Center, Square, Circle } from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
+import { Button } from 'react-bootstrap'
 
 function Mint() {
   return (
@@ -10,46 +22,66 @@ function Mint() {
        <div>
          <img className="connect-title-gold-bg" src={titleGoldBg}/>
        </div>
-       <div className='container'>
+       <Container>
          <div className='holder'>
            <div className='row'>
              <div className='col'>
-                  <p className='mint-admins'>Mint Entries</p>
-                  <p className='label-category'>Entry Name:</p>
-              <input className='entry-name-input'></input>
-              <p className='label-category'>Select Category:</p>
-                <div className='col'>
-                     <div className='form-group'>
-                        <select className='entry-select'>
-                          <option type="text">Hash Rosin</option>
-                          <option type="text">Water Hashish</option>
-                          <option type="text">Dry Sift</option>
-                        </select>
-                      </div>
-                </div>
-                    <div className='col'>
-                       <p className='label-category'>Maker Company Name:</p>
-                       <input className='entry-name-input'></input>
-                    </div>
-                    <div className='col'>
-                       <p className='label-category'>Breeder name:</p>
-                       <input className='entry-name-input'></input>
-                    </div>
-                    <div className='col'>
-                       <p className='label-category'>Farmer Name:</p>
-                       <input className='entry-name-input'></input>
-                    </div>
-                    <div className='col'>
-                       <p className='label-category'>Genetics:</p>
-                       <input className='entry-name-input'></input>
-                    </div>
-                    <div className='col'>
-                      <button className='mint-button'>Mint</button>
-                    </div>
+              <Center><Heading>Mint Entries</Heading></Center>
+<FormControl isRequired >
+  <Center><FormLabel>Entry Name</FormLabel></Center>
+  <Input type='email' />
+  <FormHelperText>Proposal Title</FormHelperText></FormControl>
+
+<FormControl isRequired>
+  <Center><FormLabel>Entry Category </FormLabel></Center>
+  <Select placeholder='Choose 1'>
+    <option>Hashish Rosin</option>
+    <option>Water Hash</option>
+    <option>Dry Sift Hash</option>
+  </Select>
+  <FormHelperText>Entry Category</FormHelperText>
+</FormControl>
+
+<FormControl isRequired>
+  <Center><FormLabel>Maker Wallet Address</FormLabel></Center>
+  <Input type='maker_addr' />
+  <FormHelperText>terp1...</FormHelperText>
+</FormControl>
+
+<FormControl isRequired>
+  <Center><FormLabel>Maker Title</FormLabel></Center>
+  <Input type='maker_name' />
+  <FormHelperText>Name</FormHelperText>
+</FormControl>
+
+<FormControl isRequired>
+  <Center><FormLabel>Entry Description </FormLabel></Center>
+  <Input type='entry_description' />
+  <FormHelperText>Name</FormHelperText>
+</FormControl>
+
+<FormControl>
+  <Center><FormLabel>Breeder Name </FormLabel></Center>
+  <Input type='breeder_name' />
+  <FormHelperText>Optional</FormHelperText>
+</FormControl>
+
+<FormControl>
+  <Center><FormLabel>Farmer Name </FormLabel></Center>
+  <Input type='farmer_name' />
+  <FormHelperText>Optional</FormHelperText>
+</FormControl>
+
+<FormControl>
+  <Center><FormLabel>Genetics Name </FormLabel></Center>
+  <Input type='farmer_name' />
+  <FormHelperText>Optional</FormHelperText>
+</FormControl>
+<Center><Button>Mint</Button></Center>  
              </div>
             </div>
-         </div>
-       </div>
+         </div>   
+       </Container>
        <img className="footer" src={$footer} />
  </div>
   )

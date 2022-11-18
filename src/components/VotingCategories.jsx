@@ -9,6 +9,7 @@ import { Text } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { SimpleGrid } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
+import waterHash from "../assets/waterhash.png";
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import rectangle8 from "../assets/rectangle8.png";
