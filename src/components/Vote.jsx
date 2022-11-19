@@ -40,6 +40,9 @@ function Vote() {
         navigate('/Voting-Categories')
     }
 
+function Slider(){
+  
+}
     return status === WalletConnectionStatus.Connected ?  (
     <div className='base'>
        <Navbar />
@@ -90,26 +93,26 @@ function Vote() {
                             </div>
                        
                         </div>
-                    <div className='input-holder p-3 mb-3'>
-                            <p className='range-slider-text'>Entry's Look</p>
+                    <Container className='input-holder p-3 mb-3'>
+                            <Text className='range-slider-text'>Entry's Look</Text>
                             <p className='range-slider-text'>{lookValue}</p>
                             <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleLookChange} value={lookValue}></input>
-                        </div>
-                    <div className='input-holder p-3 mb-3'>
+                            </Container>
+                    <Container className='input-holder p-3 mb-3'>
                             <p className='range-slider-text'>Entry's Taste</p>
                             <p className='range-slider-text'>{smellValue}</p>
                             <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleSmellChange} value={smellValue}></input>
-                        </div>
-                    <div className='input-holder p-3 mb-3'>
+                        </Container>
+                    <Container className='input-holder p-3 mb-3'>
                             <p className='range-slider-text'>Entry's Smell</p>
                             <p className='range-slider-text'>{tasteValue}</p>
                             <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleTasteChange} value={tasteValue}></input>
-                        </div>
-                    <div className='input-holder p-3 mb-3'>
+                        </Container>
+                    <Container className='input-holder p-3 mb-3'>
                             <p className='range-slider-text'>Entry's After Banger</p>
                             <p className='range-slider-text'>{meltValue}</p>
                             <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleMeltChange} value={meltValue}></input>
-                        </div>
+                        </Container>
 
                        <Button size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>
                     </div>
