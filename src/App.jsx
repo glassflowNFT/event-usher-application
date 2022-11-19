@@ -23,16 +23,19 @@ import Vote from "./components/Vote";
  
 
 function App() {
+  console.log(WalletManagerProvider);
+  const LOCAL_STORAGE_KEY = "connectedWalletId"
+
   return (
     <ChakraProvider>
-    <WalletManagerProvider defaultChainId={ChainInfoID.Athena2}
+    <WalletManagerProvider defaultChainId={ChainInfoID.Juno1}
     enabledWalletTypes={[WalletType.Keplr, WalletType.WalletConnectKeplr]}
     walletConnectClientMeta={{
       name: "CosmodalExampleDAPP",
       description: "A dapp using the cosmodal library.",
       url: "https://cosmodal.example.app",
       icons: ["https://cosmodal.example.app/walletconnect.png"],
-    }}>
+    }}localStorageKey={LOCAL_STORAGE_KEY} renderLoader={() => <p>Loading...</p>}>
     <Router>
        <ScrollToTop />
       <Routes>

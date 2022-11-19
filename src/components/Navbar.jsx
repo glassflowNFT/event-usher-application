@@ -5,7 +5,6 @@ import { Box } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Popover } from 'react-bootstrap'
 import { useRef } from 'react'
 import { useEffect } from 'react'
 import NavPopover from './NavPopover'
@@ -40,8 +39,9 @@ function Navbar() {
   <Spacer />
 
   <ButtonGroup gap='2'>
-    <Button class ="nav-link" onClick={toHome} colorScheme='BlackAlpha' color='burlywood' >Legends 2022: LA</Button>
-    <Button  class="nav-link"  onClick={toVoteCategories} size='md' colorScheme='blackAlpha'>Vote</Button>
+    <Button onClick={toHome} colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
+    <Button onClick={toVoteCategories} size='md' colorScheme='white'>Vote</Button>
+    <NavPopover />
     <Button colorScheme='purple' onClick={toConnect} > Connect Keplr</Button>
   </ButtonGroup>
 </Flex>

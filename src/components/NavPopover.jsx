@@ -1,9 +1,10 @@
 import React from 'react'
 import { Popover } from 'react-bootstrap'
 import { Stack } from 'react-bootstrap'
-import { Button } from 'react-bootstrap'
 import { OverlayTrigger } from 'react-bootstrap'
 import { useEffect } from 'react'
+import { Container } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import {
   useWalletManager,
   useWallet,
@@ -39,16 +40,15 @@ const popover = (
   )
 
   return (
-    <div>
-        {/* <a tabindex="0" class="btn btn-lg btn-danger" data-bs-toggle='popover' data-bs-trigger="focus" data-bs-title={name} data-bs-content={address}>{name}</a> */}
+    <Button size='md' colorScheme='white'>
 
         <OverlayTrigger 
-        trigger={"click"}
+        trigger={"focus"}
         placement="right"
         overlay={popover}>
-          <p className='nav-link'>{name}</p>
+          <a tabindex="0" className='nav-link-pop' aria-labelledby="dropdownMenuButton">{name}</a>
         </OverlayTrigger>
-   </div>
+        </Button>
   )
 }
 

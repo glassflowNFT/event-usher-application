@@ -14,8 +14,16 @@ import { Flex, Spacer } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate } from 'react-router-dom';
+import keplrLogo from "../assets/keplrlogo.png";
+import {
+  useWalletManager,
+  useWallet,
+  WalletConnectionStatus,
+} from "@xiti/cosmodal"
 
 function VotingEntriesWater() {
+  const { connect, disconnect } = useWalletManager()
+  const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
   let navigate = useNavigate()
 
@@ -31,7 +39,7 @@ function VotingEntriesWater() {
     navigate('/Vote')
   }
 
-  return (
+  return status === WalletConnectionStatus.Connected ?  (
     <div className='base'>
     <Navbar />
        <div>
@@ -252,7 +260,26 @@ function VotingEntriesWater() {
 
        <img className="footer" src={$footer} />
  </div>
-  )
+ ) : (
+  <Container> <div className='base pb-5'>
+         <div>
+          <Center><Container><img className="connect-title-gold-bg" src={titleGoldBg}/>
+                      <Heading  px='7' mb={80} noOfLines={2}>Connect To Access Event Application </Heading></Container> </Center>
+
+         </div>
+
+         <div className='container pb-5'>
+
+           <Center><img  borderRadius='full' className='icon' src={keplrLogo}/></Center>
+           <Center><Button colorScheme='whiteAlpha' color='white' mb={80} onClick={connect}>Connect Keplr</Button></Center>
+
+           {error && <p>{error instanceof Error ? error.message : `${error}`}</p>}
+           </div>
+         </div>
+         </Container>
+
+
+ )
 }
 
 export default VotingEntriesWater

@@ -21,28 +21,43 @@ import waterHash from "../assets/waterhash.png";
 import keplrLogo from "../assets/keplrlogo.png";
 import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import Axios from "axios";
 import {
   useWalletManager,
   useWallet,
   WalletConnectionStatus,
 } from "@xiti/cosmodal"
+import { setSelectionRange } from '@testing-library/user-event/dist/utils'
+
 
 function Home() {
+  let navigate = useNavigate()
+
+  const [loading, setLoading] = useState(false)
+
+
 
   const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const { status, error, name, address, publucKey, signingCosmWasmClient } = useWallet()
+
+  const acc = localStorage.getItem("account")
+
+  console.log(status);
   
-  let navigate = useNavigate()
+
   function toConnect() {
       navigate('/Connect')
   }
   function toVoteCategories() {
-      navigate('/Voting-Categories')
+    navigate('/Voting-Categories')
   }
   function toMothership() {
-      navigate('/Mothership')
+    navigate('/Mothership')
   }
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
+
   return status === WalletConnectionStatus.Connected ? (
     <div className='base'>
     
@@ -236,7 +251,7 @@ View Wiki   </Link>
    <Container> <div className='base pb-5'>
           <div>
            <Center><Container><img className="connect-title-gold-bg" src={titleGoldBg}/>
-                       <Heading  px='7' mb={80} noOfLines={2}>Connect To Access Event Application </Heading></Container> </Center>
+                       <Heading color='#fefefe' px='7' mb={80} noOfLines={2}>Connect To Access Event Application </Heading></Container> </Center>
 
           </div>
         
