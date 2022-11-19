@@ -26,6 +26,7 @@ function Connect() {
   const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
   const [qrcode, setQrcode] = useState('')
+  
 
   useEffect(() => {
    QRCode.toDataURL(address)
@@ -46,8 +47,8 @@ function Connect() {
         <Center><img  borderRadius='full' className='icon' src={keplrLogo}/></Center>
             <div className='connect-holder'>
             <Text>Connect and display your QR code for access to The legends Of Hashish. </Text>  
-              <Button type='button' className='btn btn-warning'> Connect Keplr Wallet</Button>
-              <Image boxSize='420px' className='logo mt-3' src={qrcode}/>
+             
+             <Center><Image boxSize='300px'   objectFit='contain' className='logo mt-3' src={qrcode }/></Center>
 
             </div>
           </div>

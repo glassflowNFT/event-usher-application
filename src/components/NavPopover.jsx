@@ -3,7 +3,7 @@ import { Popover } from 'react-bootstrap'
 import { Stack } from 'react-bootstrap'
 import { OverlayTrigger } from 'react-bootstrap'
 import { useEffect } from 'react'
-import { Container } from '@chakra-ui/react'
+import { Center, Container } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import {
   useWalletManager,
@@ -34,19 +34,19 @@ const popover = (
       </Popover.Header>
       <Popover.Body>
        {address}
-       <Button className='m-4' onClick={disconnect}>Disconnect</Button>
+       <Button colorScheme='ghost' className='m-4' onClick={disconnect}>Disconnect</Button>
       </Popover.Body>
     </Popover>
   )
 
   return (
-    <Button size='md' colorScheme='white'>
+    <Button size='md' colorScheme='' c>
 
         <OverlayTrigger 
         trigger={"focus"}
-        placement="right"
+        placement="center"
         overlay={popover}>
-          <a tabindex="0" className='nav-link-pop' aria-labelledby="dropdownMenuButton">{name}</a>
+          <a tabindex="0" className='nav-link-pop' colorScheme='ghost' color='white' aria-labelledby="dropdownMenuButton">{name}</a>
         </OverlayTrigger>
         </Button>
   )

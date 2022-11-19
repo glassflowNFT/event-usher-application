@@ -39,10 +39,10 @@ function Navbar() {
   <Spacer />
 
   <ButtonGroup gap='2'>
-    <Button onClick={toHome} colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
-    <Button onClick={toVoteCategories} size='md' colorScheme='white'>Vote</Button>
+    <Button onClick={toHome} px='-15' colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
+    <Button onClick={toVoteCategories} size='md'  color='white' colorScheme='white'>Vote</Button>
     <NavPopover />
-    <Button colorScheme='purple' onClick={toConnect} > Connect Keplr</Button>
+    <Button colorScheme='purple' onClick={toConnect} > QR Code</Button>
   </ButtonGroup>
 </Flex>
       </nav>
