@@ -1,7 +1,7 @@
 export const queryGuestType = async (client, address) => {
   return client.queryContractSmart(
     // Guest Type CW4 Group Contract
-    "juno1ss9tlfsj53uc5w6g45sjtu88uyc6nf7ar0k8wge8fmzz3588ceks2xvsnn",
+    "juno1kwmpjp6we33gvkcnfka33l6l55ckyyvryyhnlpue3g7luh3ftd6qz3wqw5",
     {
       member: { addr: address },
     }
