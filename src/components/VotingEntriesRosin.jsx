@@ -71,7 +71,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+      <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -88,7 +88,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -105,7 +105,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -122,7 +122,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -139,7 +139,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -156,7 +156,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -173,7 +173,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -190,7 +190,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -207,7 +207,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -224,7 +224,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -241,7 +241,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -258,7 +258,7 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading color='white' size='md'>ENTRY_NAME</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>

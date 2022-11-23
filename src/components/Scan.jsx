@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
@@ -13,7 +13,7 @@ import { Image } from '@chakra-ui/react';
 import { SimpleGrid } from '@chakra-ui/react'
 import { Textarea } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
-import { useEffect } from 'react';
+import BarcodeScanner from './BarcodeScanner';
 import QRCode from 'qrcode';
 import {
   useWalletManager,
@@ -33,6 +33,7 @@ function Scan() {
           <div>
             <img className="connect-title-gold-bg" src={titleGoldBg}/>
           </div>
+          <BarcodeScanner />
           <img className="footer" src={$footer} />
         </div>
   ) : (
@@ -40,7 +41,6 @@ function Scan() {
            <div>
             <Center><Container><img className="connect-title-gold-bg" src={titleGoldBg}/>
                         <Heading  px='7' mb={80} noOfLines={2}>Connect To Access Event Application </Heading></Container> </Center>
-
            </div>
 
            <div className='container pb-5'>
@@ -55,9 +55,6 @@ function Scan() {
 
 
    )
-   return (
-    <div>Scan</div>
-  )
 }
  
 

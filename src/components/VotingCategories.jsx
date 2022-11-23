@@ -57,13 +57,13 @@ function VotingCategories() {
   <Card onClick={toRosin}>
     <CardHeader >
       <Center>
-      <Heading size='xl'> Hash Rosin </Heading>
+      <Heading color="white"  size='xl'> Hash Rosin </Heading>
       </Center>
     </CardHeader>
     <Center>
     <CardBody>
     <Center><Image borderRadius='full' boxSize='250px' src={rectangle8} alt='Water Hash'/></Center>
-    <Center><Heading size='md'>View all Hash Rosin</Heading></Center>
+    <Center><Heading  color="white" size='md'>View all Hash Rosin</Heading></Center>
     </CardBody>
     </Center>
     <CardFooter>
@@ -71,11 +71,11 @@ function VotingCategories() {
   </Card>
   <Card onClick={toWater}>
     <CardHeader>
-      <Center><Heading size='xl'>Water Hashish </Heading></Center>
+      <Center><Heading color="white" size='xl'>Water Hashish </Heading></Center>
     </CardHeader>
     <CardBody>
     <Center><Image borderRadius='full' boxSize='250px' src={rectangle8} alt='Water Hash'/></Center>
-    <Center><Heading size='md'>View All Water Hash</Heading> </Center>
+    <Center><Heading  color="white" size='md'>View All Water Hash</Heading> </Center>
     </CardBody>
     <CardFooter>
    
@@ -83,11 +83,11 @@ function VotingCategories() {
   </Card>
   <Card  onClick={toSift}>
     <CardHeader>
-      <Center><Heading size='xl'> Dry Sift Entries</Heading></Center>
+      <Center><Heading  color="white" size='xl'> Dry Sift Entries</Heading></Center>
     </CardHeader >
     <CardBody>
     <Center><Image borderRadius='full' boxSize='250px' src={rectangle8} alt='Water Hash'/></Center>
-    <Center><Heading size='md'>View all Dry Sift</Heading></Center>
+    <Center><Heading  color="white" size='md'>View all Dry Sift</Heading></Center>
     </CardBody>
   
   </Card>

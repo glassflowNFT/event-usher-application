@@ -67,7 +67,7 @@ function Home() {
         <img className="title-gold-bg" src={titleGoldBg}/>
       </div></Center>
     
-      <Center><Heading mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
+      <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
 
       <div className='container me-3'>
         <div className="row">
@@ -86,8 +86,8 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading size='md'>Display Your Ticket QR.</Heading>
-      <Text py='2'>
+      <Heading color="white"  size='md'>Display Your Ticket QR.</Heading>
+      <Text color="white" py='2'>
       Ensure you have already installed & imported your Legends Event Mnemonic Seed to Keplr Mobile.
       </Text>
     </CardBody>
@@ -110,8 +110,8 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading size='md'>Vote On Entries</Heading>
-      <Text py='2'>
+      <Heading color='white' size='md'>Vote On Entries</Heading>
+      <Text color='white' py='2'>
       Judge allocates points for each of this years entries, not including their own.
       
       </Text>
@@ -135,7 +135,7 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading size='md'>Legends of Hashish x Mothership NFT's</Heading>
+      <Heading color='white' size='md'>Legends of Hashish x Mothership NFT's</Heading>
       <Text py='2'>
       Gain Access to the mothership
       
@@ -161,8 +161,8 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading size='md'>Info / FAQ</Heading>
-      <Text py='2'>
+      <Heading color="white" size='md'>Info / FAQ</Heading>
+      <Text color="white" py='2'>
       Information and frequently asked questions.
       
       </Text>
