@@ -15,6 +15,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
+import {Slider,SliderTrack,SliderFilledTrack,SliderThumb,SliderMark,} from '@chakra-ui/react'
 import {
   useWalletManager,
   useWallet,
@@ -54,7 +55,7 @@ function Slider(){
                 <Center><Button  onClick={toVoteCategories}> Return to Categories</Button></Center>
 
                 <div className='row mt-3'>
-                <Card maxW='sm'>
+<Card variant='outline' boxShadow='xl' maxW='sm'>
   <CardBody>
     <Image
  src={rectangle8}
@@ -84,7 +85,7 @@ function Slider(){
 
   
 </Card>
-                   
+          
                     <div className='col'>
                         <div className='row'>
                             <div className='col'>
@@ -93,25 +94,32 @@ function Slider(){
                             </div>
                        
                         </div>
-                    <Container className='input-holder p-3 mb-3'>
+                    <Container opacity='100%' className='input-holder p-3 mb-3'>
                             <Text className='range-slider-text'>Entry's Look</Text>
-                            <p className='range-slider-text'>{lookValue}</p>
-                            <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleLookChange} value={lookValue}></input>
+                            <p color='#F3C674'className='range-slider-text'>{lookValue}</p>
+                            <input type="range"  className="form-range" min="1.00" max="10.00" step='.01' onChange={handleLookChange} value={lookValue}></input>
                             </Container>
                     <Container className='input-holder p-3 mb-3'>
                             <p className='range-slider-text'>Entry's Taste</p>
                             <p className='range-slider-text'>{smellValue}</p>
-                            <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleSmellChange} value={smellValue}></input>
+                            <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleSmellChange} value={smellValue}></input>
+                            <Slider aria-label='slider-ex-2' colorScheme='pink' defaultValue={30}>
+  <SliderTrack>
+    <SliderFilledTrack />
+  </SliderTrack>
+  <SliderThumb />
+</Slider>
+                            
                         </Container>
                     <Container className='input-holder p-3 mb-3'>
                             <p className='range-slider-text'>Entry's Smell</p>
                             <p className='range-slider-text'>{tasteValue}</p>
-                            <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleTasteChange} value={tasteValue}></input>
+                            <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleTasteChange} value={tasteValue}></input>
                         </Container>
                     <Container className='input-holder p-3 mb-3'>
                             <p className='range-slider-text'>Entry's After Banger</p>
                             <p className='range-slider-text'>{meltValue}</p>
-                            <input type="range" className="form-range" min="0" max="10" step='1' onChange={handleMeltChange} value={meltValue}></input>
+                            <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleMeltChange} value={meltValue}></input>
                         </Container>
 
                        <Button size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>

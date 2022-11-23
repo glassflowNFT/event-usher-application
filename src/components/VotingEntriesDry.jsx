@@ -13,6 +13,7 @@ import { Image } from '@chakra-ui/react'
 import { Grid, GridItem } from '@chakra-ui/react'
 import { SimpleGrid } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
+import { Badge } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate } from 'react-router-dom';
 import { Container } from '@chakra-ui/react'
@@ -64,7 +65,77 @@ function VotingEntriesDry() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack onClick={toVoting} >
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+      <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
+      <Text py='2'>
+      ENTRY_DESCRIPTION
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+        Vote
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+ 
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+  <Stack>
+    <CardBody>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
+      <Text py='2'>
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+        Vote
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+  <Stack>
+    <CardBody>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
+      <Text py='2'>
+      ENTRY_NAME::DESCRIPTION
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+        Vote
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+  <Stack>
+    <CardBody>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -81,7 +152,75 @@ function VotingEntriesDry() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>      <Text py='2'>
+      ENTRY_NAME::DESCRIPTION
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+        Vote
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+  <Stack>
+    <CardBody>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>      <Text py='2'>
+      ENTRY_NAME::DESCRIPTION
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+        Vote
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+  <Stack>
+    <CardBody>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>      <Text py='2'>
+      ENTRY_NAME::DESCRIPTION
+      </Text>
+    </CardBody>
+    <CardFooter>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+        Vote
+      </Button>
+    </CardFooter>
+  </Stack>
+</Card>
+
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
+  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+  <Stack>
+    <CardBody>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -98,7 +237,12 @@ function VotingEntriesDry() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -115,24 +259,12 @@ function VotingEntriesDry() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
- 
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -149,7 +281,12 @@ function VotingEntriesDry() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -166,92 +303,12 @@ function VotingEntriesDry() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+    Entry_Maker
+  </Badge>
+</Heading>
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>

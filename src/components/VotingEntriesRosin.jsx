@@ -17,6 +17,7 @@ import { Container } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate } from 'react-router-dom';
 import keplrLogo from "../assets/keplrlogo.png";
+import { Badge } from '@chakra-ui/react'
 import {
   useWalletManager,
   useWallet,
@@ -71,8 +72,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -88,8 +93,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -105,8 +114,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -122,8 +135,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -139,8 +156,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -156,8 +177,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -173,8 +198,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -190,8 +219,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -207,8 +240,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -224,8 +261,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -241,8 +282,12 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+      <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>        <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -258,8 +303,13 @@ function VotingEntriesRosin() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading color='white' size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='purple'>
+    Entry_Maker
+  </Badge>
+</Heading>          
+<Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>

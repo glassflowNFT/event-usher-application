@@ -14,6 +14,7 @@ import { Flex, Spacer } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate } from 'react-router-dom';
+import { Badge } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import {
   useWalletManager,
@@ -56,7 +57,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>     
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -73,7 +79,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>     
       <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
@@ -90,8 +101,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>         <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -107,8 +122,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -124,8 +143,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -141,8 +164,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -158,8 +185,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -175,8 +206,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -192,8 +227,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -209,8 +248,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -226,8 +269,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -243,8 +290,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack onClick={toVoting} >
     <CardBody>
-      <Heading size='md'>ENTRY_NAME</Heading>
-      <Text py='2'>
+    <Heading  fontSize='xl' fontWeight='bold'>
+      ENTRY_NAME
+  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+    Entry_Maker
+  </Badge>
+</Heading>           <Text py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>

@@ -28,7 +28,7 @@ function App() {
 
   return (
     <ChakraProvider>
-    <WalletManagerProvider defaultChainId={ChainInfoID.Athena2}
+    <WalletManagerProvider defaultChainId={ChainInfoID.Juno1}
     enabledWalletTypes={[WalletType.Keplr, WalletType.WalletConnectKeplr]}
     walletConnectClientMeta={{
       name: "CosmodalExampleDAPP",

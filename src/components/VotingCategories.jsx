@@ -10,6 +10,7 @@ import { Heading } from '@chakra-ui/react'
 import { SimpleGrid } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import waterHash from "../assets/waterhash.png";
+import { ComponentStyleConfig } from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import rectangle8 from "../assets/rectangle8.png";
@@ -21,6 +22,8 @@ import {
   useWallet,
   WalletConnectionStatus,
 } from "@xiti/cosmodal"
+
+
 
 function VotingCategories() {
   const { connect, disconnect } = useWalletManager()
@@ -37,6 +40,7 @@ function VotingCategories() {
   function toSift() {
     navigate('/Voting-Entries-Dry-Sift')
   }
+
   
 
   return status === WalletConnectionStatus.Connected ? (
@@ -54,7 +58,7 @@ function VotingCategories() {
          <div className='instructions'>
                   <p className='steps-to-mint'>Voting Categories</p>
   <SimpleGrid rows={3} spacing={4}>
-  <Card onClick={toRosin}>
+  <Card variant='outline'  onClick={toRosin}>
     <CardHeader >
       <Center>
       <Heading color="white"  size='xl'> Hash Rosin </Heading>
@@ -69,7 +73,7 @@ function VotingCategories() {
     <CardFooter>
     </CardFooter>
   </Card>
-  <Card onClick={toWater}>
+  <Card variant='outline'  onClick={toWater}>
     <CardHeader>
       <Center><Heading color="white" size='xl'>Water Hashish </Heading></Center>
     </CardHeader>
@@ -81,7 +85,7 @@ function VotingCategories() {
    
     </CardFooter>
   </Card>
-  <Card  onClick={toSift}>
+  <Card variant='outline'  onClick={toSift}>
     <CardHeader>
       <Center><Heading  color="white" size='xl'> Dry Sift Entries</Heading></Center>
     </CardHeader >
