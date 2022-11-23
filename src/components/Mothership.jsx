@@ -65,9 +65,9 @@ function Mothership() {
   <Stack>
     <CardBody>
       <Heading size='xl'>Gz-1 x Mothership Drop </Heading>
-<Text py='2'>3 lucky guests will be walking away with both a pipe and NFT from GZ1 and Mothership Glass.
+<Text py='2'>A limited number of guests will be walking away with both a pipe and NFT from GZ1 and Mothership Glass.
 
-This button only will work for the legends guest who has bought and now owns both the pipe and NFT!.</Text></CardBody>
+This button to mint will work for the legends guest who has bought and now owns both the pipe and NFT!.</Text></CardBody>
 <Center><CardFooter>
       <Button> Mint Collab Drop</Button>
 </CardFooter></Center>
@@ -80,13 +80,13 @@ This button only will work for the legends guest who has bought and now owns bot
 
   <Stack>
     <CardBody>
-      <Heading size='xl'>Buy Limited Mothership NFT.</Heading>
-<Text py='2'>Each Legends guest can mint one official attendance NFT in collaboartion with Mothership Glass.</Text>
-<Heading as='u'><strong>Holder Benefits</strong></Heading>
+      <Heading size='xl'>Mothership x Legends T-shirt Collection</Heading>
+<Text py='2'>The First 20 people to purchase the official Mothership & Legends of Hashish merchandise can mint here for their NFT</Text>
+<Heading as='u'><strong></strong></Heading>
 </CardBody>
 <Divider/>
 
-<Divider/>
+<Divider p='4'/>
 <Center><CardFooter>
       <Center><ButtonGroup gap='4'>
       <Button onClick={onOpen} ref={btnRef} >Prepare For Mint-Off</Button>

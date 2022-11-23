@@ -3,6 +3,8 @@ import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import { Center, Text } from '@chakra-ui/react'
+import rectangle8 from "../assets/rectangle8.png";
+
 import { Container } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react';
@@ -10,10 +12,12 @@ import Button from 'react-bootstrap/Button';
 import { Stack, HStack, VStack } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
 import { SimpleGrid } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 import { Textarea } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import { useEffect } from 'react';
 import QRCode from 'qrcode';
+
 import {
   useWalletManager,
   useWallet,
@@ -35,6 +39,7 @@ function Connect() {
 
   console.log(address);
 
+
   return status === WalletConnectionStatus.Connected ? (
     <div className='base'>
       
@@ -53,19 +58,21 @@ function Connect() {
             </div>
           </div>
           <Container maxW='2xl' s centerContent>
-  <Box padding='4' color='black' maxW='md'>
-  <VStack spacing={12} align='center'>
-  <Box h='40px' bg='#222222'>
-  <Textarea isDisabled placeholder='Display Type of Guest {Maker, Makers Guest, Legends Guest, Special Guest,Admin}' />
-  </Box>
-  <Box h='40px' bg='#222222'>
-  <Textarea isDisabled placeholder='Display Event Attendance Details: {dinner, brunch, or both}' />
-  </Box>
-  <Box h='40px' bg='#222222'>
-  <Textarea isDisabled placeholder='Display guest arrival boolean: {Has arrived? True or False}' />
-  </Box>
-</VStack>
-  </Box>
+  <Card direction='row' overflow='hidden' variant='outline'>
+
+  <Stack>
+    <CardBody>
+      <Center><Heading color="white"  size='md'>Display Connected Wallets Guest_Type </Heading></Center>
+      <Text color="white" py='2'>
+      Maker, Makers Guest, Legends Guest, Special Guest,Admin
+      </Text>
+    </CardBody>
+
+    <Center><CardFooter>
+      // Insert Guest Type Here
+    </CardFooter></Center>
+  </Stack>
+</Card>
 </Container>
           </Container>
   
@@ -92,5 +99,6 @@ function Connect() {
 
  )
 }
+
 
 export default Connect
