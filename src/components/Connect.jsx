@@ -23,6 +23,7 @@ import {
   useWallet,
   WalletConnectionStatus,
 } from "@xiti/cosmodal"
+import { getGuestType, queryGuestType } from "../contracts/guestType"
 
 function Connect() {
   const { connect, disconnect } = useWalletManager()
@@ -41,36 +42,14 @@ function Connect() {
   useEffect(() => {
     const query = async () => {
       if (address) {
-        const res = await signingCosmWasmClient.queryContractSmart(
-          // Guest Type CW4 Group Contract
-          "juno1ss9tlfsj53uc5w6g45sjtu88uyc6nf7ar0k8wge8fmzz3588ceks2xvsnn",
-          {
-            member: { addr: address },
-          }
-        )
-        setMemberWeight(res.weight)
+        const response = await queryGuestType(signingCosmWasmClient, address)
+        setMemberWeight(response.weight)
       }
     }
 
     query()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address])
-
-  const getGuestType = () => {
-    switch (memberWeight) {
-      case 1:
-        return "Brunch Guest"
-      case 2:
-        return "Dinner Guest"
-      case 3:
-        return "Maker Guest"
-      case 4:
-        return "Maker"
-      case 5:
-        return "Special Guest"
-      default:
-        return "Unknown Guest"
-    }
-  }
 
   return status === WalletConnectionStatus.Connected ? (
     <div className="base">
@@ -115,7 +94,8 @@ function Connect() {
 
               <Center>
                 <CardFooter>
-                  GUEST TYPE: &nbsp;<Text color="red">{getGuestType()}</Text>
+                  GUEST TYPE: &nbsp;
+                  <Text color="red">{getGuestType(memberWeight)}</Text>
                 </CardFooter>
               </Center>
             </Stack>
