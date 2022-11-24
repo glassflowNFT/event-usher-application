@@ -89,7 +89,7 @@ This button to mint will work for the legends guest who has bought and now owns 
   <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>You will need</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
           </ModalBody>
@@ -110,9 +110,12 @@ This button to mint will work for the legends guest who has bought and now owns 
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>You will need to:</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            <Heading size='md'>1. Download Keplr Mobile</Heading>
+            <Heading size='md'>2. Set Up Your Wallet</Heading>
+            <Heading size='md'>3. Confirm & Broadcast Mint Msg</Heading>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>
