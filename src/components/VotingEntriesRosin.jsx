@@ -50,7 +50,7 @@ function VotingEntriesRosin() {
     <div className='base'>
     <Navbar />
        <div><img className="connect-title-gold-bg" src={titleGoldBg}/>
-         <Heading noOfLines={2} className='water-hash-title me-1' > Hash Rosin Entries</Heading>
+         <Heading noOfLines={2} color='#90579F' className='water-hash-title me-1' > Hash Rosin Entries</Heading>
          <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Dry Sift</Button>
   <Spacer />
 <Button colorScheme='teal' onClick={nextCategory} variant='outline'> Water Hash</Button>

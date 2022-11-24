@@ -11,16 +11,7 @@ import { useDisclosure } from '@chakra-ui/react'
 import { Stack, HStack, VStack } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
-
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from '@chakra-ui/react'
+import {Modal,ModalOverlay,ModalContent,ModalHeader,ModalFooter,ModalBody,ModalCloseButton,} from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import {
   useWalletManager,

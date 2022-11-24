@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useZxing } from 'react-zxing';
 import { Center, Container, Divider, Text } from '@chakra-ui/react'
 import { Button } from '@chakra-ui/react';
@@ -8,10 +8,15 @@ import { Stack } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
 import { SimpleGrid } from '@chakra-ui/react'
+import {
+  useWallet
+} from "@xiti/cosmodal"
+import { queryGuestType, getGuestType } from '../contracts/guestType';
 
 
 
 function BarcodeScanner() {
+  const { address, signingCosmWasmClient } = useWallet()
     const [result, setResult] = useState('')
 
   const { ref } = useZxing({
@@ -24,7 +29,19 @@ function BarcodeScanner() {
     setResult('')
     console.log('reset')
   }
+  const [memberWeight, setMemberWeight] = useState(null)
 
+  useEffect(() => {
+    const query = async () => {
+      if (address) {
+        const response = queryGuestType(signingCosmWasmClient, address)
+        setMemberWeight(response.weight)
+      }
+    }
+
+    query()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [address])
   console.log(result);
 
   return (
@@ -35,7 +52,7 @@ function BarcodeScanner() {
   <Card direction='row' variant='outline'>
 <Stack>
   <CardBody>
-    <Center><Heading color="white"  size='md'>Wallet Address: </Heading></Center>
+  <Center><Heading color="#F3C674"  size='s'>Wallet Address: {address}</Heading></Center>
     <Text color="white" py='2'>{result}</Text>
   
 
@@ -54,7 +71,7 @@ function BarcodeScanner() {
 <Stack>
   <CardBody>
   <Heading color="white"  size='md'> Guest Type </Heading>
-    <Text color="white" py='2'>//Insert_results_here</Text>
+    <Text color="white" py='2'>{getGuestType(memberWeight)}</Text>
     <Center><Heading color="white"  size='md'>Arrival Status: Dinner </Heading></Center>
     <Text color="white" py='2'>//Insert_results_here</Text>
     <Center><Heading color="white"  size='md'>Arrival Status: Brunch </Heading></Center>
