@@ -13,8 +13,6 @@ import {
 } from "@xiti/cosmodal"
 import { queryGuestType, getGuestType } from '../contracts/guestType';
 
-
-
 function BarcodeScanner() {
   const { address, signingCosmWasmClient } = useWallet()
     const [result, setResult] = useState('')
@@ -29,6 +27,7 @@ function BarcodeScanner() {
     setResult('')
     console.log('reset')
   }
+
   const [memberWeight, setMemberWeight] = useState(null)
 
   useEffect(() => {
@@ -42,6 +41,7 @@ function BarcodeScanner() {
     query()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address])
+
   console.log(result);
 
   return (
@@ -52,7 +52,7 @@ function BarcodeScanner() {
   <Card direction='row' variant='outline'>
 <Stack>
   <CardBody>
-  <Center><Heading color="#F3C674"  size='s'>Wallet Address: {address}</Heading></Center>
+    <Center><Heading color="white"  size='md'>Wallet Address: {address}</Heading></Center>
     <Text color="white" py='2'>{result}</Text>
   
 

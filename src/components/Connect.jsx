@@ -4,6 +4,7 @@ import $footer from "../assets/footer-cropped.png"
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png"
 import { Center, Text } from "@chakra-ui/react"
 import rectangle8 from "../assets/rectangle8.png"
+
 import { Container } from "@chakra-ui/react"
 import { Heading } from "@chakra-ui/react"
 import { Image } from "@chakra-ui/react"
@@ -32,7 +33,6 @@ function Connect() {
   const [qrcode, setQrcode] = useState("")
 
   const [memberWeight, setMemberWeight] = useState(null)
-  
 
   useEffect(() => {
     QRCode.toDataURL(address).then(setQrcode)
@@ -47,10 +47,11 @@ function Connect() {
         setMemberWeight(response.weight)
       }
     }
+
     query()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address])
-  
+
   return status === WalletConnectionStatus.Connected ? (
     <div className="base">
       <Navbar />
@@ -76,7 +77,6 @@ function Connect() {
                 src={qrcode}
               />
             </Center>
- 
           </div>
         </div>
         <Container maxW="2xl" s centerContent>
