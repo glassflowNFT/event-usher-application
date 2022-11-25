@@ -33,7 +33,7 @@ function BarcodeScanner() {
   useEffect(() => {
     const query = async () => {
       if (address) {
-        const response = queryGuestType(signingCosmWasmClient, address)
+        const response = queryGuestType(signingCosmWasmClient, useZxing.result)
         setMemberWeight(response.weight)
       }
     }
@@ -52,8 +52,8 @@ function BarcodeScanner() {
   <Card direction='row' variant='outline'>
 <Stack>
   <CardBody>
-    <Center><Heading color="white"  size='md'>Wallet Address: {address}</Heading></Center>
-    <Text color="white" py='2'>{result}</Text>
+    <Center><Heading color="white"  size='md'>Wallet Address:</Heading></Center>
+    <Text color="#F3C674" py='2'>{result}</Text>
   
 
   </CardBody>

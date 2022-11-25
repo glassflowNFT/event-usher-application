@@ -17,7 +17,7 @@ import rectangle8 from "../assets/rectangle8.png";
 import sponsors1 from "../assets/sponsors1.png";
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import waterHash from "../assets/waterhash.png";
+import launchpad from "../assets/launchpad.png";
 import keplrLogo from "../assets/keplrlogo.png";
 import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
@@ -126,11 +126,11 @@ function Home() {
 </Box>
 
 <Box p='2'>
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card direction='row' variant='outline'>
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
+    src={launchpad}
     alt='Caffe Latte'
   />
   <Stack>

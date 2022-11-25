@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
+import msGz1Shirt from "../assets/msxgz1.png";
 import rectangle8 from "../assets/rectangle8.png";
 import { Center, Divider, Heading } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
@@ -67,7 +68,7 @@ This button to mint will work for the legends guest who has bought and now owns 
 </Card>
  
 <Card m={[2, 3]} direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW={{ base: '100%', sm: '500px' }} src={rectangle8}  alt='Caffe Latte'/>
+  <Image objectFit='cover' maxW={{ base: '100%', sm: '300px' }} src={msGz1Shirt}  alt='Caffe Latte'/>
 
   <Stack>
     <CardBody>
