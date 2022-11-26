@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
+import msGz1Shirt from "../assets/msxgz1.png";
 import rectangle8 from "../assets/rectangle8.png";
 import { Center, Divider, Heading } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
@@ -11,16 +12,7 @@ import { useDisclosure } from '@chakra-ui/react'
 import { Stack, HStack, VStack } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
-
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from '@chakra-ui/react'
+import {Modal,ModalOverlay,ModalContent,ModalHeader,ModalFooter,ModalBody,ModalCloseButton,} from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import {
   useWalletManager,
@@ -76,7 +68,7 @@ This button to mint will work for the legends guest who has bought and now owns 
 </Card>
  
 <Card m={[2, 3]} direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW={{ base: '100%', sm: '500px' }} src={rectangle8}  alt='Caffe Latte'/>
+  <Image objectFit='cover' maxW={{ base: '100%', sm: '300px' }} src={msGz1Shirt}  alt='Caffe Latte'/>
 
   <Stack>
     <CardBody>
@@ -98,7 +90,7 @@ This button to mint will work for the legends guest who has bought and now owns 
   <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>You will need</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
           </ModalBody>
@@ -119,9 +111,12 @@ This button to mint will work for the legends guest who has bought and now owns 
       >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>You will need to:</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            <Heading size='md'>1. Download Keplr Mobile</Heading>
+            <Heading size='md'>2. Set Up Your Wallet</Heading>
+            <Heading size='md'>3. Confirm & Broadcast Mint Msg</Heading>
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Close</Button>

@@ -45,7 +45,7 @@ function VotingEntriesWater() {
     <Navbar />
        <div>
          <img className="connect-title-gold-bg" src={titleGoldBg}/></div>
-         <Heading noOfLines={2} className='water-hash-title me-1' > Water Hashish Entries</Heading>
+         <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Water Hashish Entries</Heading>
          <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Hashish Rosin</Button>
   <Spacer />
 <Button colorScheme='teal' onClick={nextCategory} variant='outline'> Dry Sift</Button>
@@ -81,7 +81,7 @@ function VotingEntriesWater() {
     <CardBody>
     <Heading  fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='white'>
     Entry_Maker
   </Badge>
 </Heading>     

@@ -20,11 +20,12 @@ import {
   useWallet,
   WalletConnectionStatus,
 } from "@xiti/cosmodal"
+import { queryGuestType, getGuestType } from '../contracts/guestType';
 
 function Scan() {
-
   const { connect, disconnect } = useWalletManager()
   const { status, error, name, address, signingCosmWasmClient} = useWallet()
+
 
   return status === WalletConnectionStatus.Connected ? (
     <div className='base'>

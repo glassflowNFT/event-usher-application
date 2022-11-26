@@ -17,7 +17,7 @@ import rectangle8 from "../assets/rectangle8.png";
 import sponsors1 from "../assets/sponsors1.png";
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import waterHash from "../assets/waterhash.png";
+import launchpad from "../assets/launchpad.png";
 import keplrLogo from "../assets/keplrlogo.png";
 import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
@@ -37,9 +37,10 @@ function Home() {
 
   const [loading, setLoading] = useState(false)
   const [adminStatus, setAdminStatus] = useState(null)
+  const [isAdmin, setIsAdmin] = useState('')
 
   const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, publucKey, signingCosmWasmClient } = useWallet()
+  const { status, error, name, address, publicKey, signingCosmWasmClient } = useWallet()
 
   console.log(address);
   
@@ -48,10 +49,14 @@ function Home() {
     if (address) {
       const adminResponse = await queryAdmin(signingCosmWasmClient, address)
       setAdminStatus(adminResponse.weight)
+
+      localStorage.setItem('admin?', JSON.stringify(getAdmin(adminResponse.weight)))
     }
   }
   query()
   }, [address])
+
+  console.log(isAdmin);
 
   console.log(adminStatus);
   
@@ -77,7 +82,6 @@ function Home() {
       </div></Center>
     
       <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
-      <Text color="red">{getAdmin(adminStatus)}</Text>
       <div className='container me-3'>
         <div className="row">
           <div className='col'>          
@@ -135,11 +139,11 @@ function Home() {
 </Box>
 
 <Box p='2'>
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card direction='row' variant='outline'>
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
+    src={launchpad}
     alt='Caffe Latte'
   />
   <Stack>
@@ -193,13 +197,14 @@ function Home() {
     <h2>
       <AccordionButton>
         <Box flex='1' textAlign='left'>
-          1.
+          1. Why did we build this application?
         </Box>
         <AccordionIcon />
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-  Legends FAQ here.
+    Applications powered by smart contracts and cryptographic wallets unlocks true censorship resistant technology that our culture needs, now.
+ Our use case of providing transparency within a voting system is just one small example of how we can, as a community build and own smart contract applications. 
     </AccordionPanel>
   </AccordionItem>
 
@@ -207,19 +212,30 @@ function Home() {
     <h2>
       <AccordionButton>
         <Box flex='1' textAlign='left'>
-          2.
+          2. How do I find my Wallet QR Code?
         </Box>
         <AccordionIcon />
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-  Legends FAQ here.
+  You can find the QR code needed to access the Legends event in two places. 
+  The first place is in the connect page within the application. Simple return to the home page, and the first button you see will take you to where a QR code will
+   be automatically generated for the wallet connected to the application. 
     </AccordionPanel>
   </AccordionItem>
-
 <AccordionItem>
 <h2><AccordionButton>
-        <Box flex='1' textAlign='left'>3.</Box>
+        <Box flex='1' textAlign='left'>3. I am a judge, How do I vote?</Box>
+<AccordionIcon />
+</AccordionButton>
+</h2>
+<AccordionPanel pb={4}>
+     Legends FAQ here
+    </AccordionPanel>
+  </AccordionItem>
+  <AccordionItem>
+<h2><AccordionButton>
+        <Box flex='1' textAlign='left'>4. Can I mint any NFT's?</Box>
 <AccordionIcon />
 </AccordionButton>
 </h2>

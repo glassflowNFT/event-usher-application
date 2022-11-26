@@ -25,6 +25,7 @@ import {
 } from "@xiti/cosmodal"
 import { getGuestType, queryGuestType } from "../contracts/guestType"
 
+
 function Connect() {
   const { connect, disconnect } = useWalletManager()
   const { status, error, name, address, signingCosmWasmClient } = useWallet()
@@ -86,19 +87,12 @@ function Connect() {
               <CardBody>
                 <Center>
                   <Heading color="white" size="md">
-                    Display Connected Wallets Guest_Type{" "}
+                    Connected Wallet is a:{" "}
                   </Heading>
                 </Center>
-                <Text color="white" py="2">
-                  Maker, Makers Guest, Legends Guest, Special Guest,Admin
-                </Text>
+                 <Center><Heading color="#F3C674">{getGuestType(memberWeight)}</Heading></Center>
               </CardBody>
-
               <Center>
-                <CardFooter>
-                  GUEST TYPE: &nbsp;
-                  <Text color="red">{getGuestType(memberWeight)}</Text>
-                </CardFooter>
               </Center>
             </Stack>
           </Card>
@@ -106,7 +100,7 @@ function Connect() {
       </Container>
 
       <img className="footer" src={$footer} />
-    </div>
+</div>
   ) : (
     <Container>
       {" "}
@@ -121,7 +115,6 @@ function Connect() {
             </Container>{" "}
           </Center>
         </div>
-
         <div className="container pb-5">
           <Center>
             <img borderRadius="full" className="icon" src={keplrLogo} />
@@ -136,7 +129,6 @@ function Connect() {
               Connect Keplr
             </Button>
           </Center>
-
           {error && (
             <p>{error instanceof Error ? error.message : `${error}`}</p>
           )}
