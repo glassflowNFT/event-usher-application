@@ -1,39 +1,40 @@
-import React, { useEffect } from 'react'
-import { useZxing } from 'react-zxing';
-import { Center, Container, Divider, Text } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react';
-import { useState } from 'react';
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
-import { Stack } from '@chakra-ui/react'
-import { Heading } from '@chakra-ui/react'
-import { Box } from '@chakra-ui/react'
-import { SimpleGrid } from '@chakra-ui/react'
-import {
-  useWallet
-} from "@xiti/cosmodal"
-import { queryGuestType, getGuestType } from '../contracts/guestType';
+import React, { useEffect } from "react"
+import { useZxing } from "react-zxing"
+import { Center, Container, Divider, Text } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
+import { useState } from "react"
+import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react"
+import { Stack } from "@chakra-ui/react"
+import { Heading } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/react"
+import { SimpleGrid } from "@chakra-ui/react"
+import { useWallet } from "@xiti/cosmodal"
+import { queryGuestType, getGuestType } from "../contracts/guestType"
+import { queryDayOneArrival, queryDayTwoArrival } from "../contracts/arrival"
 
 function BarcodeScanner() {
   const { address, signingCosmWasmClient } = useWallet()
-    const [result, setResult] = useState('')
+  const [result, setResult] = useState("")
 
   const { ref } = useZxing({
     onResult(result) {
       setResult(result.getText())
-    } 
+    },
   })
   
   function resetClick() {
-    setResult('')
-    console.log('reset')
+    setResult("")
+    console.log("reset")
   }
 
   const [memberWeight, setMemberWeight] = useState(null)
+  const [dayOneArrival, setDayOneArrival] = useState(null)
+  const [dayTwoArrival, setDayTwoArrival] = useState(null)
 
   useEffect(() => {
     const query = async () => {
-      if (address) {
-        const response = queryGuestType(signingCosmWasmClient, useZxing.result)
+      if (result) {
+        const response = await queryGuestType(signingCosmWasmClient, result)
         setMemberWeight(response.weight)
       }
     }
@@ -42,90 +43,123 @@ function BarcodeScanner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [address])
 
-  console.log(result);
+  useEffect(() => {
+    if (result) {
+      queryDayOneArrival(signingCosmWasmClient, result)
+        .then(() => setDayOneArrival(true))
+        .catch((err) => setDayOneArrival(false))
+
+      queryDayTwoArrival(signingCosmWasmClient, result)
+        .then(() => setDayTwoArrival(true))
+        .catch((err) => setDayTwoArrival(false))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result])
 
   return (
-    <Center> <Container>
-     <div>
-          <video ref={ref} id='video' width={480} height={852}></video>   
-  <SimpleGrid columns={1} spacing={5}>
-  <Card direction='row' variant='outline'>
-<Stack>
-  <CardBody>
-    <Center><Heading color="white"  size='md'>Wallet Address:</Heading></Center>
-    <Text color="#F3C674" py='2'>{result}</Text>
-  
+      <Center>
+      {" "}
+      <Container>
+        <div>
+          <video ref={ref} id="video" width={480} height={852}></video>
+          <SimpleGrid columns={1} spacing={5}>
+            <Card direction="row" variant="outline">
+              <Stack>
+                <CardBody>
+                  <Center>
+                    <Heading color="white" size="md">
+                      Wallet Address:
+                    </Heading>
+                  </Center>
+                  <Text color="#F3C674" py="2">
+                    {result}
+                  </Text>
+                </CardBody>
 
-  </CardBody>
+                <CardFooter>
+                  <Center>
+                    <Button onClick={resetClick}>Reset</Button>
+                  </Center>
+                </CardFooter>
+              </Stack>
+            </Card>
+            <Card direction="row" variant="outline">
+              <Stack>
+                <CardBody>
+                  <Heading color="white" size="md">
+                    {" "}
+                    Guest Type{" "}
+                  </Heading>
+                  <Text color="white" py="2">
+                    {getGuestType(memberWeight)}
+                  </Text>
+                  <Center>
+                    <Heading color="white" size="md">
+                      Arrival Status: Dinner{" "}
+                    </Heading>
+                  </Center>
+                  <Heading size='md'color="#F3C674" py="2">
+                    {dayOneArrival ? "Arrived" : "Not Arrived"}
+                  </Heading>
+                  <Center>
+                    <Heading color="white" size="md">
+                      Arrival Status: Brunch{" "}
+                    </Heading>
+                  </Center>
+                  <Heading size='md' color="#F3C674" py="2">
+                    {dayTwoArrival ? "Arrived" : "Not Arrived"}
+                  </Heading>
+                </CardBody>
+                <CardFooter>
+                  <Center>
+                    <SimpleGrid columns={2} spacing={10}>
+                      <Card direction="row" variant="outline">
+                        <Stack>
+                          <CardBody>
+                            <Center>
+                              <Heading color="white" size="md">
+                                Update Brunch Arrival Status:{" "}
+                              </Heading>
+                            </Center>
+                            <Text color="white" py="2">
+                            </Text>
+                          </CardBody>
 
-  <CardFooter>
-  <Center>
-    <Button onClick={resetClick}>Reset</Button>
-  </Center>
-  </CardFooter>
+                          <CardFooter>
+                            <Center>
+                              <Button onClick={resetClick}>Update</Button>
+                            </Center>
+                          </CardFooter>
+                        </Stack>
+                      </Card>
+                      <Card direction="row" variant="outline">
+                        <Stack>
+                          <CardBody>
+                            <Center>
+                              <Heading color="white" size="md">
+                                Update Dinner Arrival Status:{" "}
+                              </Heading>
+                            </Center>
+                            <Text color="white" py="2">
+                            </Text>
+                          </CardBody>
 
-</Stack>
-</Card>
-<Card direction='row' variant='outline'>
-
-<Stack>
-  <CardBody>
-  <Heading color="white"  size='md'> Guest Type </Heading>
-    <Text color="white" py='2'>{getGuestType(memberWeight)}</Text>
-    <Center><Heading color="white"  size='md'>Arrival Status: Dinner </Heading></Center>
-    <Text color="white" py='2'>//Insert_results_here</Text>
-    <Center><Heading color="white"  size='md'>Arrival Status: Brunch </Heading></Center>
-    <Text color="white" py='2'>//Insert_results_here</Text>
-    
-  </CardBody>
-  <CardFooter>
-  <Center><SimpleGrid columns={2} spacing={10}>
-  <Card direction='row' variant='outline'>
-<Stack>
-  <CardBody>
-    <Center><Heading color="white"  size='md'>Update Brunch Arrival Status: </Heading></Center>
-    <Text color="white" py='2'>{result}</Text>
-  
-
-  </CardBody>
-
-  <CardFooter>
-  <Center>
-    <Button onClick={resetClick}>Update</Button>
-  </Center>
-  </CardFooter>
-
-</Stack>
-</Card>
-<Card direction='row' variant='outline'>
-<Stack>
-  <CardBody>
-    <Center><Heading color="white"  size='md'>Update Dinner Arrival Status:  </Heading></Center>
-    <Text color="white" py='2'>{result}</Text>
-  
-
-  </CardBody>
-
-  <CardFooter>
-  <Center>
-    <Button>Update</Button>
-  </Center>
-  </CardFooter>
-
-</Stack>
-</Card>
-</SimpleGrid></Center>
-  </CardFooter>
-
-</Stack>
-</Card>
-  
-</SimpleGrid>
-  
-
-
-     </div>
-     </Container></Center>
+                          <CardFooter>
+                            <Center>
+                              <Button>Update</Button>
+                            </Center>
+                          </CardFooter>
+                        </Stack>
+                      </Card>
+                    </SimpleGrid>
+                  </Center>
+                </CardFooter>
+              </Stack>
+            </Card>
+          </SimpleGrid>
+        </div>
+      </Container>
+    </Center>
   )
 }
 
