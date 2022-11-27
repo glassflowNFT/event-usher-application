@@ -17,3 +17,7 @@ export const queryDayOneArrival = async (client, address) => {
       }
     )
   }
+ 
+// Add Member Day one arrival 
+
+// Add Member Day two arrival

@@ -27,7 +27,7 @@ function BarcodeScanner() {
     console.log("reset")
   }
 
-  const [memberWeight, setMemberWeight] = useState(null)
+  const [memberWeight, setMemberWeight] = useState(result)
   const [dayOneArrival, setDayOneArrival] = useState(null)
   const [dayTwoArrival, setDayTwoArrival] = useState(null)
 
@@ -90,9 +90,7 @@ function BarcodeScanner() {
                     {" "}
                     Guest Type{" "}
                   </Heading>
-                  <Text color="white" py="2">
-                    {getGuestType(memberWeight)}
-                  </Text>
+                  <Center><Heading color="#F3C674">{getGuestType(memberWeight)}</Heading></Center>
                   <Center>
                     <Heading color="white" size="md">
                       Arrival Status: Dinner{" "}

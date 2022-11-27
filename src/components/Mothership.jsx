@@ -81,7 +81,7 @@ This button to mint will work for the legends guest who has bought and now owns 
 <Divider p='4'/>
 <Center><CardFooter>
       <Center><ButtonGroup gap='4'>
-      <Button onClick={onOpen} ref={btnRef} >Prepare For Mint-Off</Button>
+      <Button onClick={onOpen} ref={btnRef} >How To Mint</Button>
       <Button>Mint</Button>
     </ButtonGroup></Center>
 </CardFooter></Center>
