@@ -123,7 +123,6 @@ function BarcodeScanner() {
                                 Update Brunch Arrival Status:{" "}
                               </Heading>
                             </Center>
-                           s
                           </CardBody>
 
                           <CardFooter>
