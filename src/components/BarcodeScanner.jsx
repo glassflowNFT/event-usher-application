@@ -123,7 +123,7 @@ function BarcodeScanner() {
                                 Update Brunch Arrival Status:{" "}
                               </Heading>
                             </Center>
-                            <Text color="white" py="2"></Text>
+                           s
                           </CardBody>
 
                           <CardFooter>
