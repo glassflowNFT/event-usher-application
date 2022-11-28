@@ -10,13 +10,14 @@ export const queryGuestType = async (client, address) => {
 
   export const queryAdmin = async (client, address) => {
     return client.queryContractSmart(
-      // Admins query
-      "juno1xqp4rv2mv0t040ytqj8wy9x2ugflltzf7aj338f49mjnv5d4cztsjdj97k",
-      {
-        member: {addr: address}
+        // Admins query
+        "juno1xqp4rv2mv0t040ytqj8wy9x2ugflltzf7aj338f49mjnv5d4cztsjdj97k",
+        {
+          member: { addr: address }
+        }
+        )
       }
-    )
-  }
+
   
   export const getGuestType = (weight) => {
   switch (weight) {

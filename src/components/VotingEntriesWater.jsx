@@ -16,6 +16,7 @@ import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate } from 'react-router-dom';
 import { Badge } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
+import { Tag } from '@chakra-ui/react'
 import {
   useWalletManager,
   useWallet,
@@ -68,9 +69,11 @@ function VotingEntriesWater() {
       </Text>
     </CardBody>
     <CardFooter>
+    <Flex>
       <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
+        Vote</Button>
+    <Spacer p='6'/>
+  <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
     </CardFooter>
   </Stack>
 </Card>

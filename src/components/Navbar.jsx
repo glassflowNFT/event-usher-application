@@ -13,6 +13,8 @@ import NavPopover from './NavPopover'
 function Navbar() {
   const admin = JSON.parse(localStorage.getItem("admin?"))
 
+  console.log(admin);
+
 console.log(admin);
 
     let navigate = useNavigate()
@@ -48,7 +50,7 @@ console.log(admin);
     <NavPopover />
     <Button colorScheme='purple' onClick={toConnect} > QR Code</Button>
   </ButtonGroup>
-</Flex>
+  </Flex>
       </nav>
       </div>
        </Container>

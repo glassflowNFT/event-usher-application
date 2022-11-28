@@ -34,19 +34,19 @@ const popover = (
       </Popover.Header>
       <Popover.Body>
        {address}
-       <Button colorScheme='ghost' className='m-4' onClick={disconnect}>Disconnect</Button>
+       <Button colorScheme='blue' className='m-4' onClick={disconnect}>Disconnect</Button>
       </Popover.Body>
     </Popover>
   )
 
   return (
-    <Button size='md' colorScheme='' c>
+    <Button size='md' colorScheme='white' c>
 
         <OverlayTrigger 
         trigger={"focus"}
         placement="center"
         overlay={popover}>
-          <a tabindex="0" className='nav-link-pop' colorScheme='ghost' color='white' aria-labelledby="dropdownMenuButton">{name}</a>
+          <a tabindex="0" className='nav-link-pop' color='white' aria-labelledby="dropdownMenuButton">{name}</a>
         </OverlayTrigger>
         </Button>
   )

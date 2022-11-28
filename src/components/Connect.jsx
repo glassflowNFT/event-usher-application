@@ -34,9 +34,13 @@ function Connect() {
 
   const [memberWeight, setMemberWeight] = useState(null)
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   QRCode.toDataURL(address).then(setQrcode)
+  // }, [])
+
+  function showQrCode() {
     QRCode.toDataURL(address).then(setQrcode)
-  }, [])
+  }
 
   console.log(address)
 
@@ -72,12 +76,15 @@ function Connect() {
             </Text>
 
             <Center>
+              <Stack>
+              <Button onClick={showQrCode}>Generate QR Code</Button>
               <Image
-                boxSize="300px"
+                width="500" height="500"
                 objectFit="contain"
-                className="logo mt-3"
+                // className="logo mt-3"
                 src={qrcode}
               />
+              </Stack>
             </Center>
           </div>
         </div>
