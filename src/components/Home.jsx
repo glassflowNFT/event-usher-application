@@ -29,23 +29,37 @@ import {
   WalletConnectionStatus,
 } from "@xiti/cosmodal"
 import { setSelectionRange } from '@testing-library/user-event/dist/utils'
+import { queryAdmin, getAdmin } from '../contracts/adminType'
 
 
 function Home() {
   let navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
-
-
+   const [adminStatus, setAdminStatus] = useState(null)
+  const [isAdmin, setIsAdmin] = useState('')
 
   const { connect, disconnect } = useWalletManager()
   const { status, error, name, address, publucKey, signingCosmWasmClient } = useWallet()
 
-  const acc = localStorage.getItem("account")
+  console.log(address);
 
-  console.log(status);
+  useEffect(() => {
+    const query = async () => {
+    if (address) {
+      const adminResponse = await queryAdmin(signingCosmWasmClient, address)
+      setAdminStatus(adminResponse.weight)
+
+      localStorage.setItem('admin?', JSON.stringify(getAdmin(adminResponse.weight)))
+    }
+  }
+  query()
+  }, [address])
+
+  console.log(isAdmin);
+
+  console.log(adminStatus);
   
-
   function toConnect() {
       navigate('/Connect')
   }
@@ -68,7 +82,6 @@ function Home() {
       </div></Center>
     
       <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
-
       <div className='container me-3'>
         <div className="row">
           <div className='col'>          
@@ -217,7 +230,7 @@ function Home() {
 </AccordionButton>
 </h2>
 <AccordionPanel pb={4}>
-     Legends FAQ here
+     Simply browse each entry within their respective categories, choose one that you have sampled and are ready to vote on, set the points for each of the entry's elements and broadcast the message via keplr.
     </AccordionPanel>
   </AccordionItem>
   <AccordionItem>
@@ -227,7 +240,7 @@ function Home() {
 </AccordionButton>
 </h2>
 <AccordionPanel pb={4}>
-     Legends FAQ here
+     Every Guest Can Mint a 2022 Legends Attendance Token. Only Those who are either owners of the gz1 x mothershp collab pipes, or was one of the first 20 people to buy a gz1 x Mothership collaboration shirt can mint those tokens. 
     </AccordionPanel>
   </AccordionItem>
 </Accordion>

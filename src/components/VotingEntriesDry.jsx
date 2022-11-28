@@ -1,18 +1,17 @@
 import React from 'react'
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Stack, HStack, VStack } from '@chakra-ui/react'
+import { Button} from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
-import { Center, Square, Circle } from '@chakra-ui/react'
+import { Center} from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
-import { Grid, GridItem } from '@chakra-ui/react'
-import { SimpleGrid } from '@chakra-ui/react'
-import { Box } from '@chakra-ui/react'
+import { Grid} from '@chakra-ui/react'
+import { Tag } from '@chakra-ui/react'
 import { Badge } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate } from 'react-router-dom';
@@ -76,9 +75,11 @@ function VotingEntriesDry() {
       </Text>
     </CardBody>
     <CardFooter>
+      <Flex>
       <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
+        Vote</Button>
+    <Spacer p='6'/>
+  <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
     </CardFooter>
   </Stack>
 </Card>

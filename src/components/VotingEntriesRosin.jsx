@@ -17,6 +17,7 @@ import { Container } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate } from 'react-router-dom';
 import keplrLogo from "../assets/keplrlogo.png";
+import { Tag } from '@chakra-ui/react'
 import { Badge } from '@chakra-ui/react'
 import {
   useWalletManager,
@@ -82,10 +83,13 @@ function VotingEntriesRosin() {
       </Text>
     </CardBody>
     <CardFooter>
-     <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
+    <Flex>
+      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+        Vote</Button>
+    <Spacer p='6'/>
+  <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
     </CardFooter>
+    
   </Stack>
 </Card>
  

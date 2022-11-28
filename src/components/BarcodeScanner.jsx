@@ -90,25 +90,27 @@ function BarcodeScanner() {
                     {" "}
                     Guest Type{" "}
                   </Heading>
-                  <Text color="white" py="2">
-                    {getGuestType(memberWeight)}
-                  </Text>
+                  <Center>
+                    <Heading color="#F3C674">
+                      {getGuestType(memberWeight)}
+                    </Heading>
+                  </Center>
                   <Center>
                     <Heading color="white" size="md">
                       Arrival Status: Dinner{" "}
                     </Heading>
                   </Center>
-                  <Text color="white" py="2">
+                  <Heading size="md" color="#F3C674" py="2">
                     {dayOneArrival ? "Arrived" : "Not Arrived"}
-                  </Text>
+                  </Heading>
                   <Center>
                     <Heading color="white" size="md">
                       Arrival Status: Brunch{" "}
                     </Heading>
                   </Center>
-                  <Text color="white" py="2">
+                  <Heading size="md" color="#F3C674" py="2">
                     {dayTwoArrival ? "Arrived" : "Not Arrived"}
-                  </Text>
+                  </Heading>
                 </CardBody>
                 <CardFooter>
                   <Center>

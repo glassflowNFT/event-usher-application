@@ -14,6 +14,9 @@ import { ComponentStyleConfig } from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import rectangle8 from "../assets/rectangle8.png";
+import drysift from "../assets/dry-sift.png";
+import melt from "../assets/melt.png";
+import rosin from "../assets/rosin.png";
 import { useNavigate } from 'react-router-dom'
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
@@ -66,7 +69,7 @@ function VotingCategories() {
     </CardHeader>
     <Center>
     <CardBody>
-    <Center><Image borderRadius='full' boxSize='250px' src={rectangle8} alt='Water Hash'/></Center>
+    <Center><Image borderRadius='full' boxSize='250px' src={rosin} alt='Water Hash'/></Center>
     <Center><Heading  color="white" size='md'>View all Hash Rosin</Heading></Center>
     </CardBody>
     </Center>
@@ -78,7 +81,7 @@ function VotingCategories() {
       <Center><Heading color="white" size='xl'>Water Hashish </Heading></Center>
     </CardHeader>
     <CardBody>
-    <Center><Image borderRadius='full' boxSize='250px' src={rectangle8} alt='Water Hash'/></Center>
+    <Center><Image borderRadius='full' boxSize='250px' src={melt} alt='Water Hash'/></Center>
     <Center><Heading  color="white" size='md'>View All Water Hash</Heading> </Center>
     </CardBody>
     <CardFooter>
@@ -90,7 +93,7 @@ function VotingCategories() {
       <Center><Heading  color="white" size='xl'> Dry Sift Entries</Heading></Center>
     </CardHeader >
     <CardBody>
-    <Center><Image borderRadius='full' boxSize='250px' src={rectangle8} alt='Water Hash'/></Center>
+    <Center><Image borderRadius='full' boxSize='250px' src={drysift} alt='Water Hash'/></Center>
     <Center><Heading  color="white" size='md'>View all Dry Sift</Heading></Center>
     </CardBody>
   
