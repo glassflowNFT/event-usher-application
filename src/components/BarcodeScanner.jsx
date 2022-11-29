@@ -27,7 +27,7 @@ function BarcodeScanner() {
     console.log("reset")
   }
 
-  const [memberWeight, setMemberWeight] = useState(result)
+  const [memberWeight, setMemberWeight] = useState(null)
   const [dayOneArrival, setDayOneArrival] = useState(null)
   const [dayTwoArrival, setDayTwoArrival] = useState(null)
 
@@ -57,7 +57,7 @@ function BarcodeScanner() {
   }, [result])
 
   return (
-      <Center>
+    <Center>
       {" "}
       <Container>
         <div>
@@ -90,13 +90,17 @@ function BarcodeScanner() {
                     {" "}
                     Guest Type{" "}
                   </Heading>
-                  <Center><Heading color="#F3C674">{getGuestType(memberWeight)}</Heading></Center>
+                  <Center>
+                    <Heading color="#F3C674">
+                      {getGuestType(memberWeight)}
+                    </Heading>
+                  </Center>
                   <Center>
                     <Heading color="white" size="md">
                       Arrival Status: Dinner{" "}
                     </Heading>
                   </Center>
-                  <Heading size='md'color="#F3C674" py="2">
+                  <Heading size="md" color="#F3C674" py="2">
                     {dayOneArrival ? "Arrived" : "Not Arrived"}
                   </Heading>
                   <Center>
@@ -104,7 +108,7 @@ function BarcodeScanner() {
                       Arrival Status: Brunch{" "}
                     </Heading>
                   </Center>
-                  <Heading size='md' color="#F3C674" py="2">
+                  <Heading size="md" color="#F3C674" py="2">
                     {dayTwoArrival ? "Arrived" : "Not Arrived"}
                   </Heading>
                 </CardBody>
@@ -119,8 +123,6 @@ function BarcodeScanner() {
                                 Update Brunch Arrival Status:{" "}
                               </Heading>
                             </Center>
-                            <Text color="white" py="2">
-                            </Text>
                           </CardBody>
 
                           <CardFooter>
@@ -138,8 +140,7 @@ function BarcodeScanner() {
                                 Update Dinner Arrival Status:{" "}
                               </Heading>
                             </Center>
-                            <Text color="white" py="2">
-                            </Text>
+                            <Text color="white" py="2"></Text>
                           </CardBody>
 
                           <CardFooter>

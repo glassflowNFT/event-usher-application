@@ -29,7 +29,7 @@ import {
   WalletConnectionStatus,
 } from "@xiti/cosmodal"
 import { setSelectionRange } from '@testing-library/user-event/dist/utils'
-import { queryAdmin, getAdmin } from '../contracts/guestType'
+import { queryAdmin, getAdmin } from '../contracts/adminType'
 
 
 function Home() {
