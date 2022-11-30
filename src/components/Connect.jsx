@@ -17,7 +17,6 @@ import { Textarea } from "@chakra-ui/react"
 import keplrLogo from "../assets/keplrlogo.png"
 import { useEffect } from "react"
 import QRCode from "qrcode"
-
 import {
   useWalletManager,
   useWallet,
