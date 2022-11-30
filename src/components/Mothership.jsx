@@ -3,6 +3,8 @@ import Navbar from "./Navbar"
 import $footer from "../assets/footer-cropped.png"
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png"
 import msGz1Shirt from "../assets/msxgz1.png"
+import msGz1Couch from "../assets/msgz1 collab1.png"
+import mscamel from "../assets/ms-camel.png"
 import rectangle8 from "../assets/rectangle8.png"
 import { Center, Divider, Heading } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
@@ -101,7 +103,7 @@ function Mothership() {
           <Image
             objectFit="cover"
             maxW={{ base: "100%", sm: "500px" }}
-            src={rectangle8}
+            src={mscamel}
             alt="Caffe Latte"
           />
 
@@ -132,7 +134,7 @@ function Mothership() {
           <Image
             objectFit="cover"
             maxW={{ base: "100%", sm: "500px" }}
-            src={rectangle8}
+            src={msGz1Couch}
             alt="Caffe Latte"
           />
 
