@@ -53,23 +53,23 @@ function VotingEntriesWater() {
 </Flex>  
 
 <Container s>
-<Grid templateRows='repeat(5, 1fr)' gap={6}>
-       <Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
+       <Grid templateRows='repeat(5, 1fr)' gap={6}>
+       <Card direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
+  <Stack onClick={toVoting} >
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+      <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>     
-      <Text py='2'>
-      ENTRY_NAME::DESCRIPTION
+</Heading>
+      <Text py='2' color='white'>
+      ENTRY_DESCRIPTION
       </Text>
     </CardBody>
     <CardFooter>
-    <Flex>
+      <Flex>
       <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
         Vote</Button>
     <Spacer p='6'/>
@@ -82,13 +82,13 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='white'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>     
-      <Text py='2'>
+</Heading>
+<Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -104,12 +104,13 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>         <Text py='2'>
+</Heading>
+      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -125,12 +126,13 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>
+      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -146,12 +148,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -167,12 +169,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -188,12 +190,12 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -209,12 +211,13 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>
+      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -230,12 +233,13 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>
+      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -251,12 +255,13 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>
+      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -272,12 +277,13 @@ function VotingEntriesWater() {
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
   <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>
+      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>
@@ -289,16 +295,17 @@ function VotingEntriesWater() {
   </Stack>
 </Card>
 
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack onClick={toVoting} >
+  <Stack>
     <CardBody>
-    <Heading  fontSize='xl' fontWeight='bold'>
+    <Heading color='white' fontSize='xl' fontWeight='bold'>
       ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='blue'>
+  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
     Entry_Maker
   </Badge>
-</Heading>           <Text py='2'>
+</Heading>
+      <Text color='white' py='2'>
       ENTRY_NAME::DESCRIPTION
       </Text>
     </CardBody>

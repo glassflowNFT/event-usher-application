@@ -149,8 +149,8 @@ function Home() {
   <Stack>
     <CardBody>
       <Heading color='white' size='md'>Legends of Hashish x Mothership NFT's</Heading>
-      <Text py='2'>
-      Gain Access to the mothership
+      <Text py='2' color="white">
+      Gain Access to the mothership 
       
       </Text>
     </CardBody>

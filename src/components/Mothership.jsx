@@ -107,10 +107,10 @@ function Mothership() {
 
           <Stack>
             <CardBody>
-              <Heading size="xl">
+              <Heading color='white' size="xl">
                 Mint Your Free 2022 Mothership x Legends Attendance Token.
               </Heading>
-              <Text py="2">
+              <Text color='white' py="2">
                 Each Legends guest can mint one official attendance NFT in
                 collaboartion with Mothership Glass.
               </Text>
@@ -138,8 +138,8 @@ function Mothership() {
 
           <Stack>
             <CardBody>
-              <Heading size="xl">Gz-1 x Mothership Drop </Heading>
-              <Text py="2">
+              <Heading color='white' size="xl">Gz-1 x Mothership Drop </Heading>
+              <Text color='white' py="2">
                 A limited number of guests will be walking away with both a pipe
                 and NFT from GZ1 and Mothership Glass. This button to mint will
                 work for the legends guest who has bought and now owns both the
@@ -169,10 +169,10 @@ function Mothership() {
 
           <Stack>
             <CardBody>
-              <Heading size="xl">
+              <Heading color='white' size="xl">
                 Mothership x Legends T-shirt Collection
               </Heading>
-              <Text py="2">
+              <Text color='white' py="2">
                 The First 20 people to purchase the official Mothership &
                 Legends of Hashish merchandise can mint here for their NFT
               </Text>

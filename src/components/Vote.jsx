@@ -57,19 +57,22 @@ function Vote() {
         }
         query()
         .then(
-          getJudge(judgeWeight) === 'Judge' ?  setIsJudge(true): setJudgeWeight(null)
+          getJudge(judgeWeight) === 'Judge' ?  
+          setIsJudge(true) : setIsJudge(null)
           )
           
       },[address])
 
-    
+        const sendVote = async () => {
+          if (isJudge) {
+            signingCosmWasmClient.execute(
+              address,
 
-// function sendVote(){
-//     const query = async () => {
-//       const 
-//     }
-    
-// }
+            )
+          }
+        }
+
+        console.log(typeof address);
 
     return status === WalletConnectionStatus.Connected ?  (
     <div className='base'>
