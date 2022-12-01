@@ -13,10 +13,6 @@ import NavPopover from './NavPopover'
 function Navbar() {
   const admin = JSON.parse(localStorage.getItem("admin?"))
 
-  console.log(admin);
-
-console.log(admin);
-
     let navigate = useNavigate()
 
     function toConnect() {

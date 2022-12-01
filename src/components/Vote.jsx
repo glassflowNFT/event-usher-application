@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 import Navbar from './Navbar'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
+import { getJudge, queryJudge } from '../contracts/voteContract'
 import {Slider,SliderTrack,SliderFilledTrack,SliderThumb,SliderMark,} from '@chakra-ui/react'
 import {
   useWalletManager,
@@ -25,13 +26,15 @@ import {
 } from "@xiti/cosmodal"
 
 function Vote() {
-  const { connect, disconnect } = useWalletManager()
+  const { connect, disconnect, SigningStargateClient } = useWalletManager()
   const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
     const [lookValue, setLookValue] = useState('5')
     const [smellValue, setSmellValue] = useState('5')
     const [tasteValue, setTasteValue] = useState('5')
     const [meltValue, setMeltValue] = useState('5')
+    const [judgeWeight, setJudgeWeight] = useState(null)
+    const [isJudge, setIsJudge] = useState(false)
 
     const handleLookChange = e => setLookValue(e.target.value)
     const handleSmellChange = e => setSmellValue(e.target.value)
@@ -43,9 +46,31 @@ function Vote() {
         navigate('/Voting-Categories')
     }
 
-function Slider(){
-  
-}
+    useEffect(() => {
+        const query = async () => {
+          if (address) {
+            const response = await queryJudge(signingCosmWasmClient, address)
+
+          setJudgeWeight(response.weight)
+          console.log(judgeWeight);
+          }
+          if (getJudge(judgeWeight) === 1) {
+            setIsJudge(true)
+          }
+        }
+        query()
+      },[address])
+
+      // console.log(judgeWeight);
+    
+
+// function sendVote(){
+//     const query = async () => {
+//       const 
+//     }
+    
+// }
+
     return status === WalletConnectionStatus.Connected ?  (
     <div className='base'>
        <Navbar />
