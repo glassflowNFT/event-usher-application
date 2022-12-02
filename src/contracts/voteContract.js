@@ -1,76 +1,75 @@
+import { coins } from "@cosmjs/stargate"
 import { checkMembership } from "./checkMembership"
 
 const VOTING_CONTRACT = "juno..."
 
-export const queryJudge = async (client, address ) => {
-    return checkMembership(
-            client,
-            "juno1ndrpu3xuyk92zj7z95pc20fnp0hryyu8thy8d94q4gl2xj7766xsj90n8g",
-            address
-    )
+export const queryJudge = async (client, address) => {
+  return checkMembership(
+    client,
+    "juno1ndrpu3xuyk92zj7z95pc20fnp0hryyu8thy8d94q4gl2xj7766xsj90n8g",
+    address
+  )
 }
-
 
 export const getJudge = (weight) => {
-    switch (weight) {
-        case 1:
-          return "Judge"
-        default:
-          return "non-judge"
-    }
+  switch (weight) {
+    case 1:
+      return "Judge"
+    default:
+      return "non-judge"
+  }
 }
 
-export const queryEntries = (client, category, startAfter = undefined, limit = undefined) => {
-  return client.queryContractSmart(
-    VOTING_CONTRACT,
-    {
-      entries: {
-        category,
-        start_after: startAfter,
-        limit,
-      }
-    }
-  )
+export const queryEntries = (
+  client,
+  category,
+  startAfter = undefined,
+  limit = undefined
+) => {
+  return client.queryContractSmart(VOTING_CONTRACT, {
+    entries: {
+      category,
+      start_after: startAfter,
+      limit,
+    },
+  })
 }
 
 export const queryEntry = (client, category, entryId) => {
-  return client.queryContractSmart(
-    VOTING_CONTRACT,
-    {
-      entry: {
-        category,
-        entry_id: entryId
-      }
-    }
-  )
+  return client.queryContractSmart(VOTING_CONTRACT, {
+    entry: {
+      category,
+      entry_id: entryId,
+    },
+  })
 }
 
 export const queryVotes = (client, entryId, makerAddress) => {
-  return client.queryContractSmart(
-    VOTING_CONTRACT,
-    {
-      votes: {
-        entry_id: entryId,
-        maker_addr: makerAddress
-      }
-    }
-  )
+  return client.queryContractSmart(VOTING_CONTRACT, {
+    votes: {
+      entry_id: entryId,
+      maker_addr: makerAddress,
+    },
+  })
 }
 
 export const queryTallyVotes = (client, entryId, startAfter, limit) => {
-  return client.queryContractSmart(
-    VOTING_CONTRACT,
-    {
-      tally_votes: {
-        entry_id: entryId,
-        start_after: startAfter,
-        limit
-      }
-    }
-  )
+  return client.queryContractSmart(VOTING_CONTRACT, {
+    tally_votes: {
+      entry_id: entryId,
+      start_after: startAfter,
+      limit,
+    },
+  })
 }
 
-export const vote = (client, sender, category, entryId, { look, smell, taste, postMelt }) => {
+export const vote = (
+  client,
+  sender,
+  category,
+  entryId,
+  { look, smell, taste, postMelt }
+) => {
   return client.execute(
     sender,
     VOTING_CONTRACT,
@@ -82,10 +81,13 @@ export const vote = (client, sender, category, entryId, { look, smell, taste, po
           look,
           smell,
           taste,
-          post_melt: postMelt
-        }
-      }
+          post_melt: postMelt,
+        },
+      },
     },
-    'auto'
+    {
+      amount: coins(10000, "ujunox"),
+      gas: "10000",
+    }
   )
 }
