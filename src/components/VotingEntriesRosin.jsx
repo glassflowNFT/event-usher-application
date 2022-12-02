@@ -46,12 +46,10 @@ function VotingEntriesRosin() {
 
   function prevCategory() {
           navigate('/Voting-Entries-Dry-Sift')
-  
-
   }
 
   function toVoting(){
-    navigate('/Vote')
+    navigate(`/Vote?category=rosin&entry=${1}`)
   }
 
   async function connectOnClick() {

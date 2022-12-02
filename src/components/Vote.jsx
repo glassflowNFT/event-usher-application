@@ -20,7 +20,7 @@ import keplrLogo from "../assets/keplrlogo.png";
 import { getJudge, queryJudge } from '../contracts/Judges'
 import {Slider,SliderTrack,SliderFilledTrack,SliderThumb,SliderMark,} from '@chakra-ui/react'
 import { useWallet } from '@cosmos-kit/react'
-import { voteSubmit } from '../contracts/voteSubmit'
+import { useMemo } from "react"
 
 function Vote() {
 
@@ -52,6 +52,13 @@ function Vote() {
     const handleMeltChange = e => setMeltValue(e.target.value)
     
     let navigate = useNavigate()
+
+    const { search } = useLocation()
+    const urlParams = useMemo(() => new URLSearchParams(search), [search])
+    function toVoteCategories() {
+      navigate("/Voting-Categories")
+    }
+
     function toVoteCategories() {
         navigate('/Voting-Categories')
     }
@@ -73,19 +80,25 @@ function Vote() {
           
       },[address])
 
-        const sendVote = async () => {
-          const submit = await voteSubmit(
-            getSigningCosmWasmClient,
-            address,
-            //contract goes here
-            {
-              "vote": {
-                "category": lookValue.replace(".", "")
-              }
-            }
-          )
-        }
-
+      const executeVote = async () => {
+        const look = Number(lookValue) * 100
+        const smell = Number(smellValue) * 100
+        const taste = Number(tasteValue) * 100
+        const melt = Number(meltValue) * 100
+    
+        const response = await vote(
+          signingCosmWasmClient,
+          address,
+          urlParams.get("category"),
+          Number(urlParams.get("entry")),
+          {
+            look: look.toString(),
+            smell: smell.toString(),
+            taste: taste.toString(),
+            postMelt: melt.toString(),
+          }
+        )
+      }
         async function connectOnClick() {
           setCurrentChain("juno")
          await connect()
@@ -168,7 +181,7 @@ return address && walletStatus === "Connected" ? (
                             <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleMeltChange} value={meltValue}></input>
                         </Container>
 
-                       <Button size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>
+                       <Button onClick={executeVote} size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>
                     </div>
                 </div>
             </div>

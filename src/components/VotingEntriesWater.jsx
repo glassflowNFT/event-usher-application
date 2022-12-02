@@ -47,7 +47,7 @@ function VotingEntriesWater() {
   }
 
   function toVoting(){
-    navigate('/Vote')
+    navigate(`/Vote?category=water&entry=${1}`)
   }
 
   async function connectOnClick() {

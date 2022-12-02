@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
@@ -18,6 +18,8 @@ import { useNavigate } from 'react-router-dom';
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import { useWallet } from '@cosmos-kit/react'
+import { queryEntries } from '../contracts/voteContract';
+import { useEffect } from 'react';
 
 function VotingEntriesDry() {
 
@@ -38,6 +40,20 @@ function VotingEntriesDry() {
   
   let navigate = useNavigate()
 
+  const [ entries, setEntries ] = useState([])
+
+  useEffect(() => {
+    const getEntries = async () => {
+      // Query without any pagination
+      // Lists 30 entries by default
+      const response = await queryEntries(signingCosmWasmClient, 'dry')
+      setEntries(response.entries)
+    }
+
+    getEntries()
+  }, [])
+
+
   function nextCategory() {
       navigate('/Voting-Entries-Rosin')
   }
@@ -47,7 +63,7 @@ function VotingEntriesDry() {
   }
 
   function toVoting(){
-    navigate('/Vote')
+    navigate(`/Vote?category=dry&entry=${1}`)
   }
 
   async function connectOnClick() {
