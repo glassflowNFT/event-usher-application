@@ -48,6 +48,7 @@ function Connect() {
   const [qrcode, setQrcode] = useState("")
 
   const [memberWeight, setMemberWeight] = useState(null)
+  const [show, setShow] = useState(true)
 
   async function connectOnClick() {
     setCurrentChain("juno")
@@ -57,9 +58,11 @@ function Connect() {
 
   function showQrCode() {
     QRCode.toDataURL(address).then(setQrcode)
+    setShow(false)
   }
 
   console.log(address)
+
 
   useEffect(() => {
     const query = async () => {
@@ -86,7 +89,7 @@ function Connect() {
       <Container>
         <div className="container">
           <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
+            <img  src={keplrLogo} />
           </Center>
           <div className="connect-holder">
             <Text>
@@ -95,8 +98,8 @@ function Connect() {
             </Text>
 
             <Center>
+            { show ? <Button size='lg' onClick={showQrCode}>Generate QR Code</Button> : null}
               <Stack>
-              <Button onClick={showQrCode}>Generate QR Code</Button>
               <Image
                 width="500" height="500"
                 objectFit="contain"

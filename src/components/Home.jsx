@@ -35,7 +35,6 @@ function Home() {
 
   const [loading, setLoading] = useState(false)
   const [adminStatus, setAdminStatus] = useState(null)
-  const [isAdmin, setIsAdmin] = useState('')
 
   const {
     currentChainName,
@@ -75,10 +74,6 @@ function Home() {
   }
   query()
   }, [address])
-
-  console.log(isAdmin);
-
-  console.log(adminStatus);
   
   function toConnect() {
       navigate('/Connect')
