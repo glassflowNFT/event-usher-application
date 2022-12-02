@@ -17,43 +17,63 @@ import rectangle8 from "../assets/rectangle8.png";
 import sponsors1 from "../assets/sponsors1.png";
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import waterHash from "../assets/waterhash.png";
+import launchpad from "../assets/launchpad.png";
 import keplrLogo from "../assets/keplrlogo.png";
 import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Axios from "axios";
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
 import { setSelectionRange } from '@testing-library/user-event/dist/utils'
-import { queryAdmin, getAdmin } from '../contracts/guestType'
+import { queryAdmin, getAdmin } from '../contracts/adminType'
+import { useWallet } from '@cosmos-kit/react'
 
 
 function Home() {
+  const walletManager = useWallet()
+
   let navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
   const [adminStatus, setAdminStatus] = useState(null)
 
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, publucKey, signingCosmWasmClient } = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+  } = walletManager
 
-  console.log(address);
+  const {
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
+
+  console.log(walletManager);
+
+  async function connectOnClick() {
+    setCurrentChain("juno")
+   await connect()
+
+  }
   
   useEffect(() => {
     const query = async () => {
-    if (address) {
-      const adminResponse = await queryAdmin(signingCosmWasmClient, address)
+    if (address) { 
+      const client = await getSigningCosmWasmClient()
+
+      const adminResponse = await queryAdmin(client, address)
       setAdminStatus(adminResponse.weight)
+
+      localStorage.setItem('admin?', JSON.stringify(getAdmin(adminResponse.weight)))
     }
   }
   query()
   }, [address])
-
-  console.log(adminStatus);
   
   function toConnect() {
       navigate('/Connect')
@@ -67,17 +87,15 @@ function Home() {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  return status === WalletConnectionStatus.Connected ? (
+  return address && walletStatus === "Connected" ? (
+
     <div className='base'>
-    
-      
       <Navbar />
       <Center><div>
         <img className="title-gold-bg" src={titleGoldBg}/>
       </div></Center>
     
       <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
-      <Text color="red">{getAdmin(adminStatus)}</Text>
       <div className='container me-3'>
         <div className="row">
           <div className='col'>          
@@ -135,18 +153,18 @@ function Home() {
 </Box>
 
 <Box p='2'>
-<Card direction='row' overflow='hidden' variant='outline'>
+<Card direction='row' variant='outline'>
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
+    src={launchpad}
     alt='Caffe Latte'
   />
   <Stack>
     <CardBody>
       <Heading color='white' size='md'>Legends of Hashish x Mothership NFT's</Heading>
-      <Text py='2'>
-      Gain Access to the mothership
+      <Text py='2' color="white">
+      Gain Access to the mothership 
       
       </Text>
     </CardBody>
@@ -193,13 +211,14 @@ function Home() {
     <h2>
       <AccordionButton>
         <Box flex='1' textAlign='left'>
-          1.
+          1. Why did we build this application?
         </Box>
         <AccordionIcon />
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-  Legends FAQ here.
+    Applications powered by smart contracts and cryptographic wallets unlocks true censorship resistant technology that our culture needs, now.
+ Our use case of providing transparency within a voting system is just one small example of how we can, as a community build and own smart contract applications. 
     </AccordionPanel>
   </AccordionItem>
 
@@ -207,24 +226,35 @@ function Home() {
     <h2>
       <AccordionButton>
         <Box flex='1' textAlign='left'>
-          2.
+          2. How do I find my Wallet QR Code?
         </Box>
         <AccordionIcon />
       </AccordionButton>
     </h2>
     <AccordionPanel pb={4}>
-  Legends FAQ here.
+  You can find the QR code needed to access the Legends event in two places. 
+  The first place is in the connect page within the application. Simple return to the home page, and the first button you see will take you to where a QR code will
+   be automatically generated for the wallet connected to the application. 
     </AccordionPanel>
   </AccordionItem>
-
 <AccordionItem>
 <h2><AccordionButton>
-        <Box flex='1' textAlign='left'>3.</Box>
+        <Box flex='1' textAlign='left'>3. I am a judge, How do I vote?</Box>
 <AccordionIcon />
 </AccordionButton>
 </h2>
 <AccordionPanel pb={4}>
-     Legends FAQ here
+     Simply browse each entry within their respective categories, choose one that you have sampled and are ready to vote on, set the points for each of the entry's elements and broadcast the message via keplr.
+    </AccordionPanel>
+  </AccordionItem>
+  <AccordionItem>
+<h2><AccordionButton>
+        <Box flex='1' textAlign='left'>4. Can I mint any NFT's?</Box>
+<AccordionIcon />
+</AccordionButton>
+</h2>
+<AccordionPanel pb={4}>
+     Every Guest Can Mint a 2022 Legends Attendance Token. Only Those who are either owners of the gz1 x mothershp collab pipes, or was one of the first 20 people to buy a gz1 x Mothership collaboration shirt can mint those tokens. 
     </AccordionPanel>
   </AccordionItem>
 </Accordion>
@@ -257,24 +287,38 @@ View Wiki   </Link>
          
     </div>
   ) : (
-   <Container> <div className='base pb-5'>
-          <div>
-           <Center><Container><img className="connect-title-gold-bg" src={titleGoldBg}/>
-                       <Heading color='#fefefe' px='7' mb={80} noOfLines={2}>Connect To Access Event Application </Heading></Container> </Center>
+    <Container>
+      {" "}
+      <div className="base">
+        <div>
+          <Center>
+            <Container>
+              <img className="connect-title-gold-bg" src={titleGoldBg} />
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
+                Connect To Access Event Application{" "}
+              </Heading>
+            </Container>{" "}
+          </Center>
+        </div>
 
-          </div>
-        
-          <div className='container pb-5'>
-
-            <Center><img  borderRadius='full' className='icon' src={keplrLogo}/></Center>
-            <Center><Button colorScheme='whiteAlpha' color='white' mb={80} onClick={connect}>Connect Keplr</Button></Center>
-         
-            {error && <p>{error instanceof Error ? error.message : `${error}`}</p>}
-            </div>
-          </div>
-          </Container>
-
-
+        <div className="container">
+          <Center>
+            <img borderRadius="full" className="icon" src={keplrLogo} />
+          </Center>
+          <Center>
+            <Button
+              colorScheme="whiteAlpha"
+              color="white"
+              mb={130}
+              onClick={connectOnClick}
+              size='lg'
+            >
+              Connect Keplr
+            </Button>
+                 </Center>
+        </div>
+      </div>
+    </Container>
   )
 }
 function BasicUsage() {
