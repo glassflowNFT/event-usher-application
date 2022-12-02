@@ -42,7 +42,7 @@ function VotingEntriesRosin() {
   }
 
   function toVoting(){
-    navigate('/Vote')
+    navigate(`/Vote?category=rosin&entry=${1}`)
   }
 
 

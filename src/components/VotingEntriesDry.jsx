@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
@@ -22,11 +22,26 @@ import {
   useWallet,
   WalletConnectionStatus,
 } from "@xiti/cosmodal"
+import { queryEntries } from '../contracts/voteContract';
+import { useEffect } from 'react';
 
 function VotingEntriesDry() {
   const { connect, disconnect } = useWalletManager()
   const { status, error, name, address, signingCosmWasmClient } = useWallet()
   let navigate = useNavigate()
+
+  const [ entries, setEntries ] = useState([])
+
+  useEffect(() => {
+    const getEntries = async () => {
+      // Query without any pagination
+      // Lists 30 entries by default
+      const response = await queryEntries(signingCosmWasmClient, 'dry')
+      setEntries(response.entries)
+    }
+
+    getEntries()
+  }, [])
 
   function nextCategory() {
       navigate('/Voting-Entries-Rosin')
@@ -37,7 +52,7 @@ function VotingEntriesDry() {
   }
 
   function toVoting(){
-    navigate('/Vote')
+    navigate(`/Vote?category=dry&entry=${1}`)
   }
 
   return status === WalletConnectionStatus.Connected ?  (
