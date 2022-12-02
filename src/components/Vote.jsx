@@ -17,10 +17,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
-import { getJudge, queryJudge } from '../contracts/Judges'
+import { getJudge, queryJudge, vote } from '../contracts/voteContract'
 import {Slider,SliderTrack,SliderFilledTrack,SliderThumb,SliderMark,} from '@chakra-ui/react'
 import { useWallet } from '@cosmos-kit/react'
 import { useMemo } from "react"
+import { useLocation } from 'react-router-dom'
 
 function Vote() {
 
@@ -66,7 +67,7 @@ function Vote() {
     useEffect(() => {
         const query = async () => {
           if (address) {
-            const response = await queryJudge(getSigningCosmWasmClient, address)
+            const response = await queryJudge(getSigningCosmWasmClient(), address)
 
             setJudgeWeight(response.weight)
             console.log(response);
@@ -87,7 +88,7 @@ function Vote() {
         const melt = Number(meltValue) * 100
     
         const response = await vote(
-          signingCosmWasmClient,
+          getSigningCosmWasmClient(),
           address,
           urlParams.get("category"),
           Number(urlParams.get("entry")),

@@ -40,13 +40,15 @@ function VotingEntriesDry() {
   
   let navigate = useNavigate()
 
+  console.log(getSigningCosmWasmClient);
+
   const [ entries, setEntries ] = useState([])
 
   useEffect(() => {
     const getEntries = async () => {
       // Query without any pagination
       // Lists 30 entries by default
-      const response = await queryEntries(signingCosmWasmClient, 'dry')
+      const response = await queryEntries(getSigningCosmWasmClient, 'dry')
       setEntries(response.entries)
     }
 
