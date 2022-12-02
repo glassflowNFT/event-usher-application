@@ -21,6 +21,8 @@ import { getJudge, queryJudge } from '../contracts/Judges'
 import {Slider,SliderTrack,SliderFilledTrack,SliderThumb,SliderMark,} from '@chakra-ui/react'
 import { useWallet } from '@cosmos-kit/react'
 import { useMemo } from "react"
+import { useLocation } from 'react-router-dom'
+import { vote } from '../contracts/voteContract'
 
 function Vote() {
 
@@ -65,8 +67,10 @@ function Vote() {
     
     useEffect(() => {
         const query = async () => {
+          const client = await getSigningCosmWasmClient()
+
           if (address) {
-            const response = await queryJudge(getSigningCosmWasmClient, address)
+            const response = await queryJudge(client, address)
 
             setJudgeWeight(response.weight)
             console.log(response);
@@ -81,13 +85,15 @@ function Vote() {
       },[address])
 
       const executeVote = async () => {
+        const client = await getSigningCosmWasmClient()
+
         const look = Number(lookValue) * 100
         const smell = Number(smellValue) * 100
         const taste = Number(tasteValue) * 100
         const melt = Number(meltValue) * 100
     
         const response = await vote(
-          signingCosmWasmClient,
+          client,
           address,
           urlParams.get("category"),
           Number(urlParams.get("entry")),

@@ -17,13 +17,13 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { ChainProvider, WalletProvider, useW } from '@cosmos-kit/react';
 import { chains, assets, ibc } from 'chain-registry';
 import { wallets as keplrWallets } from '@cosmos-kit/keplr';
-import { defaultThemeWithoutCSSReset } from "@cosmos-kit/react";
 import { createLocalStorageManager } from "@chakra-ui/react";
 
 function App() {
   
   return (
-    <ChakraProvider theme={defaultThemeWithoutCSSReset} 
+    <ChakraProvider 
+    /* theme={defaultThemeWithoutCSSReset}  */
     resetCSS={true} 
     colorModeManager={createLocalStorageManager('chakra-ui-color-mode')}>
       <WalletProvider 

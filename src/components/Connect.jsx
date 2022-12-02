@@ -63,8 +63,10 @@ function Connect() {
 
   useEffect(() => {
     const query = async () => {
+      const client = await getSigningCosmWasmClient()
+
       if (address) {
-        const response = await queryGuestType(getSigningCosmWasmClient, address)
+        const response = await queryGuestType(client, address)
         setMemberWeight(response.weight)
       }
     }
