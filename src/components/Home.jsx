@@ -93,8 +93,9 @@ function Home() {
     <div className='base'>
       <Navbar />
       <Center><div>
-        <img className="title-gold-bg" src={titleGoldBg}/>
-      </div></Center>
+        <img className="title-gold-bg mt-5" src={titleGoldBg}/>
+      </div>
+      </Center>
     
       <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
       <div className='container me-3'>

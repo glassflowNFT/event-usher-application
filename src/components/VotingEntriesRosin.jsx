@@ -60,7 +60,7 @@ function VotingEntriesRosin() {
   return address && walletStatus === "Connected" ?(
     <div className='base'>
     <Navbar />
-       <div><img className="connect-title-gold-bg" src={titleGoldBg}/>
+       <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg}/>
          <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Hash Rosin Entries</Heading>
          <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Dry Sift</Button>
   <Spacer />

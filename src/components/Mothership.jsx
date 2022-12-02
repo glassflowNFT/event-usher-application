@@ -105,7 +105,7 @@ function Mothership() {
  <div className="base">
       <Navbar />
       <div>
-        <img className="title-gold-bg" src={titleGoldBg} />
+        <img className="title-gold-bg mt-5" src={titleGoldBg} />
       </div>
       <div className="container">
         <Card

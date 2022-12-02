@@ -114,7 +114,7 @@ return address && walletStatus === "Connected" ? (
     <div className='base'>
        <Navbar />
           <div>
-            <img className="connect-title-gold-bg" src={titleGoldBg}/>
+            <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/>
           </div>
           <div className='container'>
             <div className='holder'>
@@ -128,21 +128,21 @@ return address && walletStatus === "Connected" ? (
       borderRadius='lg'
     />
     <Stack mt='6' spacing='3'>
-      <Heading size='md'>ENTRY_NAME</Heading>
+      <Heading color="white" size='md'>ENTRY_NAME</Heading>
       <Divider />
-      <Heading size='l'> ENTRY_MAKER_NAME</Heading>
+      <Heading color="white" size='l'> ENTRY_MAKER_NAME</Heading>
       <Divider />
       
-      <Text>ENTRY_DESCRIPTION</Text>
+      <Text color="white">ENTRY_DESCRIPTION</Text>
 
                   <Divider />
-                  <Text>ENTRY CATEGORY</Text>
+                  <Text color="white">ENTRY CATEGORY</Text>
                   <Divider />
-                  <Text>ENTRY BREEDER</Text>
+                  <Text color="white">ENTRY BREEDER</Text>
                   <Divider />
-                  <Text>ENTRY FARMER</Text>
+                  <Text color="white">ENTRY FARMER</Text>
                   <Divider />
-                  <Text>ENTRY GENETICS</Text>
+                  <Text color="white">ENTRY GENETICS</Text>
                   <Divider />
                 </Stack>
               </CardBody>
@@ -188,74 +188,6 @@ return address && walletStatus === "Connected" ? (
                     </div>
                 </div>
               </div>
-              <Container opacity="100%" className="input-holder p-3 mb-3">
-                <Text className="range-slider-text">Entry's Look</Text>
-                <p color="#F3C674" className="range-slider-text">
-                  {lookValue}
-                </p>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="1.00"
-                  max="10.00"
-                  step=".01"
-                  onChange={handleLookChange}
-                  value={lookValue}
-                ></input>
-              </Container>
-              <Container className="input-holder p-3 mb-3">
-                <p className="range-slider-text">Entry's Taste</p>
-                <p className="range-slider-text">{smellValue}</p>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="1.00"
-                  max="10.00"
-                  step=".01"
-                  onChange={handleSmellChange}
-                  value={smellValue}
-                ></input>
-                <Slider
-                  aria-label="slider-ex-2"
-                  colorScheme="pink"
-                  defaultValue={30}
-                >
-                  <SliderTrack>
-                    <SliderFilledTrack />
-                  </SliderTrack>
-                  <SliderThumb />
-                </Slider>
-              </Container>
-              <Container className="input-holder p-3 mb-3">
-                <p className="range-slider-text">Entry's Smell</p>
-                <p className="range-slider-text">{tasteValue}</p>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="1.00"
-                  max="10.00"
-                  step=".01"
-                  onChange={handleTasteChange}
-                  value={tasteValue}
-                ></input>
-              </Container>
-              <Container className="input-holder p-3 mb-3">
-                <p className="range-slider-text">Entry's After Banger</p>
-                <p className="range-slider-text">{meltValue}</p>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="1.00"
-                  max="10.00"
-                  step=".01"
-                  onChange={handleMeltChange}
-                  value={meltValue}
-                ></input>
-              </Container>
-
-              <Button size="lg" color="#e25273" onClick={executeVote}>
-                Confrim & Broadcast Vote
-              </Button>
             </div>
       <img className="footer" src={$footer} />
     </div>

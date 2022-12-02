@@ -1,7 +1,7 @@
 import { checkMembership } from "./checkMembership"
 import { coins } from "@cosmjs/stargate"
 
-const VOTING_CONTRACT = "juno..."
+const VOTING_CONTRACT = "juno14e87jsq397panll58msh4qa77dtc8c2um3qk303zad5dhy3zqqtqne98js"
 
 export const queryJudge = async (client, address ) => {
     return checkMembership(
