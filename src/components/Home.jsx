@@ -65,7 +65,9 @@ function Home() {
   useEffect(() => {
     const query = async () => {
     if (address) { 
-      const adminResponse = await queryAdmin(getSigningCosmWasmClient, address)
+      const client = await getSigningCosmWasmClient()
+
+      const adminResponse = await queryAdmin(client, address)
       setAdminStatus(adminResponse.weight)
 
       localStorage.setItem('admin?', JSON.stringify(getAdmin(adminResponse.weight)))

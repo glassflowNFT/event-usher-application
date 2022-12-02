@@ -48,8 +48,10 @@ function BarcodeScanner() {
 
   useEffect(() => {
     const query = async () => {
+      const client = await getSigningCosmWasmClient()
+
       if (result) {
-        const response = await queryGuestType(getSigningCosmWasmClient, result)
+        const response = await queryGuestType(client, result)
         setMemberWeight(response.weight)
       }
     }
@@ -59,15 +61,21 @@ function BarcodeScanner() {
   }, [result])
 
   useEffect(() => {
-    if (result) {
-      queryDayOneArrival(getSigningCosmWasmClient, result)
-        .then(() => setDayOneArrival(true))
-        .catch((err) => setDayOneArrival(false))
+    const query = async () => {
+      const client = await getSigningCosmWasmClient()
 
-      queryDayTwoArrival(getSigningCosmWasmClient, result)
-        .then(() => setDayTwoArrival(true))
-        .catch((err) => setDayTwoArrival(false))
+      if (result) {
+        queryDayOneArrival(client, result)
+          .then(() => setDayOneArrival(true))
+          .catch((err) => setDayOneArrival(false))
+  
+        queryDayTwoArrival(client, result)
+          .then(() => setDayTwoArrival(true))
+          .catch((err) => setDayTwoArrival(false))
+      }
     }
+
+    query()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result])
 
