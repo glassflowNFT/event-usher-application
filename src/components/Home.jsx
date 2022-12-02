@@ -34,7 +34,8 @@ function Home() {
   let navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
-  const [adminStatus, setAdminStatus] = useState(null)
+   const [adminStatus, setAdminStatus] = useState(null)
+  const [isAdmin, setIsAdmin] = useState('')
 
   const {
     currentChainName,

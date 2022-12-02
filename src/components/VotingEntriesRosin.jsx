@@ -98,6 +98,7 @@ function VotingEntriesRosin() {
     <Spacer p='6'/>
   <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
     </CardFooter>
+    
   </Stack>
 </Card>
  

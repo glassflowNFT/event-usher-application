@@ -89,7 +89,7 @@ function Connect() {
       <Container>
         <div className="container">
           <Center>
-            <img  src={keplrLogo} />
+            <img borderRadius="full" className="icon" src={keplrLogo} />
           </Center>
           <div className="connect-holder">
             <Text>
