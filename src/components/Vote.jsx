@@ -19,15 +19,25 @@ import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import { getJudge, queryJudge } from '../contracts/Judges'
 import {Slider,SliderTrack,SliderFilledTrack,SliderThumb,SliderMark,} from '@chakra-ui/react'
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
+import { useWallet } from '@cosmos-kit/react'
+import { voteSubmit } from '../contracts/voteSubmit'
 
 function Vote() {
-  const { connect, disconnect, SigningStargateClient } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
+
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
 
     const [lookValue, setLookValue] = useState('5')
     const [smellValue, setSmellValue] = useState('5')
@@ -45,11 +55,11 @@ function Vote() {
     function toVoteCategories() {
         navigate('/Voting-Categories')
     }
-
+    
     useEffect(() => {
         const query = async () => {
           if (address) {
-            const response = await queryJudge(signingCosmWasmClient, address)
+            const response = await queryJudge(getSigningCosmWasmClient, address)
 
             setJudgeWeight(response.weight)
             console.log(response);
@@ -64,17 +74,24 @@ function Vote() {
       },[address])
 
         const sendVote = async () => {
-          if (isJudge) {
-            signingCosmWasmClient.execute(
-              address,
-
-            )
-          }
+          const submit = await voteSubmit(
+            getSigningCosmWasmClient,
+            address,
+            //contract goes here
+            {
+              "vote": {
+                "category": lookValue.replace(".", "")
+              }
+            }
+          )
         }
 
-        console.log(typeof address);
-
-    return status === WalletConnectionStatus.Connected ?  (
+        async function connectOnClick() {
+          setCurrentChain("juno")
+         await connect()
+        }
+      
+return address && walletStatus === "Connected" ? (
     <div className='base'>
        <Navbar />
           <div>
@@ -159,25 +176,39 @@ function Vote() {
           <img className="footer" src={$footer} />
     </div>
    ) : (
-    <Container> <div className='base pb-5'>
-           <div>
-            <Center><Container><img className="connect-title-gold-bg" src={titleGoldBg}/>
-                        <Heading  px='7' mb={80} noOfLines={2}>Connect To Access Event Application </Heading></Container> </Center>
+    <Container>
+      {" "}
+      <div className="base">
+        <div>
+          <Center>
+            <Container>
+              <img className="connect-title-gold-bg" src={titleGoldBg} />
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
+                Connect To Access Event Application{" "}
+              </Heading>
+            </Container>{" "}
+          </Center>
+        </div>
 
-           </div>
-
-           <div className='container pb-5'>
-
-             <Center><img  borderRadius='full' className='icon' src={keplrLogo}/></Center>
-             <Center><Button colorScheme='whiteAlpha' color='white' mb={80} onClick={connect}>Connect Keplr</Button></Center>
-
-             {error && <p>{error instanceof Error ? error.message : `${error}`}</p>}
-             </div>
-           </div>
-           </Container>
-
-
-   )
+        <div className="container">
+          <Center>
+            <img borderRadius="full" className="icon" src={keplrLogo} />
+          </Center>
+          <Center>
+            <Button
+              colorScheme="whiteAlpha"
+              color="white"
+              mb={130}
+              onClick={connectOnClick}
+              size='lg'
+            >
+              Connect Keplr
+            </Button>
+                 </Center>
+        </div>
+      </div>
+    </Container>
+  )
 }
 
 export default Vote

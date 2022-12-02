@@ -22,19 +22,27 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react"
 import keplrLogo from "../assets/keplrlogo.png"
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
 import { checkMembership } from "../contracts/checkMembership"
+import { useWallet } from '@cosmos-kit/react'
 
 
 
 function Mothership() {
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, publucKey, signingCosmWasmClient } =
-  useWallet()
+
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [scrollBehavior, setScrollBehavior] = React.useState("inside")
@@ -43,7 +51,7 @@ function Mothership() {
   const mintFreeNFT = async () => {
     try {
       const response = await checkMembership(
-        signingCosmWasmClient,
+        getSigningCosmWasmClient,
         "juno1ss9tlfsj53uc5w6g45sjtu88uyc6nf7ar0k8wge8fmzz3588ceks2xvsnn",
         address
       )
@@ -58,7 +66,7 @@ function Mothership() {
   const mintCollabDrop = async () => {
     try {
       const response = await checkMembership(
-        signingCosmWasmClient,
+        getSigningCosmWasmClient,
         "juno1egnnvg6d60787rg2zdw8wua79s4f25zzc56nnv8hyvmq656jyeksrlug9r",
         address
       )
@@ -73,7 +81,7 @@ function Mothership() {
   const mintTshirt = async () => {
     try {
       const response = await checkMembership(
-        signingCosmWasmClient,
+        getSigningCosmWasmClient,
         "juno15aagx8wy9klpx9nn8l04vpydmksasexyl9yrgcqya8mcx2374rmskjt6v2",
         address
       )
@@ -85,7 +93,12 @@ function Mothership() {
     }
   }
 
-  return status === WalletConnectionStatus.Connected ? (
+  async function connectOnClick() {
+    setCurrentChain("juno")
+   await connect()
+  }
+
+  return address && walletStatus === "Connected" ?(
  <div className="base">
       <Navbar />
       <div>
@@ -239,19 +252,19 @@ function Mothership() {
   ) : (
     <Container>
       {" "}
-      <div className="base pb-5">
+      <div className="base">
         <div>
           <Center>
             <Container>
               <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading px="7" mb={80} noOfLines={2}>
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
                 Connect To Access Event Application{" "}
               </Heading>
             </Container>{" "}
           </Center>
         </div>
 
-        <div className="container pb-5">
+        <div className="container">
           <Center>
             <img borderRadius="full" className="icon" src={keplrLogo} />
           </Center>
@@ -259,16 +272,13 @@ function Mothership() {
             <Button
               colorScheme="whiteAlpha"
               color="white"
-              mb={80}
-              onClick={connect}
+              mb={130}
+              onClick={connectOnClick}
+              size='lg'
             >
               Connect Keplr
             </Button>
                  </Center>
-
-          {error && (
-            <p>{error instanceof Error ? error.message : `${error}`}</p>
-          )}
         </div>
       </div>
     </Container>

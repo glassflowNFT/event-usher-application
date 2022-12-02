@@ -5,17 +5,32 @@ import { OverlayTrigger } from 'react-bootstrap'
 import { useEffect } from 'react'
 import { Center, Container } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
+// import {
+//   useWalletManager,
+//   useWallet,
+//   WalletConnectionStatus,
+// } from "@xiti/cosmodal"
+import { useWallet } from '@cosmos-kit/react'
 
 function NavPopover() {
 
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
-
+  // const { connect, disconnect } = useWalletManager()
+  // const { status, error, name, address, signingCosmWasmClient } = useWallet()
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    connectedWalletId,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
 //   useEffect(() => {
 //     Array.from(document.querySelectorAll('a[data-bs-toggle="popover"]'))
 //       .forEach(popoverNode => new Popover(popoverNode))
@@ -29,7 +44,7 @@ const popover = (
           direction="horizontal"
           className="align-items-baseline"
         >
-          <h3 className="flex-grow-1 mb-0">{name}</h3>
+          <h3 className="flex-grow-1 mb-0">{username}</h3>
         </Stack>
       </Popover.Header>
       <Popover.Body>
@@ -46,7 +61,7 @@ const popover = (
         trigger={"focus"}
         placement="center"
         overlay={popover}>
-          <a tabindex="0" className='nav-link-pop' color='white' aria-labelledby="dropdownMenuButton">{name}</a>
+          <a tabindex="0" className='nav-link-pop' color='white' aria-labelledby="dropdownMenuButton">{username}</a>
         </OverlayTrigger>
         </Button>
   )

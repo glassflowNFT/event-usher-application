@@ -17,25 +17,43 @@ import { Textarea } from "@chakra-ui/react"
 import keplrLogo from "../assets/keplrlogo.png"
 import { useEffect } from "react"
 import QRCode from "qrcode"
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
+// import {
+//   useWalletManager,
+//   useWallet,
+//   WalletConnectionStatus,
+// } from "@xiti/cosmodal"
 import { getGuestType, queryGuestType } from "../contracts/guestType"
+import { useWallet } from '@cosmos-kit/react'
 
 
 function Connect() {
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
+  // const { connect, disconnect } = useWalletManager()
+  // const { status, error, name, address, signingCosmWasmClient } = useWallet()
+
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
 
   const [qrcode, setQrcode] = useState("")
 
   const [memberWeight, setMemberWeight] = useState(null)
 
-  // useEffect(() => {
-  //   QRCode.toDataURL(address).then(setQrcode)
-  // }, [])
+  async function connectOnClick() {
+    setCurrentChain("juno")
+   await connect()
+
+  }
 
   function showQrCode() {
     QRCode.toDataURL(address).then(setQrcode)
@@ -46,7 +64,7 @@ function Connect() {
   useEffect(() => {
     const query = async () => {
       if (address) {
-        const response = await queryGuestType(signingCosmWasmClient, address)
+        const response = await queryGuestType(getSigningCosmWasmClient, address)
         setMemberWeight(response.weight)
       }
     }
@@ -57,7 +75,7 @@ function Connect() {
 
   console.log(memberWeight);
 
-  return status === WalletConnectionStatus.Connected ? (
+  return address && walletStatus === "Connected" ?  (
     <div className="base">
       <Navbar />
       <div>
@@ -110,18 +128,19 @@ function Connect() {
   ) : (
     <Container>
       {" "}
-      <div className="base pb-5">
+      <div className="base">
         <div>
           <Center>
             <Container>
               <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading px="7" mb={80} noOfLines={2}>
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
                 Connect To Access Event Application{" "}
               </Heading>
             </Container>{" "}
           </Center>
         </div>
-        <div className="container pb-5">
+
+        <div className="container">
           <Center>
             <img borderRadius="full" className="icon" src={keplrLogo} />
           </Center>
@@ -129,15 +148,13 @@ function Connect() {
             <Button
               colorScheme="whiteAlpha"
               color="white"
-              mb={80}
-              onClick={connect}
+              mb={130}
+              onClick={connectOnClick}
+              size='lg'
             >
               Connect Keplr
             </Button>
-          </Center>
-          {error && (
-            <p>{error instanceof Error ? error.message : `${error}`}</p>
-          )}
+                 </Center>
         </div>
       </div>
     </Container>

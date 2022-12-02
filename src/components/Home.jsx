@@ -23,31 +23,49 @@ import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Axios from "axios";
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
 import { setSelectionRange } from '@testing-library/user-event/dist/utils'
 import { queryAdmin, getAdmin } from '../contracts/adminType'
+import { useWallet } from '@cosmos-kit/react'
 
 
 function Home() {
+  const walletManager = useWallet()
+
   let navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
-   const [adminStatus, setAdminStatus] = useState(null)
+  const [adminStatus, setAdminStatus] = useState(null)
   const [isAdmin, setIsAdmin] = useState('')
 
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, publicKey, signingCosmWasmClient } = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+  } = walletManager
 
-  console.log(address);
+  const {
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
+
+  console.log(walletManager);
+
+  async function connectOnClick() {
+    setCurrentChain("juno")
+   await connect()
+
+  }
   
   useEffect(() => {
     const query = async () => {
-    if (address) {
-      const adminResponse = await queryAdmin(signingCosmWasmClient, address)
+    if (address) { 
+      const adminResponse = await queryAdmin(getSigningCosmWasmClient, address)
       setAdminStatus(adminResponse.weight)
 
       localStorage.setItem('admin?', JSON.stringify(getAdmin(adminResponse.weight)))
@@ -72,10 +90,9 @@ function Home() {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  return status === WalletConnectionStatus.Connected ? (
+  return address && walletStatus === "Connected" ? (
+
     <div className='base'>
-    
-      
       <Navbar />
       <Center><div>
         <img className="title-gold-bg" src={titleGoldBg}/>
@@ -273,24 +290,38 @@ View Wiki   </Link>
          
     </div>
   ) : (
-   <Container> <div className='base pb-5'>
-          <div>
-           <Center><Container><img className="connect-title-gold-bg" src={titleGoldBg}/>
-                       <Heading color='#fefefe' px='7' mb={80} noOfLines={2}>Connect To Access Event Application </Heading></Container> </Center>
+    <Container>
+      {" "}
+      <div className="base">
+        <div>
+          <Center>
+            <Container>
+              <img className="connect-title-gold-bg" src={titleGoldBg} />
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
+                Connect To Access Event Application{" "}
+              </Heading>
+            </Container>{" "}
+          </Center>
+        </div>
 
-          </div>
-        
-          <div className='container pb-5'>
-
-            <Center><img  borderRadius='full' className='icon' src={keplrLogo}/></Center>
-            <Center><Button colorScheme='whiteAlpha' color='white' mb={80} onClick={connect}>Connect Keplr</Button></Center>
-         
-            {error && <p>{error instanceof Error ? error.message : `${error}`}</p>}
-            </div>
-          </div>
-          </Container>
-
-
+        <div className="container">
+          <Center>
+            <img borderRadius="full" className="icon" src={keplrLogo} />
+          </Center>
+          <Center>
+            <Button
+              colorScheme="whiteAlpha"
+              color="white"
+              mb={130}
+              onClick={connectOnClick}
+              size='lg'
+            >
+              Connect Keplr
+            </Button>
+                 </Center>
+        </div>
+      </div>
+    </Container>
   )
 }
 function BasicUsage() {
