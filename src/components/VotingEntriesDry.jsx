@@ -37,7 +37,7 @@ function VotingEntriesDry() {
   }
 
   function toVoting(){
-    navigate('/Vote')
+    navigate(`/Vote?category=dry&entry=${1}`)
   }
 
   return status === WalletConnectionStatus.Connected ?  (
