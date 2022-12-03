@@ -15,33 +15,17 @@ import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import keplrLogo from "../assets/keplrlogo.png";
 import { Button, ButtonGroup } from '@chakra-ui/react'
-import { useWallet } from '@cosmos-kit/react'
-// import {
-//   useWalletManager,
-//   useWallet,
-//   WalletConnectionStatus,
-// } from "@xiti/cosmodal"
+import {
+  useWalletManager,
+  useWallet,
+  WalletConnectionStatus,
+} from "@xiti/cosmodal"
 
 function Mint() {
   const admin = JSON.parse(localStorage.getItem("admin?"))
 
-  // const { connect, disconnect } = useWalletManager()
-  // const { status, error, name, address, signingCosmWasmClient } = useWallet()
-
-  const walletManager = useWallet()
-  const {
-    currentChainName,
-    currentWalletName,
-    walletStatus,
-    username,
-    address,
-    message,
-    connect,
-    disconnect,
-    openView,
-    setCurrentChain,
-    getSigningCosmWasmClient
-  } = walletManager;
+  const { connect, disconnect } = useWalletManager()
+  const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
 
   function addEntry() {
@@ -49,12 +33,11 @@ function Mint() {
   }
 
   async function connectOnClick() {
-    setCurrentChain("juno")
    await connect()
 
   }
 
-  return address && walletStatus === "Connected" ? (
+  return (
     <div className='base'>
     <Navbar />
        <div>
@@ -124,40 +107,7 @@ function Mint() {
        </Container>
        <img className="footer" src={$footer} />
  </div>
-   ) : (
-    <Container>
-      {" "}
-      <div className="base">
-        <div>
-          <Center>
-            <Container>
-              <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
-                Connect To Access Event Application{" "}
-              </Heading>
-            </Container>{" "}
-          </Center>
-        </div>
-
-        <div className="container">
-          <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
-          </Center>
-          <Center>
-            <Button
-              colorScheme="whiteAlpha"
-              color="white"
-              mb={130}
-              onClick={connectOnClick}
-              size='lg'
-            >
-              Connect Keplr
-            </Button>
-                 </Center>
-        </div>
-      </div>
-    </Container>
-  )
+   ) 
  }
  function BasicUsage() {
 

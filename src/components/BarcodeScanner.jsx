@@ -10,26 +10,17 @@ import { Box } from "@chakra-ui/react"
 import { SimpleGrid } from "@chakra-ui/react"
 import { queryGuestType, getGuestType } from "../contracts/guestType"
 import { queryDayOneArrival, queryDayTwoArrival } from "../contracts/arrival"
-import { useWallet } from '@cosmos-kit/react'
+import {
+  useWalletManager,
+  useWallet,
+  WalletConnectionStatus,
+} from "@xiti/cosmodal"
 
 function BarcodeScanner() {
-  const walletManager = useWallet()
-  const {
-    currentChainName,
-    currentWalletName,
-    walletStatus,
-    username,
-    address,
-    message,
-    connect,
-    disconnect,
-    openView,
-    setCurrentChain,
-    getSigningCosmWasmClient
-  } = walletManager;
+  const { connect, disconnect } = useWalletManager()
+  const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
   const [result, setResult] = useState("")
-
 
   const { ref } = useZxing({
     onResult(result) {
@@ -48,10 +39,8 @@ function BarcodeScanner() {
 
   useEffect(() => {
     const query = async () => {
-      const client = await getSigningCosmWasmClient()
-
       if (result) {
-        const response = await queryGuestType(client, result)
+        const response = await queryGuestType(signingCosmWasmClient, result)
         setMemberWeight(response.weight)
       }
     }
@@ -62,14 +51,13 @@ function BarcodeScanner() {
 
   useEffect(() => {
     const query = async () => {
-      const client = await getSigningCosmWasmClient()
 
       if (result) {
-        queryDayOneArrival(client, result)
+        queryDayOneArrival(signingCosmWasmClient, result)
           .then(() => setDayOneArrival(true))
           .catch((err) => setDayOneArrival(false))
   
-        queryDayTwoArrival(client, result)
+        queryDayTwoArrival(signingCosmWasmClient, result)
           .then(() => setDayTwoArrival(true))
           .catch((err) => setDayTwoArrival(false))
       }

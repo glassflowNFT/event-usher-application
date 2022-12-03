@@ -16,24 +16,15 @@ import {
   AccordionIcon,
 } from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import { useWallet } from '@cosmos-kit/react'
+import {
+  useWalletManager,
+  useWallet,
+  WalletConnectionStatus,
+} from "@xiti/cosmodal"
 
 function Navbar() {
-  const walletManager = useWallet()
-  const {
-    currentChainName,
-    currentWalletName,
-    connectedWalletId,
-    walletStatus,
-    username,
-    address,
-    message,
-    connect,
-    disconnect,
-    openView,
-    setCurrentChain,
-    getSigningCosmWasmClient
-  } = walletManager;
+  const { connect, disconnect } = useWalletManager()
+  const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
   const admin = JSON.parse(localStorage.getItem("admin?"))
 
@@ -71,7 +62,7 @@ function Navbar() {
   <Spacer />
 
       <Button onClick={toHome} px='-15' colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
-      <Button colorScheme='purple' size='sm' ml={9} onClick={toConnect} > QR Code</Button>
+      {!address ? <Button colorScheme='purple' size='sm' ml={9} onClick={connect} > Connect</Button> : <NavPopover /> }
     <div className='dropdown'>
       <Button ml={5} size='lg' color='white' colorScheme='white' className='dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <HamburgerIcon color='white'/>
@@ -79,7 +70,6 @@ function Navbar() {
       <ul className='dropdown-menu' aria-labelledby="dropdownMenuButton1">
       <li className='dropdown-item' onClick={toVoteCategories} color='white' colorScheme='white'>Vote</li>
       <li className='dropdown-item' onClick={disconnect}>Disconnect</li>
-      <li className='dropdown-item' onClick={toBrowse}>Browse</li>
       </ul>
     </div>
   </Flex>

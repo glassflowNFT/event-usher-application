@@ -25,49 +25,34 @@ import { useEffect, useState } from 'react'
 import Axios from "axios";
 import { setSelectionRange } from '@testing-library/user-event/dist/utils'
 import { queryAdmin, getAdmin } from '../contracts/adminType'
-import { useWallet } from '@cosmos-kit/react'
+import {
+  useWalletManager,
+  useWallet,
+  WalletConnectionStatus,
+} from "@xiti/cosmodal"
 
 
 function Home() {
-  const walletManager = useWallet()
+
+  const { connect, disconnect } = useWalletManager()
+  const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
   let navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
    const [adminStatus, setAdminStatus] = useState(null)
   const [isAdmin, setIsAdmin] = useState('')
-
-  const {
-    currentChainName,
-    currentWalletName,
-    walletStatus,
-    username,
-    address,
-    message,
-  } = walletManager
-
-  const {
-    connect,
-    disconnect,
-    openView,
-    setCurrentChain,
-    getSigningCosmWasmClient
-  } = walletManager;
-
-  console.log(walletManager);
+  const [show, setShow] = useState(false)
 
   async function connectOnClick() {
-    setCurrentChain("juno")
+    setShow(false)
    await connect()
-
   }
   
   useEffect(() => {
     const query = async () => {
     if (address) { 
-      const client = await getSigningCosmWasmClient()
-
-      const adminResponse = await queryAdmin(client, address)
+      const adminResponse = await queryAdmin(signingCosmWasmClient, address)
       setAdminStatus(adminResponse.weight)
 
       localStorage.setItem('admin?', JSON.stringify(getAdmin(adminResponse.weight)))
@@ -88,7 +73,7 @@ function Home() {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  return address && walletStatus === "Connected" ? (
+  return (
 
     <div className='base'>
       <Navbar />
@@ -96,21 +81,16 @@ function Home() {
         <img className="title-gold-bg mt-5" src={titleGoldBg}/>
       </div>
       </Center>
-    
-      <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
+      <Center>
+        <Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading>
+        </Center>
       <div className='container me-3'>
-        <div className="row">
-          <div className='col'>          
-</div> 
-
-
-</div>
   <Box p='2'>
 <Card direction='row' overflow='hidden' variant='outline'>
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
+    src="https://media.discordapp.net/attachments/1044368970611957781/1048354697054015539/legends-ticket-png.png?width=1066&height=1066"
     alt='Caffe Latte'
   />
   <Stack>
@@ -122,7 +102,7 @@ function Home() {
     </CardBody>
     <CardFooter>
       <Button variant='solid' colorScheme='blue'  onClick={toConnect}>
-        Connect
+        Display
       </Button>
     </CardFooter>
   </Stack>
@@ -134,7 +114,7 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
+    src="https://media.discordapp.net/attachments/1044368970611957781/1048355040924024852/categories.png?width=1066&height=1066"
     alt='Caffe Latte'
   />
   <Stack>
@@ -159,7 +139,7 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src={launchpad}
+    src="https://cdn.discordapp.com/attachments/1044368970611957781/1048355087124267100/msgz1_collab1.jpeg"
     alt='Caffe Latte'
   />
   <Stack>
@@ -185,7 +165,7 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
+    src="https://cdn.discordapp.com/attachments/1044368970611957781/1048355196775972975/glassflow.png"
     alt='Caffe Latte'
   />
   <Stack>
@@ -288,37 +268,6 @@ View Wiki   </Link>
           <img className="footer" src={$footer} />
          
     </div>
-  ) : (
-    <Container>
-      {" "}
-      <div className="base">
-          <Center>
-            <Container>
-              <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
-                Connect To Access Event Application{" "}
-              </Heading>
-            </Container>{" "}
-          </Center>
-
-        <div className="container">
-          <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
-          </Center>
-          <Center>
-            <Button
-              colorScheme="whiteAlpha"
-              color="white"
-              mb={150}
-              onClick={connectOnClick}
-              size='lg'
-            >
-              Connect Keplr
-            </Button>
-                 </Center>
-        </div>
-      </div>
-    </Container>
   )
 }
 function BasicUsage() {

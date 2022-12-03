@@ -19,27 +19,24 @@ import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import { getJudge, queryJudge } from '../contracts/voteContract'
 import {Slider,SliderTrack,SliderFilledTrack,SliderThumb,SliderMark,} from '@chakra-ui/react'
-import { useWallet } from '@cosmos-kit/react'
+import {
+  useWalletManager,
+  useWallet,
+  WalletConnectionStatus,
+} from "@xiti/cosmodal"
 import { useMemo } from "react"
 import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { vote } from '../contracts/voteContract'
+import { queryEntry } from '../contracts/voteContract'
 
 function Vote() {
+  let params = useParams()
 
-  const walletManager = useWallet()
-  const {
-    currentChainName,
-    currentWalletName,
-    walletStatus,
-    username,
-    address,
-    message,
-    connect,
-    disconnect,
-    openView,
-    setCurrentChain,
-    getSigningCosmWasmClient
-  } = walletManager;
+  console.log(params);
+
+  const { connect, disconnect } = useWalletManager()
+  const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
   const [lookValue, setLookValue] = useState("5")
   const [smellValue, setSmellValue] = useState("5")
@@ -47,6 +44,12 @@ function Vote() {
   const [meltValue, setMeltValue] = useState("5")
   const [judgeWeight, setJudgeWeight] = useState(null)
   const [isJudge, setIsJudge] = useState(false)
+  const [entry, setEntry] = useState([])
+  const paramIdToNum = params.id
+
+
+
+  console.log(paramIdToNum);
 
     const handleLookChange = e => setLookValue(e.target.value)
     const handleSmellChange = e => setSmellValue(e.target.value)
@@ -59,19 +62,15 @@ function Vote() {
     const urlParams = useMemo(() => new URLSearchParams(search), [search])
     
     function toVoteCategories() {
-      navigate("/Voting-Categories")
+      navigate(`/Voting-Entries-${params.category}`)
     }
 
-    function toVoteCategories() {
-        navigate('/Voting-Categories')
-    }
     
     useEffect(() => {
         const query = async () => {
-          const client = await getSigningCosmWasmClient()
 
           if (address) {
-            const response = await queryJudge(client, address)
+            const response = await queryJudge(signingCosmWasmClient, address)
 
             setJudgeWeight(response.weight)
             console.log(response);
@@ -85,8 +84,18 @@ function Vote() {
           
       },[address])
 
+      useEffect(() => {
+        const getEntry = async () => {
+          const response = await queryEntry(signingCosmWasmClient, params.category,parseInt(params.id))
+          setEntry(response)
+        }
+          getEntry()
+      }, [])
+
+      console.log(entry);
+    
+
       const executeVote = async () => {
-        const client = await getSigningCosmWasmClient()
 
         const look = Number(lookValue) * 100
         const smell = Number(smellValue) * 100
@@ -94,7 +103,7 @@ function Vote() {
         const melt = Number(meltValue) * 100
     
         const response = await vote(
-          client,
+          signingCosmWasmClient,
           address,
           urlParams.get("category"),
           Number(urlParams.get("entry")),
@@ -107,11 +116,10 @@ function Vote() {
         )
       }
         async function connectOnClick() {
-          setCurrentChain("juno")
          await connect()
         }
       
-return address && walletStatus === "Connected" ? (
+return(
     <div className='base'>
        <Navbar />
           <div>
@@ -119,7 +127,7 @@ return address && walletStatus === "Connected" ? (
           </div>
           <div className='container'>
             <div className='holder'>
-          <Center><Button  onClick={toVoteCategories}> Return to Categories</Button></Center>
+          <Center><Button  onClick={toVoteCategories}> Return to All Entries</Button></Center>
                 <div className='row mt-3'>
 <Card variant='outline' boxShadow='xl' maxW='sm'>
   <CardBody>
@@ -129,21 +137,18 @@ return address && walletStatus === "Connected" ? (
       borderRadius='lg'
     />
     <Stack mt='6' spacing='3'>
-      <Heading color="white" size='md'>ENTRY_NAME</Heading>
+      <Heading color="white" size='md'>{entry.name}</Heading>
       <Divider />
-      <Heading color="white" size='l'> ENTRY_MAKER_NAME</Heading>
+      <Heading color="white" size='l'> {entry.maker_name}</Heading>
       <Divider />
-      
-      <Text color="white">ENTRY_DESCRIPTION</Text>
-
                   <Divider />
-                  <Text color="white">ENTRY CATEGORY</Text>
+                  <Text color="white">{entry.category}</Text>
                   <Divider />
-                  <Text color="white">ENTRY BREEDER</Text>
+                  <Text color="white">{entry.breeder}</Text>
                   <Divider />
-                  <Text color="white">ENTRY FARMER</Text>
+                  <Text color="white">{entry.farmer}</Text>
                   <Divider />
-                  <Text color="white">ENTRY GENETICS</Text>
+                  <Text color="white">{entry.genetics}</Text>
                   <Divider />
                 </Stack>
               </CardBody>
@@ -179,47 +184,14 @@ return address && walletStatus === "Connected" ? (
                             <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleMeltChange} value={meltValue}></input>
                         </Container>
 
-                       <Button onClick={executeVote} size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>
+                       <Button onClick={() => alert("Must be a judge to vote.")} size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>
                     </div>
                 </div>
               </div>
             </div>
       <img className="footer" src={$footer} />
     </div>
-   ) : (
-    <Container>
-      {" "}
-      <div className="base">
-        <div>
-          <Center>
-            <Container>
-              <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
-                Connect To Access Event Application{" "}
-              </Heading>
-            </Container>{" "}
-          </Center>
-        </div>
-
-        <div className="container">
-          <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
-          </Center>
-          <Center>
-            <Button
-              colorScheme="whiteAlpha"
-              color="white"
-              mb={130}
-              onClick={connectOnClick}
-              size='lg'
-            >
-              Connect Keplr
-            </Button>
-                 </Center>
-        </div>
-      </div>
-    </Container>
-  )
+   ) 
 }
 
 export default Vote

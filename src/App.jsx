@@ -15,24 +15,29 @@ import VotingEntriesDry from "./components/VotingEntriesDry";
 import Vote from "./components/Vote";
 import AllImages from "./components/AllImages"
 import { ChakraProvider } from '@chakra-ui/react';
-import { ChainProvider, WalletProvider, useW } from '@cosmos-kit/react';
-import { chains, assets, ibc } from 'chain-registry';
-import { wallets as keplrWallets } from '@cosmos-kit/keplr';
-import { createLocalStorageManager } from "@chakra-ui/react";
-
+import {
+  WalletManagerProvider,
+  ChainInfoID,
+  WalletType,
+} from "@xiti/cosmodal"
 
 function App() {
-  
+  const LOCAL_STORAGE_KEY = "connectedWalletId"
+
+
   return (
-    <ChakraProvider 
-    /* theme={defaultThemeWithoutCSSReset}  */
-    resetCSS={true} 
-    colorModeManager={createLocalStorageManager('chakra-ui-color-mode')}>
-      <WalletProvider 
-      chains={[...chains]}
-      assetLists={[...assets]}
-      wallets={[...keplrWallets]}
-      >
+    <ChakraProvider >
+       <WalletManagerProvider
+    enabledWalletTypes={[WalletType.Keplr, WalletType.WalletConnectKeplr]}
+    defaultChainId={ChainInfoID.Juno1}
+    localStorageKey={LOCAL_STORAGE_KEY}
+    walletConnectClientMeta={{
+      name: "CosmodalExampleDAPP",
+      description: "A dapp using the cosmodal library.",
+      url: "https://cosmodal.example.app",
+      icons: ["https://cosmodal.example.app/walletconnect.png"],
+    }}
+  >
     <Router>
        <ScrollToTop />
       <Routes>
@@ -43,14 +48,14 @@ function App() {
         <Route path='/Scan' element={<Scan />}></Route>
         <Route path='/404' element={<Fourohfour />}></Route>
         <Route path='/Voting-Categories' element={<VotingCategories />}></Route>
-        <Route path='/Voting-Entries-Water-Hashish' element={<VotingEntriesWater />}></Route>
+        <Route path='/Voting-Entries-Melt' element={<VotingEntriesWater />}></Route>
         <Route path='/Voting-Entries-Rosin' element={<VotingEntriesRosin />}></Route>
-        <Route path='/Voting-Entries-Dry-Sift' element={<VotingEntriesDry />}></Route>
-        <Route path='/Vote' element={<Vote />}></Route>
+        <Route path='/Voting-Entries-Sift' element={<VotingEntriesDry />}></Route>
+        <Route path='/Vote/:category/:id' element={<Vote />}></Route>
         <Route path='/Browse' element={<AllImages />}></Route>
       </Routes>
     </Router>
-    </WalletProvider>
+    </WalletManagerProvider>
     </ChakraProvider>
   );
 }
