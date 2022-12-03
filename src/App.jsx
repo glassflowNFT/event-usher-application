@@ -13,11 +13,13 @@ import VotingEntriesWater from "./components/VotingEntriesWater";
 import VotingEntriesRosin from "./components/VotingEntriesRosin";
 import VotingEntriesDry from "./components/VotingEntriesDry";
 import Vote from "./components/Vote";
+import AllImages from "./components/AllImages"
 import { ChakraProvider } from '@chakra-ui/react';
 import { ChainProvider, WalletProvider, useW } from '@cosmos-kit/react';
 import { chains, assets, ibc } from 'chain-registry';
 import { wallets as keplrWallets } from '@cosmos-kit/keplr';
 import { createLocalStorageManager } from "@chakra-ui/react";
+
 
 function App() {
   
@@ -45,6 +47,7 @@ function App() {
         <Route path='/Voting-Entries-Rosin' element={<VotingEntriesRosin />}></Route>
         <Route path='/Voting-Entries-Dry-Sift' element={<VotingEntriesDry />}></Route>
         <Route path='/Vote' element={<Vote />}></Route>
+        <Route path='/Browse' element={<AllImages />}></Route>
       </Routes>
     </Router>
     </WalletProvider>

@@ -5,9 +5,9 @@ function AllImages() {
   return (
     <div>
         <Stack direction="row">
+            {/* <Image></Image>
             <Image></Image>
-            <Image></Image>
-            <Image></Image>
+            <Image></Image> */}
         </Stack>
     </div>
   )

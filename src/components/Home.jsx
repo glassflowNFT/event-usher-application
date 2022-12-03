@@ -292,7 +292,6 @@ View Wiki   </Link>
     <Container>
       {" "}
       <div className="base">
-        <div>
           <Center>
             <Container>
               <img className="connect-title-gold-bg" src={titleGoldBg} />
@@ -301,7 +300,6 @@ View Wiki   </Link>
               </Heading>
             </Container>{" "}
           </Center>
-        </div>
 
         <div className="container">
           <Center>
@@ -311,7 +309,7 @@ View Wiki   </Link>
             <Button
               colorScheme="whiteAlpha"
               color="white"
-              mb={130}
+              mb={150}
               onClick={connectOnClick}
               size='lg'
             >

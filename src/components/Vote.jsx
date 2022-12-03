@@ -57,6 +57,7 @@ function Vote() {
 
     const { search } = useLocation()
     const urlParams = useMemo(() => new URLSearchParams(search), [search])
+    
     function toVoteCategories() {
       navigate("/Voting-Categories")
     }
@@ -165,12 +166,6 @@ return address && walletStatus === "Connected" ? (
                             <p className='range-slider-text'>Entry's Taste</p>
                             <p className='range-slider-text'>{smellValue}</p>
                             <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleSmellChange} value={smellValue}></input>
-                            <Slider aria-label='slider-ex-2' colorScheme='pink' defaultValue={30}>
-  <SliderTrack>
-    <SliderFilledTrack />
-  </SliderTrack>
-  <SliderThumb />
-</Slider>
                             
                         </Container>
                     <Container className='input-holder p-3 mb-3'>

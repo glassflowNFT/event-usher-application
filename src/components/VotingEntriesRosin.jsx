@@ -20,6 +20,9 @@ import keplrLogo from "../assets/keplrlogo.png";
 import { Tag } from '@chakra-ui/react'
 import { Badge } from '@chakra-ui/react'
 import { useWallet } from '@cosmos-kit/react'
+import { useEffect, useState } from 'react';
+import { queryEntries } from '../contracts/voteContract';
+
 
 function VotingEntriesRosin() {
 
@@ -40,6 +43,8 @@ function VotingEntriesRosin() {
 
   let navigate = useNavigate()
 
+  const [ entries, setEntries ] = useState([])
+
   function nextCategory() {
       navigate('/Voting-Entries-Water-Hashish')
   }
@@ -52,6 +57,19 @@ function VotingEntriesRosin() {
     navigate(`/Vote?category=rosin&entry=${1}`)
   }
 
+  useEffect(() => {
+    const getEntries = async () => {
+      const client = await getSigningCosmWasmClient()
+      // Query without any pagination
+      // Lists 30 entries by default
+      const response = await queryEntries(client, 'rosin')
+      setEntries(response)
+    }
+
+     getEntries()
+  }, [])
+  console.log(entries);
+  
   async function connectOnClick() {
     setCurrentChain("juno")
    await connect()
@@ -76,270 +94,33 @@ function VotingEntriesRosin() {
 </Center>
 
 <Container s>
-       <Grid templateRows='repeat(5, 1fr)' gap={6}>
-       <Card direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack onClick={toVoting} >
-    <CardBody>
-      <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-      <Text py='2' color='white'>
-      ENTRY_DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Flex>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote</Button>
-    <Spacer p='6'/>
-  <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
-    </CardFooter>
-    
-  </Stack>
-</Card>
- 
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-<Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
- 
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
-
-<Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-  <Stack>
-    <CardBody>
-    <Heading color='white' fontSize='xl' fontWeight='bold'>
-      ENTRY_NAME
-  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-    Entry_Maker
-  </Badge>
-</Heading>
-      <Text color='white' py='2'>
-      ENTRY_NAME::DESCRIPTION
-      </Text>
-    </CardBody>
-    <CardFooter>
-      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-        Vote
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
+<Grid templateRows='repeat(5, 1fr)' gap={6}>
+         {entries?.map(e => {
+           return(
+                  <Card direction='row' overflow='hidden' variant='outline'>
+                  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+                  <Stack onClick={toVoting} >
+                    <CardBody>
+                      <Heading color='white' fontSize='xl' fontWeight='bold'>
+                      {e.name}
+                  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+                    {e.maker_name}
+                  </Badge>
+                </Heading>
+                      <Text py='2' color='white'>
+                      {e.breeder}
+                      </Text>
+                    </CardBody>
+                    <CardFooter>
+                      <Flex>
+                      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+                        Vote</Button>
+                    <Spacer p='6'/>
+                  <Tag color='white'>Successfully Voted</Tag></Flex>
+                    </CardFooter>
+                  </Stack>
+                </Card>
+         )})}
 </Grid>
 </Container>
 
