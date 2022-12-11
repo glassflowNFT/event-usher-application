@@ -1,16 +1,14 @@
 import React, { useEffect } from 'react'
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardBody } from '@chakra-ui/react'
 import Navbar from './Navbar'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Image } from '@chakra-ui/react'
-import { Stack, HStack, VStack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { Divider } from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Center, Square, Circle } from '@chakra-ui/react'
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Button} from '@chakra-ui/react'
+import { Center } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import rectangle8 from "../assets/rectangle8.png";
 import { useState } from 'react';
@@ -18,7 +16,6 @@ import { useNavigate } from 'react-router-dom'
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import { getJudge, queryJudge } from '../contracts/voteContract'
-import {Slider,SliderTrack,SliderFilledTrack,SliderThumb,SliderMark,} from '@chakra-ui/react'
 import { useWallet } from '@cosmos-kit/react'
 import { useMemo } from "react"
 import { useLocation } from 'react-router-dom'
@@ -59,10 +56,6 @@ function Vote() {
     const urlParams = useMemo(() => new URLSearchParams(search), [search])
     function toVoteCategories() {
       navigate("/Voting-Categories")
-    }
-
-    function toVoteCategories() {
-        navigate('/Voting-Categories')
     }
     
     useEffect(() => {
@@ -114,7 +107,7 @@ return address && walletStatus === "Connected" ? (
     <div className='base'>
        <Navbar />
           <div>
-            <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/>
+            <img className="connect-title-gold-bg mt-5" src={titleGoldBg} alt="null"/>
           </div>
           <div className='container'>
             <div className='holder'>
@@ -166,13 +159,6 @@ return address && walletStatus === "Connected" ? (
                             <p className='range-slider-text'>Entry's Taste</p>
                             <p className='range-slider-text'>{smellValue}</p>
                             <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleSmellChange} value={smellValue}></input>
-                            <Slider aria-label='slider-ex-2' colorScheme='pink' defaultValue={30}>
-  <SliderTrack>
-    <SliderFilledTrack />
-  </SliderTrack>
-  <SliderThumb />
-</Slider>
-                            
                         </Container>
                     <Container className='input-holder p-3 mb-3'>
                             <p className='range-slider-text'>Entry's Smell</p>
@@ -189,76 +175,8 @@ return address && walletStatus === "Connected" ? (
                     </div>
                 </div>
               </div>
-              <Container opacity="100%" className="input-holder p-3 mb-3">
-                <Text className="range-slider-text">Entry's Look</Text>
-                <p color="#F3C674" className="range-slider-text">
-                  {lookValue}
-                </p>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="1.00"
-                  max="10.00"
-                  step=".01"
-                  onChange={handleLookChange}
-                  value={lookValue}
-                ></input>
-              </Container>
-              <Container className="input-holder p-3 mb-3">
-                <p className="range-slider-text">Entry's Taste</p>
-                <p className="range-slider-text">{smellValue}</p>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="1.00"
-                  max="10.00"
-                  step=".01"
-                  onChange={handleSmellChange}
-                  value={smellValue}
-                ></input>
-                <Slider
-                  aria-label="slider-ex-2"
-                  colorScheme="pink"
-                  defaultValue={30}
-                >
-                  <SliderTrack>
-                    <SliderFilledTrack />
-                  </SliderTrack>
-                  <SliderThumb />
-                </Slider>
-              </Container>
-              <Container className="input-holder p-3 mb-3">
-                <p className="range-slider-text">Entry's Smell</p>
-                <p className="range-slider-text">{tasteValue}</p>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="1.00"
-                  max="10.00"
-                  step=".01"
-                  onChange={handleTasteChange}
-                  value={tasteValue}
-                ></input>
-              </Container>
-              <Container className="input-holder p-3 mb-3">
-                <p className="range-slider-text">Entry's After Banger</p>
-                <p className="range-slider-text">{meltValue}</p>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="1.00"
-                  max="10.00"
-                  step=".01"
-                  onChange={handleMeltChange}
-                  value={meltValue}
-                ></input>
-              </Container>
-
-              <Button size="lg" color="#e25273" onClick={executeVote}>
-                Confrim & Broadcast Vote
-              </Button>
             </div>
-      <img className="footer" src={$footer} />
+      <img className="footer" src={$footer}  alt="null"/>
     </div>
    ) : (
     <Container>
@@ -267,7 +185,7 @@ return address && walletStatus === "Connected" ? (
         <div>
           <Center>
             <Container>
-              <img className="connect-title-gold-bg" src={titleGoldBg} />
+              <img className="connect-title-gold-bg" src={titleGoldBg}  alt="null" />
               <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
                 Connect To Access Event Application{" "}
               </Heading>
@@ -277,7 +195,7 @@ return address && walletStatus === "Connected" ? (
 
         <div className="container">
           <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
+            <img borderRadius="full" className="icon" src={keplrLogo} alt="null"  />
           </Center>
           <Center>
             <Button
