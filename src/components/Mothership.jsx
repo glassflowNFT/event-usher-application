@@ -13,6 +13,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react"
 import { useDisclosure } from "@chakra-ui/react"
 import { Stack, HStack, VStack } from "@chakra-ui/react"
 import { Image } from "@chakra-ui/react"
+import { Box } from "@chakra-ui/layout"
 import { Container } from "@chakra-ui/react"
 import {
   Modal,
@@ -24,19 +25,27 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react"
 import keplrLogo from "../assets/keplrlogo.png"
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
 import { checkMembership } from "../contracts/checkMembership"
+import { useWallet } from '@cosmos-kit/react'
 
 
 
 function Mothership() {
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, publucKey, signingCosmWasmClient } =
-  useWallet()
+
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [scrollBehavior, setScrollBehavior] = React.useState("inside")
@@ -45,7 +54,7 @@ function Mothership() {
   const mintFreeNFT = async () => {
     try {
       const response = await checkMembership(
-        signingCosmWasmClient,
+        getSigningCosmWasmClient,
         "juno1ss9tlfsj53uc5w6g45sjtu88uyc6nf7ar0k8wge8fmzz3588ceks2xvsnn",
         address
       )
@@ -60,7 +69,7 @@ function Mothership() {
   const mintCollabDrop = async () => {
     try {
       const response = await checkMembership(
-        signingCosmWasmClient,
+        getSigningCosmWasmClient,
         "juno1egnnvg6d60787rg2zdw8wua79s4f25zzc56nnv8hyvmq656jyeksrlug9r",
         address
       )
@@ -75,7 +84,7 @@ function Mothership() {
   const mintTshirt = async () => {
     try {
       const response = await checkMembership(
-        signingCosmWasmClient,
+        getSigningCosmWasmClient,
         "juno15aagx8wy9klpx9nn8l04vpydmksasexyl9yrgcqya8mcx2374rmskjt6v2",
         address
       )
@@ -87,7 +96,12 @@ function Mothership() {
     }
   }
 
-  return status === WalletConnectionStatus.Connected ? (
+  async function connectOnClick() {
+    setCurrentChain("juno")
+   await connect()
+  }
+
+  return address && walletStatus === "Connected" ?(
  <div className="base">
       <Navbar />
       <div>
@@ -100,19 +114,21 @@ function Mothership() {
           overflow="hidden"
           variant="outline"
         >
+          <Box boxSize='sm'>
           <Image
             objectFit="cover"
             maxW={{ base: "100%", sm: "500px" }}
             src={mscamel}
             alt="Caffe Latte"
           />
+          </Box>
 
           <Stack>
             <CardBody>
-              <Heading size="xl">
+              <Heading color='white' size="xl">
                 Mint Your Free 2022 Mothership x Legends Attendance Token.
               </Heading>
-              <Text py="2">
+              <Text color='white' py="2">
                 Each Legends guest can mint one official attendance NFT in
                 collaboartion with Mothership Glass.
               </Text>
@@ -140,8 +156,8 @@ function Mothership() {
 
           <Stack>
             <CardBody>
-              <Heading size="xl">Gz-1 x Mothership Drop </Heading>
-              <Text py="2">
+              <Heading color='white' size="xl">Gz-1 x Mothership Drop </Heading>
+              <Text color='white' py="2">
                 A limited number of guests will be walking away with both a pipe
                 and NFT from GZ1 and Mothership Glass. This button to mint will
                 work for the legends guest who has bought and now owns both the
@@ -171,10 +187,10 @@ function Mothership() {
 
           <Stack>
             <CardBody>
-              <Heading size="xl">
+              <Heading color='white' size="xl">
                 Mothership x Legends T-shirt Collection
               </Heading>
-              <Text py="2">
+              <Text color='white' py="2">
                 The First 20 people to purchase the official Mothership &
                 Legends of Hashish merchandise can mint here for their NFT
               </Text>
@@ -241,19 +257,19 @@ function Mothership() {
   ) : (
     <Container>
       {" "}
-      <div className="base pb-5">
+      <div className="base">
         <div>
           <Center>
             <Container>
               <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading px="7" mb={80} noOfLines={2}>
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
                 Connect To Access Event Application{" "}
               </Heading>
             </Container>{" "}
           </Center>
         </div>
 
-        <div className="container pb-5">
+        <div className="container">
           <Center>
             <img borderRadius="full" className="icon" src={keplrLogo} />
           </Center>
@@ -261,16 +277,13 @@ function Mothership() {
             <Button
               colorScheme="whiteAlpha"
               color="white"
-              mb={80}
-              onClick={connect}
+              mb={130}
+              onClick={connectOnClick}
+              size='lg'
             >
               Connect Keplr
             </Button>
                  </Center>
-
-          {error && (
-            <p>{error instanceof Error ? error.message : `${error}`}</p>
-          )}
         </div>
       </div>
     </Container>

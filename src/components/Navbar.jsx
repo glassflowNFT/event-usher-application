@@ -27,6 +27,9 @@ function Navbar() {
   function toScan() {
     navigate('/Scan')
 }
+  function toMint() {
+    navigate('/Mint')
+}
   
 
     return admin === 'non-admin' ? (
@@ -65,6 +68,7 @@ function Navbar() {
     <Button onClick={toHome} px='-15' colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
     <Button onClick={toVoteCategories} size='md'  color='white' colorScheme='white'>Vote</Button>
     <Button onClick={toScan} size='md'  color='white' colorScheme='white'>Scan</Button>
+    <Button onClick={toMint} size='md'  color='white' colorScheme='white'>Mint</Button>
     <NavPopover />
     <Button colorScheme='purple' onClick={toConnect} > QR Code</Button>
   </ButtonGroup>

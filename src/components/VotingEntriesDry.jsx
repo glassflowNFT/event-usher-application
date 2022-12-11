@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
@@ -22,6 +22,8 @@ import {
   useWallet,
   WalletConnectionStatus,
 } from "@xiti/cosmodal"
+import { queryEntries } from '../contracts/voteContract';
+import { useEffect } from 'react';
 
 function VotingEntriesDry() {
   const { connect, disconnect } = useWalletManager()
@@ -37,7 +39,7 @@ function VotingEntriesDry() {
   }
 
   function toVoting(){
-    navigate('/Vote')
+    navigate(`/Vote?category=sift&entry=${1}`)
   }
 
   return status === WalletConnectionStatus.Connected ?  (
