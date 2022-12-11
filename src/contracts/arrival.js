@@ -7,8 +7,8 @@ export const queryDayOneArrival = async (client, address) => {
     address
   )
 }
- 
-  
+
+
 export const queryDayTwoArrival = async (client, address) => {
   return checkMembership(
     client,
@@ -16,6 +16,6 @@ export const queryDayTwoArrival = async (client, address) => {
     address
   )
 }
-  
+
 
 // Add Member Day two arrival

@@ -62,7 +62,7 @@ function VotingCategories() {
     <div className='base'>
     <Navbar />
        <div>
-         <img className="connect-title-gold-bg" src={titleGoldBg}/>
+         <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/>
        </div>
        <div className='container'>
          <div className='holder'>

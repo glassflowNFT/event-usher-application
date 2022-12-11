@@ -59,7 +59,7 @@ function VotingEntriesWater() {
     <div className='base'>
     <Navbar />
        <div>
-         <img className="connect-title-gold-bg" src={titleGoldBg}/></div>
+          <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/></div>
          <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Water Hashish Entries</Heading>
          <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Hashish Rosin</Button>
   <Spacer />

@@ -36,33 +36,33 @@ function NavPopover() {
 //       .forEach(popoverNode => new Popover(popoverNode))
 // })
 
-const popover = (
-  <Popover id="popover-basic">
-      <Popover.Header>
-        <Stack
-          as="Stack"
-          direction="horizontal"
-          className="align-items-baseline"
-        >
-          <h3 className="flex-grow-1 mb-0">{username}</h3>
-        </Stack>
-      </Popover.Header>
-      <Popover.Body>
-       {address}
-       <Button colorScheme='blue' className='m-4' onClick={disconnect}>Disconnect</Button>
-      </Popover.Body>
-    </Popover>
-  )
+// const popover = (
+//   <Popover id="popover-basic">
+//       <Popover.Header>
+//         <Stack
+//           as="Stack"
+//           direction="horizontal"
+//           className="align-items-baseline"
+//         >
+//           <h3 className="flex-grow-1 mb-0">{username}</h3>
+//         </Stack>
+//       </Popover.Header>
+//       <Popover.Body>
+//        {address}
+//        <Button colorScheme='blue' className='m-4' >Disconnect</Button>
+//       </Popover.Body>
+//     </Popover>
+//   )
 
   return (
     <Button size='md' colorScheme='white' c>
 
-        <OverlayTrigger 
+       {/* <OverlayTrigger 
         trigger={"focus"}
         placement="center"
-        overlay={popover}>
-          <a tabindex="0" className='nav-link-pop' color='white' aria-labelledby="dropdownMenuButton">{username}</a>
-        </OverlayTrigger>
+     overlay={popover}> */}
+          <li onClick={disconnect}>Disconnect</li>
+        {/* </OverlayTrigger> */}
         </Button>
   )
 }

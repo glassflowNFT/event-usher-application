@@ -8,9 +8,33 @@ import { Button, ButtonGroup } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { useEffect } from 'react'
 import NavPopover from './NavPopover'
-
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from '@chakra-ui/react'
+import { HamburgerIcon } from '@chakra-ui/icons'
+import { useWallet } from '@cosmos-kit/react'
 
 function Navbar() {
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    connectedWalletId,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
+
   const admin = JSON.parse(localStorage.getItem("admin?"))
 
     let navigate = useNavigate()
@@ -30,6 +54,9 @@ function Navbar() {
   function toMint() {
     navigate('/Mint')
 }
+  function toBrowse() {
+    navigate('/Browse')
+}
   
 
     return admin === 'non-admin' ? (
@@ -43,12 +70,18 @@ function Navbar() {
   </Box>
   <Spacer />
 
-  <ButtonGroup gap='2'>
-    <Button onClick={toHome} px='-15' colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
-    <Button onClick={toVoteCategories} size='md'  color='white' colorScheme='white'>Vote</Button>
-    <NavPopover />
-    <Button colorScheme='purple' onClick={toConnect} > QR Code</Button>
-  </ButtonGroup>
+      <Button onClick={toHome} px='-15' colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
+      <Button colorScheme='purple' size='sm' ml={9} onClick={toConnect} > QR Code</Button>
+    <div className='dropdown'>
+      <Button ml={5} size='lg' color='white' colorScheme='white' className='dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <HamburgerIcon color='white'/>
+      </Button>
+      <ul className='dropdown-menu' aria-labelledby="dropdownMenuButton1">
+      <li className='dropdown-item' onClick={toVoteCategories} color='white' colorScheme='white'>Vote</li>
+      <li className='dropdown-item' onClick={disconnect}>Disconnect</li>
+      <li className='dropdown-item' onClick={toBrowse}>Browse</li>
+      </ul>
+    </div>
   </Flex>
       </nav>
       </div>
@@ -64,7 +97,7 @@ function Navbar() {
   </Box>
   <Spacer />
 
-  <ButtonGroup gap='2'>
+  <ButtonGroup gap='1'>
     <Button onClick={toHome} px='-15' colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
     <Button onClick={toVoteCategories} size='md'  color='white' colorScheme='white'>Vote</Button>
     <Button onClick={toScan} size='md'  color='white' colorScheme='white'>Scan</Button>

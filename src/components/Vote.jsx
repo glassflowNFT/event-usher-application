@@ -114,7 +114,7 @@ return address && walletStatus === "Connected" ? (
     <div className='base'>
        <Navbar />
           <div>
-            <img className="connect-title-gold-bg" src={titleGoldBg}/>
+            <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/>
           </div>
           <div className='container'>
             <div className='holder'>
@@ -128,21 +128,22 @@ return address && walletStatus === "Connected" ? (
       borderRadius='lg'
     />
     <Stack mt='6' spacing='3'>
-      <Heading size='md'>ENTRY_NAME</Heading>
+      <Heading color="white" size='md'>ENTRY_NAME</Heading>
       <Divider />
-      <Heading size='l'> ENTRY_MAKER_NAME</Heading>
+      <Heading color="white" size='l'> ENTRY_MAKER_NAME</Heading>
       <Divider />
       
-      <Text>ENTRY_DESCRIPTION</Text>
+      <Text color="white">ENTRY_DESCRIPTION</Text>
 
                   <Divider />
                   <Text>ENTRY CATEGORY</Text>
                   <Divider />
-                  <Text>ENTRY BREEDER</Text>
+                  <Text color="white">ENTRY BREEDER</Text>                  <Text color="white">ENTRY BREEDER</Text>
                   <Divider />
-                  <Text>ENTRY FARMER</Text>
+                                 <Text color="white">ENTRY FARMER</Text>
+
                   <Divider />
-                  <Text>ENTRY GENETICS</Text>
+                  <Text color="white">ENTRY GENETICS</Text>
                   <Divider />
                 </Stack>
               </CardBody>

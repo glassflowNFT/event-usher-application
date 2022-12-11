@@ -45,7 +45,7 @@ function Scan() {
 
        <Navbar />
           <div>
-            <img className="connect-title-gold-bg" src={titleGoldBg}/>
+            <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/>
           </div>
           <BarcodeScanner />
           <img className="footer" src={$footer} />
