@@ -1,11 +1,10 @@
 import React from 'react'
 import { Box } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
-import { Center, Square, Circle } from '@chakra-ui/react'
+import { Center} from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 import {Accordion,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,} from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
 import { Heading } from '@chakra-ui/react'
@@ -13,46 +12,56 @@ import { Image } from '@chakra-ui/react'
 import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react'
 import Navbar from './Navbar';
 import { Stack, HStack, VStack } from '@chakra-ui/react'
-import rectangle8 from "../assets/rectangle8.png";
 import sponsors1 from "../assets/sponsors1.png";
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import launchpad from "../assets/launchpad.png";
 import keplrLogo from "../assets/keplrlogo.png";
 import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import Axios from "axios";
-import { setSelectionRange } from '@testing-library/user-event/dist/utils'
 import { queryAdmin, getAdmin } from '../contracts/adminType'
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
+import { useWallet } from '@cosmos-kit/react'
 
 
 function Home() {
-
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
+  const walletManager = useWallet()
 
   let navigate = useNavigate()
 
   const [loading, setLoading] = useState(false)
-   const [adminStatus, setAdminStatus] = useState(null)
-  const [isAdmin, setIsAdmin] = useState('')
-  const [show, setShow] = useState(false)
+  const [adminStatus, setAdminStatus] = useState(null)
+
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+  } = walletManager
+
+  const {
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
+
+  console.log(walletManager);
 
   async function connectOnClick() {
-    setShow(false)
+    setCurrentChain("juno")
    await connect()
+
   }
   
   useEffect(() => {
     const query = async () => {
     if (address) { 
-      const adminResponse = await queryAdmin(signingCosmWasmClient, address)
+      const client = await getSigningCosmWasmClient()
+
+      const adminResponse = await queryAdmin(client, address)
       setAdminStatus(adminResponse.weight)
 
       localStorage.setItem('admin?', JSON.stringify(getAdmin(adminResponse.weight)))
@@ -73,7 +82,7 @@ function Home() {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  return (
+  return address && walletStatus === "Connected" ? (
 
     <div className='base'>
       <Navbar />
@@ -81,17 +90,22 @@ function Home() {
         <img className="title-gold-bg mt-5" src={titleGoldBg}/>
       </div>
       </Center>
-      <Center>
-        <Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading>
-        </Center>
+    
+      <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
       <div className='container me-3'>
+        <div className="row">
+          <div className='col'>          
+</div> 
+
+
+</div>
   <Box p='2'>
 <Card direction='row' overflow='hidden' variant='outline'>
   <Image
     objectFit='cover'
     maxW='150px'
-    src="https://media.discordapp.net/attachments/1044368970611957781/1048354697054015539/legends-ticket-png.png?width=1066&height=1066"
-    alt='Caffe Latte'
+    src="https://bafybeigyltl2mqxvenvuxt6ypchmb3s5o4wcq3w7c2kexxbr4b4tzbcghe.ipfs.nftstorage.link/"
+    alt='NFT Ticket'
   />
   <Stack>
     <CardBody>
@@ -114,8 +128,8 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src="https://media.discordapp.net/attachments/1044368970611957781/1048355040924024852/categories.png?width=1066&height=1066"
-    alt='Caffe Latte'
+    src="https://bafybeiauxhvmsfhsprvysr3slrc7naxiv34h65pnqvtgwfuz4mmpm7fptm.ipfs.nftstorage.link/"
+    alt='Categories'
   />
   <Stack>
     <CardBody>
@@ -139,14 +153,14 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src="https://cdn.discordapp.com/attachments/1044368970611957781/1048355087124267100/msgz1_collab1.jpeg"
-    alt='Caffe Latte'
+    src="https://bafkreiet6izx5ts3n5mi4fuw6h626t44wzbkgfkxwq4cyqllwvuzjwarue.ipfs.nftstorage.link/"
+    alt='Couch Locked'
   />
   <Stack>
     <CardBody>
       <Heading color='white' size='md'>Legends of Hashish x Mothership NFT's</Heading>
       <Text py='2' color="white">
-      Gain Access to the mothership 
+      View Mothership Tokens
       
       </Text>
     </CardBody>
@@ -165,8 +179,8 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src="https://cdn.discordapp.com/attachments/1044368970611957781/1048355196775972975/glassflow.png"
-    alt='Caffe Latte'
+    src="https://nftstorage.link/ipfs/bafybeif7p5pwt6deaf43jg6v7ohxa4s6rlk7koq5dkkiizzpxcvhz662qq"
+    alt='gflow_no_bg'
   />
   <Stack>
     <CardBody>
@@ -268,6 +282,37 @@ View Wiki   </Link>
           <img className="footer" src={$footer} />
          
     </div>
+  ) : (
+    <Container>
+      {" "}
+      <div className="base">
+          <Center>
+            <Container>
+              <img className="connect-title-gold-bg" src={titleGoldBg} />
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
+                Connect To Access Event Application{" "}
+              </Heading>
+            </Container>{" "}
+          </Center>
+        </div>
+
+        <div className="container">
+          <Center>
+            <img borderRadius="full" className="icon" src={keplrLogo} />
+          </Center>
+          <Center>
+            <Button
+              colorScheme="whiteAlpha"
+              color="white"
+              mb={150}
+              onClick={connectOnClick}
+              size='lg'
+            >
+              Connect Keplr
+            </Button>
+                 </Center>
+        </div>
+    </Container>
   )
 }
 function BasicUsage() {

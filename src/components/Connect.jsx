@@ -3,33 +3,42 @@ import Navbar from "./Navbar"
 import $footer from "../assets/footer-cropped.png"
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png"
 import { Center, Text } from "@chakra-ui/react"
-import rectangle8 from "../assets/rectangle8.png"
-
 import { Container } from "@chakra-ui/react"
 import { Heading } from "@chakra-ui/react"
 import { Image } from "@chakra-ui/react"
 import Button from "react-bootstrap/Button"
-import { Stack, HStack, VStack } from "@chakra-ui/react"
-import { Box } from "@chakra-ui/react"
-import { SimpleGrid } from "@chakra-ui/react"
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react"
-import { Textarea } from "@chakra-ui/react"
+import { Stack } from "@chakra-ui/react"
+import { Card, CardBody } from "@chakra-ui/react"
 import keplrLogo from "../assets/keplrlogo.png"
 import { useEffect } from "react"
 import QRCode from "qrcode"
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
+// import {
+//   useWalletManager,
+//   useWallet,
+//   WalletConnectionStatus,
+// } from "@xiti/cosmodal"
 import { getGuestType, queryGuestType } from "../contracts/guestType"
+import { useWallet } from '@cosmos-kit/react'
 
 
 function Connect() {
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
+  // const { connect, disconnect } = useWalletManager()
+  // const { status, error, name, address, signingCosmWasmClient } = useWallet()
 
   const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
 
   const [qrcode, setQrcode] = useState("")
 
@@ -37,6 +46,7 @@ function Connect() {
   const [show, setShow] = useState(true)
 
   async function connectOnClick() {
+    setCurrentChain("juno")
    await connect()
 
   }
@@ -51,9 +61,10 @@ function Connect() {
 
   useEffect(() => {
     const query = async () => {
+      const client = await getSigningCosmWasmClient()
 
       if (address) {
-        const response = await queryGuestType(signingCosmWasmClient, address)
+        const response = await queryGuestType(client, address)
         setMemberWeight(response.weight)
       }
     }
@@ -64,16 +75,17 @@ function Connect() {
 
   console.log(memberWeight);
 
-  return (
+  return address && walletStatus === "Connected" ?  (
     <div className="base">
       <Navbar />
       <div>
         <img className="connect-title-gold-bg mt-5" src={titleGoldBg} />
+
       </div>
       <Container>
         <div className="container">
           <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
+            <img  src={keplrLogo} />
           </Center>
           <div className="connect-holder">
             <Text>
@@ -114,7 +126,39 @@ function Connect() {
 
       <img className="footer" src={$footer} />
 </div>
+  ) : (
+    <Container>
+      {" "}
+      <div className="base">
+        <div>
+          <Center>
+            <Container>
+              <img className="connect-title-gold-bg" src={titleGoldBg} />
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
+                Connect To Access Event Application{" "}
+              </Heading>
+            </Container>{" "}
+          </Center>
+        </div>
 
+        <div className="container">
+          <Center>
+            <img borderRadius="full" className="icon" src={keplrLogo} />
+          </Center>
+          <Center>
+            <Button
+              colorScheme="whiteAlpha"
+              color="white"
+              mb={130}
+              onClick={connectOnClick}
+              size='lg'
+            >
+              Connect Keplr
+            </Button>
+                 </Center>
+        </div>
+      </div>
+    </Container>
   )
 }
 

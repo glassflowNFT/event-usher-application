@@ -15,29 +15,25 @@ import VotingEntriesDry from "./components/VotingEntriesDry";
 import Vote from "./components/Vote";
 import AllImages from "./components/AllImages"
 import { ChakraProvider } from '@chakra-ui/react';
-import {
-  WalletManagerProvider,
-  ChainInfoID,
-  WalletType,
-} from "@xiti/cosmodal"
+import { ChainProvider, WalletProvider, useW } from '@cosmos-kit/react';
+import { chains, assets, ibc } from 'chain-registry';
+import { wallets as keplrWallets } from '@cosmos-kit/keplr';
+import { createLocalStorageManager } from "@chakra-ui/react";
+
+ 
 
 function App() {
-  const LOCAL_STORAGE_KEY = "connectedWalletId"
-
 
   return (
-    <ChakraProvider >
-       <WalletManagerProvider
-    enabledWalletTypes={[WalletType.Keplr, WalletType.WalletConnectKeplr]}
-    defaultChainId={ChainInfoID.Juno1}
-    localStorageKey={LOCAL_STORAGE_KEY}
-    walletConnectClientMeta={{
-      name: "CosmodalExampleDAPP",
-      description: "A dapp using the cosmodal library.",
-      url: "https://cosmodal.example.app",
-      icons: ["https://cosmodal.example.app/walletconnect.png"],
-    }}
-  >
+    <ChakraProvider
+    /* theme={defaultThemeWithoutCSSReset}  */
+    resetCSS={true} 
+    colorModeManager={createLocalStorageManager('chakra-ui-color-mode')}>
+      <WalletProvider 
+      chains={[...chains]}
+      assetLists={[...assets]}
+      wallets={[...keplrWallets]}
+      >
     <Router>
        <ScrollToTop />
       <Routes>
@@ -55,7 +51,7 @@ function App() {
         <Route path='/Browse' element={<AllImages />}></Route>
       </Routes>
     </Router>
-    </WalletManagerProvider>
+    </WalletProvider>
     </ChakraProvider>
   );
 }

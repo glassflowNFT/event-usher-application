@@ -1,15 +1,16 @@
 import { checkMembership } from "./checkMembership"
 import { coins } from "@cosmjs/stargate"
 
-const VOTING_CONTRACT = "juno1ca4l2mrf26vh64q9cax4rjpgpcdsf57ff2dykty7e70k2zl4d0qs3wgmw0"
+const VOTING_CONTRACT = "juno1xn6tm3gp6zxccg7nx390re6fljcxgcft766gu8r2pmruszhnmrsqfdz6cm"
 
 export const queryJudge = async (client, address ) => {
     return checkMembership(
             client,
-            "juno1ndrpu3xuyk92zj7z95pc20fnp0hryyu8thy8d94q4gl2xj7766xsj90n8g",
+            "juno1rzc8xmegmsm20c7nz5zm657vs0lq0f3vu764eghqrd78c5725edqw5rqp4",
             address
     )
 }
+
 
 export const getJudge = (weight) => {
     switch (weight) {

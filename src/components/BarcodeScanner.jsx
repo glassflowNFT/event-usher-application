@@ -10,17 +10,26 @@ import { Box } from "@chakra-ui/react"
 import { SimpleGrid } from "@chakra-ui/react"
 import { queryGuestType, getGuestType } from "../contracts/guestType"
 import { queryDayOneArrival, queryDayTwoArrival } from "../contracts/arrival"
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
+import { useWallet } from '@cosmos-kit/react'
 
 function BarcodeScanner() {
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
 
   const [result, setResult] = useState("")
+
 
   const { ref } = useZxing({
     onResult(result) {
@@ -39,8 +48,10 @@ function BarcodeScanner() {
 
   useEffect(() => {
     const query = async () => {
+      const client = await getSigningCosmWasmClient()
+
       if (result) {
-        const response = await queryGuestType(signingCosmWasmClient, result)
+        const response = await queryGuestType(client, result)
         setMemberWeight(response.weight)
       }
     }
@@ -49,15 +60,16 @@ function BarcodeScanner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result])
 
-  useEffect(() => {
+ useEffect(() => {
     const query = async () => {
+      const client = await getSigningCosmWasmClient()
 
-      if (result) {
-        queryDayOneArrival(signingCosmWasmClient, result)
+         if (result) {
+        queryDayOneArrival(client, result)
           .then(() => setDayOneArrival(true))
           .catch((err) => setDayOneArrival(false))
-  
-        queryDayTwoArrival(signingCosmWasmClient, result)
+
+          queryDayTwoArrival(client, result)
           .then(() => setDayTwoArrival(true))
           .catch((err) => setDayTwoArrival(false))
       }
@@ -66,6 +78,7 @@ function BarcodeScanner() {
     query()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result])
+
 
   return (
     <Center>
@@ -173,4 +186,5 @@ function BarcodeScanner() {
   )
 }
 
-export default BarcodeScanner
+
+  export default BarcodeScanner

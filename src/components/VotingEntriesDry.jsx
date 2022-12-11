@@ -17,20 +17,28 @@ import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
+import { useWallet } from '@cosmos-kit/react'
 import { queryEntries } from '../contracts/voteContract';
 import { useEffect } from 'react';
 import EntryCard from './EntryCard';
 
+
 function VotingEntriesDry() {
 
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
-
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
   
   let navigate = useNavigate()
   let params = useParams()
@@ -39,11 +47,15 @@ function VotingEntriesDry() {
 
   useEffect(() => {
     const getEntries = async () => {
-      const response = await queryEntries(signingCosmWasmClient, 'sift')
-      setEntries(response)
+      const client = await getSigningCosmWasmClient()
+      
+      // Query without any pagination
+      // Lists 30 entries by default
+      const response = await queryEntries(client, 'sift')
+      setEntries(response.entries)
     }
 
-     getEntries()
+    getEntries()
   }, [])
 
   const entryArray = []
@@ -63,7 +75,7 @@ function VotingEntriesDry() {
   }
 
   function prevCategory() {
-      navigate('/Voting-Entries-Melt')
+    navigate('/Voting-Entries-Melt')
   }
 
   function toVoteCategories() {
@@ -71,10 +83,11 @@ function VotingEntriesDry() {
   }
 
   async function connectOnClick() {
+    setCurrentChain("juno")
    await connect()
   }
 
-  return (
+  return address && walletStatus === "Connected" ?  (
     <div className='base'>
     <Navbar />
        <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg}/> 
@@ -82,25 +95,79 @@ function VotingEntriesDry() {
        <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Dry Sift Entries</Heading>
        <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Water</Button>
   <Spacer />
-        <Button colorScheme='teal' onClick={nextCategory} variant='outline'> Hashish Rosin </Button>
+  <Button colorScheme='teal' onClick={nextCategory} variant='outline'> Hashish Rosin </Button>
         </Flex>         <Center> <div className='container me-3'>
         <Center><Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button></Center>
                 <div className='holder'>
-                
+
                 </div>
+</div>
+
+</Center>
+       <Container s>
+       <Grid templateRows='repeat(5, 1fr)' gap={6}>
+         {entries?.map(e => {
+                  <Card direction='row' overflow='hidden' variant='outline'>
+                  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+                  <Stack onClick={toVoteCategories} >
+                    <CardBody>
+                      <Heading color='white' fontSize='xl' fontWeight='bold'>
+                      {e.name}
+                  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
+                    {e.maker_name}
+                  </Badge>
+                </Heading>
+                      <Text py='2' color='white'>
+                      {e.breeder}
+                      </Text>
+                    </CardBody>
+                    <CardFooter>
+                      <Flex>
+                      <Button  onClick={toVoteCategories} variant='solid' colorScheme='blue'>
+                        Vote</Button>
+                    <Spacer p='6'/>
+                  <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
+                    </CardFooter>
+                  </Stack>
+                </Card>
+         })}
+</Grid>
+</Container>
+<img className="footer" src={$footer} />
+ </div>
+  ) : (
+    <Container>
+      {" "}
+      <div className="base">
+        <div>
+          <Center>
+            <Container>
+              <img className="connect-title-gold-bg" src={titleGoldBg} />
+              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
+                Connect To Access Event Application{" "}
+              </Heading>
+            </Container>{" "}
+          </Center>
         </div>
 
-        </Center>
-              <Container s>
-              <Grid templateRows='repeat(5, 1fr)' gap={6}>
-                {entryArray?.map(e => {
-                  return(
-                          <EntryCard key={e.id} e={e} id={e.id} category={e.category}/>
-                )})}
-        </Grid>
-        </Container>
-        <img className="footer" src={$footer} />
- </div>
+        <div className="container">
+          <Center>
+            <img borderRadius="full" className="icon" src={keplrLogo} />
+          </Center>
+          <Center>
+            <Button
+              colorScheme="whiteAlpha"
+              color="white"
+              mb={130}
+              onClick={connectOnClick}
+              size='lg'
+            >
+              Connect Keplr
+            </Button>
+                 </Center>
+        </div>
+      </div>
+    </Container>
   )
 }
 

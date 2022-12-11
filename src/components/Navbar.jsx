@@ -2,29 +2,28 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
-import { Heading } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
-import { useRef } from 'react'
-import { useEffect } from 'react'
 import NavPopover from './NavPopover'
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-} from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
-import {
-  useWalletManager,
-  useWallet,
-  WalletConnectionStatus,
-} from "@xiti/cosmodal"
+import { useWallet } from '@cosmos-kit/react'
 
 function Navbar() {
-  const { connect, disconnect } = useWalletManager()
-  const { status, error, name, address, signingCosmWasmClient } = useWallet()
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    connectedWalletId,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
 
   const admin = JSON.parse(localStorage.getItem("admin?"))
 
@@ -70,6 +69,7 @@ function Navbar() {
       <ul className='dropdown-menu' aria-labelledby="dropdownMenuButton1">
       <li className='dropdown-item' onClick={toVoteCategories} color='white' colorScheme='white'>Vote</li>
       <li className='dropdown-item' onClick={disconnect}>Disconnect</li>
+      <li className='dropdown-item' onClick={toBrowse}>Browse</li>
       </ul>
     </div>
   </Flex>
