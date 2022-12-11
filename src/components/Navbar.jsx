@@ -2,19 +2,9 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { Box } from '@chakra-ui/react'
-import { Heading } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
-import { useRef } from 'react'
-import { useEffect } from 'react'
 import NavPopover from './NavPopover'
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-} from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { useWallet } from '@cosmos-kit/react'
 

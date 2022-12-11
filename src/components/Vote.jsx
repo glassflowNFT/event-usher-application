@@ -91,6 +91,7 @@ function Vote() {
 
       useEffect(() => {
         const getEntry = async () => {
+          const client = await getSigningCosmWasmClient()
           const response = await queryEntry(client, params.category,parseInt(params.id))
           setEntry(response)
         }

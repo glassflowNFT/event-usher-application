@@ -2,24 +2,18 @@ import React from 'react'
 import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
-import { Text } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Stack, HStack, VStack } from '@chakra-ui/react'
-import { Center, Square, Circle } from '@chakra-ui/react'
-import { Image } from '@chakra-ui/react'
-import { Grid, GridItem } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
+import { Center } from '@chakra-ui/react'
+import { Grid } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
-import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate, useParams } from 'react-router-dom';
-import { Badge } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
-import { Tag } from '@chakra-ui/react'
 import { useWallet } from '@cosmos-kit/react'
 import { queryEntries } from '../contracts/voteContract';
 import { useEffect, useState } from 'react';
+import EntryCard from './EntryCard';
 
 function VotingEntriesWater() {
 
@@ -88,7 +82,7 @@ function VotingEntriesWater() {
     <div className='base'>
     <Navbar />
        <div>
-         <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/></div>
+         <img className="connect-title-gold-bg mt-5" src={titleGoldBg}  alt="n/a"/></div>
          <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Water Hashish Entries</Heading>
          <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Hashish Rosin</Button>
   <Spacer />
@@ -107,7 +101,7 @@ function VotingEntriesWater() {
 </Grid>
 </Container>
 
-       <img className="footer" src={$footer} />
+       <img className="footer" src={$footer}  alt="n/a" />
  </div>
  ) : (
   <Container>
@@ -116,7 +110,7 @@ function VotingEntriesWater() {
       <div>
         <Center>
           <Container>
-            <img className="connect-title-gold-bg" src={titleGoldBg} />
+            <img className="connect-title-gold-bg" src={titleGoldBg} alt="n/a" />
             <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
               Connect To Access Event Application{" "}
             </Heading>
@@ -126,7 +120,7 @@ function VotingEntriesWater() {
 
       <div className="container">
         <Center>
-          <img borderRadius="full" className="icon" src={keplrLogo} />
+          <img borderRadius="full" className="icon" src={keplrLogo} alt="n/a" />
         </Center>
         <Center>
           <Button

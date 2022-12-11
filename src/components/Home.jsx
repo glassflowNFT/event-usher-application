@@ -1,11 +1,10 @@
 import React from 'react'
 import { Box } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
-import { Center, Square, Circle } from '@chakra-ui/react'
+import { Center} from '@chakra-ui/react'
 import { Link } from '@chakra-ui/react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
 import {Accordion,AccordionItem,AccordionButton,AccordionPanel,AccordionIcon,} from '@chakra-ui/react'
 import $footer from "../assets/footer-cropped.png";
 import { Heading } from '@chakra-ui/react'
@@ -13,17 +12,13 @@ import { Image } from '@chakra-ui/react'
 import {Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton,} from '@chakra-ui/react'
 import Navbar from './Navbar';
 import { Stack, HStack, VStack } from '@chakra-ui/react'
-import rectangle8 from "../assets/rectangle8.png";
 import sponsors1 from "../assets/sponsors1.png";
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import launchpad from "../assets/launchpad.png";
 import keplrLogo from "../assets/keplrlogo.png";
 import { useDisclosure } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import Axios from "axios";
-import { setSelectionRange } from '@testing-library/user-event/dist/utils'
 import { queryAdmin, getAdmin } from '../contracts/adminType'
 import { useWallet } from '@cosmos-kit/react'
 

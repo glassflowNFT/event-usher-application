@@ -109,7 +109,7 @@ function VotingEntriesDry() {
          {entries?.map(e => {
                   <Card direction='row' overflow='hidden' variant='outline'>
                   <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-                  <Stack onClick={toVoting} >
+                  <Stack onClick={toVoteCategories} >
                     <CardBody>
                       <Heading color='white' fontSize='xl' fontWeight='bold'>
                       {e.name}
@@ -123,7 +123,7 @@ function VotingEntriesDry() {
                     </CardBody>
                     <CardFooter>
                       <Flex>
-                      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
+                      <Button  onClick={toVoteCategories} variant='solid' colorScheme='blue'>
                         Vote</Button>
                     <Spacer p='6'/>
                   <Tag colorScheme='white'>Successfully Voted</Tag></Flex>

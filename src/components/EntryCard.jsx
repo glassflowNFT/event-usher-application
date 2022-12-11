@@ -1,14 +1,11 @@
 import React from 'react'
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Stack, HStack, VStack } from '@chakra-ui/react'
-import { Center, Square, Circle } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
-import { Grid, GridItem } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
-import { Container } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Badge } from '@chakra-ui/react'
