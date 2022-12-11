@@ -291,7 +291,6 @@ View Wiki   </Link>
     <Container>
       {" "}
       <div className="base">
-        <div>
           <Center>
             <Container>
               <img className="connect-title-gold-bg" src={titleGoldBg} />
@@ -310,7 +309,7 @@ View Wiki   </Link>
             <Button
               colorScheme="whiteAlpha"
               color="white"
-              mb={130}
+              mb={150}
               onClick={connectOnClick}
               size='lg'
             >
@@ -318,7 +317,6 @@ View Wiki   </Link>
             </Button>
                  </Center>
         </div>
-      </div>
     </Container>
   )
 }

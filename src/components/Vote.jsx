@@ -54,6 +54,7 @@ function Vote() {
 
     const { search } = useLocation()
     const urlParams = useMemo(() => new URLSearchParams(search), [search])
+    
     function toVoteCategories() {
       navigate("/Voting-Categories")
     }

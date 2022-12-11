@@ -40,9 +40,7 @@ function VotingEntriesDry() {
   
   let navigate = useNavigate()
 
-  console.log(getSigningCosmWasmClient);
-
-  const [ entries, setEntries ] = useState([])
+  const [ entries, setEntries ] = useState({})
 
   useEffect(() => {
     const getEntries = async () => {
@@ -50,12 +48,15 @@ function VotingEntriesDry() {
 
       // Query without any pagination
       // Lists 30 entries by default
-      const response = await queryEntries(client, 'dry')
+      const response = await queryEntries(client, 'sift')
       setEntries(response.entries)
     }
 
-    getEntries()
+      getEntries()
   }, [])
+
+  console.log(entries);
+
 
   function nextCategory() {
       navigate('/Voting-Entries-Rosin')
