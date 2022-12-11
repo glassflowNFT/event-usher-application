@@ -47,10 +47,11 @@ function VotingCategories() {
       navigate('/Voting-Entries-Rosin')
   }
   function toWater() {
-      navigate('/Voting-Entries-Water-Hashish')
+            navigate('/Voting-Entries-MELT')
+
   }
   function toSift() {
-    navigate('/Voting-Entries-Dry-Sift')
+    navigate('/Voting-Entries-Sift')
   }
 
   async function connectOnClick() {

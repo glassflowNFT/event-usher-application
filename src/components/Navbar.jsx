@@ -71,7 +71,7 @@ function Navbar() {
   <Spacer />
 
       <Button onClick={toHome} px='-15' colorScheme='white' color='burlywood' >Legends 2022: LA</Button>
-      <Button colorScheme='purple' size='sm' ml={9} onClick={toConnect} > QR Code</Button>
+      {!address ? <Button colorScheme='purple' size='sm' ml={9} onClick={connect} > Connect</Button> : <NavPopover /> }
     <div className='dropdown'>
       <Button ml={5} size='lg' color='white' colorScheme='white' className='dropdown-toggle' type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <HamburgerIcon color='white'/>

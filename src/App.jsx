@@ -44,10 +44,10 @@ function App() {
         <Route path='/Scan' element={<Scan />}></Route>
         <Route path='/404' element={<Fourohfour />}></Route>
         <Route path='/Voting-Categories' element={<VotingCategories />}></Route>
-        <Route path='/Voting-Entries-Water-Hashish' element={<VotingEntriesWater />}></Route>
+        <Route path='/Voting-Entries-Melt' element={<VotingEntriesWater />}></Route>
         <Route path='/Voting-Entries-Rosin' element={<VotingEntriesRosin />}></Route>
-        <Route path='/Voting-Entries-Dry-Sift' element={<VotingEntriesDry />}></Route>
-        <Route path='/Vote' element={<Vote />}></Route>
+        <Route path='/Voting-Entries-Sift' element={<VotingEntriesDry />}></Route>
+        <Route path='/Vote/:category/:id' element={<Vote />}></Route>
         <Route path='/Browse' element={<AllImages />}></Route>
       </Routes>
     </Router>

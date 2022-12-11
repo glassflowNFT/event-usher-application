@@ -19,9 +19,12 @@ import { getJudge, queryJudge } from '../contracts/voteContract'
 import { useWallet } from '@cosmos-kit/react'
 import { useMemo } from "react"
 import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { vote } from '../contracts/voteContract'
+import { queryEntry } from '../contracts/voteContract'
 
 function Vote() {
+  let params = useParams()
 
   const walletManager = useWallet()
   const {
@@ -38,12 +41,20 @@ function Vote() {
     getSigningCosmWasmClient
   } = walletManager;
 
+  console.log(params);
+
   const [lookValue, setLookValue] = useState("5")
   const [smellValue, setSmellValue] = useState("5")
   const [tasteValue, setTasteValue] = useState("5")
   const [meltValue, setMeltValue] = useState("5")
   const [judgeWeight, setJudgeWeight] = useState(null)
   const [isJudge, setIsJudge] = useState(false)
+  const [entry, setEntry] = useState([])
+  const paramIdToNum = params.id
+
+
+
+  console.log(paramIdToNum);
 
     const handleLookChange = e => setLookValue(e.target.value)
     const handleSmellChange = e => setSmellValue(e.target.value)
@@ -54,9 +65,9 @@ function Vote() {
 
     const { search } = useLocation()
     const urlParams = useMemo(() => new URLSearchParams(search), [search])
-    
+
     function toVoteCategories() {
-      navigate("/Voting-Categories")
+      navigate(`/Voting-Entries-${params.category}`)
     }
     
     useEffect(() => {
@@ -77,6 +88,16 @@ function Vote() {
           )
           
       },[address])
+
+      useEffect(() => {
+        const getEntry = async () => {
+          const response = await queryEntry(client, params.category,parseInt(params.id))
+          setEntry(response)
+        }
+          getEntry()
+      }, [])
+
+      console.log(entry);
 
       const executeVote = async () => {
         const client = await getSigningCosmWasmClient()
@@ -112,7 +133,7 @@ return address && walletStatus === "Connected" ? (
           </div>
           <div className='container'>
             <div className='holder'>
-          <Center><Button  onClick={toVoteCategories}> Return to Categories</Button></Center>
+          <Center><Button  onClick={toVoteCategories}> Return to All Entries</Button></Center>
                 <div className='row mt-3'>
 <Card variant='outline' boxShadow='xl' maxW='sm'>
   <CardBody>
@@ -122,22 +143,20 @@ return address && walletStatus === "Connected" ? (
       borderRadius='lg'
     />
     <Stack mt='6' spacing='3'>
-      <Heading color="white" size='md'>ENTRY_NAME</Heading>
+           <Heading color="white" size='md'>{entry.name}</Heading>
+
       <Divider />
-      <Heading color="white" size='l'> ENTRY_MAKER_NAME</Heading>
+      <Heading color="white" size='l'> {entry.maker_name}</Heading>
       <Divider />
-      
-      <Text color="white">ENTRY_DESCRIPTION</Text>
+                  <Divider />
+                  <Text color="white">{entry.category}</Text>
+                  <Divider />
+                  <Text color="white">{entry.breeder}</Text>
+                  <Divider />
+                  <Text color="white">{entry.farmer}</Text>
 
                   <Divider />
-                  <Text>ENTRY CATEGORY</Text>
-                  <Divider />
-                  <Text color="white">ENTRY BREEDER</Text>                  <Text color="white">ENTRY BREEDER</Text>
-                  <Divider />
-                                 <Text color="white">ENTRY FARMER</Text>
-
-                  <Divider />
-                  <Text color="white">ENTRY GENETICS</Text>
+                  <Text color="white">{entry.genetics}</Text>
                   <Divider />
                 </Stack>
               </CardBody>
@@ -172,8 +191,7 @@ return address && walletStatus === "Connected" ? (
                             <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleMeltChange} value={meltValue}></input>
                         </Container>
 
-                       <Button onClick={executeVote} size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>
-                    </div>
+                        <Button onClick={() => alert("Must be a judge to vote.")} size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>                    </div>
                 </div>
               </div>
             </div>

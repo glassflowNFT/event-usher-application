@@ -13,7 +13,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Badge } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import { Tag } from '@chakra-ui/react'
@@ -39,17 +39,17 @@ function VotingEntriesWater() {
   } = walletManager;
 
   let navigate = useNavigate()
+  let params = useParams()
 
   function nextCategory() {
-      navigate('/Voting-Entries-Dry-Sift')
-  }
+    navigate('/Voting-Entries-Sift')  }
 
   function prevCategory() {
       navigate('/Voting-Entries-Rosin')
   }
 
-  function toVoting(){
-    navigate(`/Vote?category=water&entry=${1}`)
+  function toVoteCategories() {
+    navigate('/Voting-Categories')
   }
 
   const [ entries, setEntries ] = useState([])
@@ -66,7 +66,18 @@ function VotingEntriesWater() {
 
     getEntries()
   }, [])
-  console.log(entries);
+
+  const entryArray = []
+
+ entries?.forEach(function (e) {
+
+  var x = e.data
+  x.id = e.id
+
+ entryArray.push(x)
+ })
+
+ console.log(entryArray);
 
   async function connectOnClick() {
     setCurrentChain("juno")
@@ -84,33 +95,15 @@ function VotingEntriesWater() {
 <Button colorScheme='teal' onClick={nextCategory} variant='outline'> Dry Sift</Button>
 </Flex>  
 
+<Center><Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button></Center>
+
+
 <Container s>
        <Grid templateRows='repeat(5, 1fr)' gap={6}>
-         {entries?.map(e => {
-                  <Card direction='row' overflow='hidden' variant='outline'>
-                  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-                  <Stack onClick={toVoting} >
-                    <CardBody>
-                      <Heading color='white' fontSize='xl' fontWeight='bold'>
-                      {e.name}
-                  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-                    {e.maker_name}
-                  </Badge>
-                </Heading>
-                      <Text py='2' color='white'>
-                      {e.breeder}
-                      </Text>
-                    </CardBody>
-                    <CardFooter>
-                      <Flex>
-                      <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
-                        Vote</Button>
-                    <Spacer p='6'/>
-                  <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
-                    </CardFooter>
-                  </Stack>
-                </Card>
-         })}
+       {entryArray?.map(e => {
+           return(
+                 <EntryCard key={e.id} e={e} id={e.id} category={e.category} />
+         )})}
 </Grid>
 </Container>
 

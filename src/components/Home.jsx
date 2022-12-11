@@ -109,8 +109,8 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
-    alt='Caffe Latte'
+    src="https://bafybeigyltl2mqxvenvuxt6ypchmb3s5o4wcq3w7c2kexxbr4b4tzbcghe.ipfs.nftstorage.link/"
+    alt='NFT Ticket'
   />
   <Stack>
     <CardBody>
@@ -121,7 +121,7 @@ function Home() {
     </CardBody>
     <CardFooter>
       <Button variant='solid' colorScheme='blue'  onClick={toConnect}>
-        Connect
+        Display
       </Button>
     </CardFooter>
   </Stack>
@@ -133,8 +133,8 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
-    alt='Caffe Latte'
+    src="https://bafybeiauxhvmsfhsprvysr3slrc7naxiv34h65pnqvtgwfuz4mmpm7fptm.ipfs.nftstorage.link/"
+    alt='Categories'
   />
   <Stack>
     <CardBody>
@@ -158,14 +158,14 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src={launchpad}
-    alt='Caffe Latte'
+    src="https://bafkreiet6izx5ts3n5mi4fuw6h626t44wzbkgfkxwq4cyqllwvuzjwarue.ipfs.nftstorage.link/"
+    alt='Couch Locked'
   />
   <Stack>
     <CardBody>
       <Heading color='white' size='md'>Legends of Hashish x Mothership NFT's</Heading>
       <Text py='2' color="white">
-      Gain Access to the mothership 
+      View Mothership Tokens
       
       </Text>
     </CardBody>
@@ -184,8 +184,8 @@ function Home() {
   <Image
     objectFit='cover'
     maxW='150px'
-    src={rectangle8}
-    alt='Caffe Latte'
+    src="https://nftstorage.link/ipfs/bafybeif7p5pwt6deaf43jg6v7ohxa4s6rlk7koq5dkkiizzpxcvhz662qq"
+    alt='gflow_no_bg'
   />
   <Stack>
     <CardBody>
