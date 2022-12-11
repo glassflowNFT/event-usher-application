@@ -89,6 +89,7 @@ function Vote() {
           
       },[address])
 
+
       useEffect(() => {
         const getEntry = async () => {
           const client = await getSigningCosmWasmClient()
@@ -100,7 +101,7 @@ function Vote() {
 
       console.log(entry);
 
-      const executeVote = async () => {
+      const _executeVote = async () => {
         const client = await getSigningCosmWasmClient()
 
         const look = Number(lookValue) * 100
@@ -192,7 +193,7 @@ return address && walletStatus === "Connected" ? (
                             <input type="range" className="form-range" min="1.00" max="10.00" step='.01' onChange={handleMeltChange} value={meltValue}></input>
                         </Container>
 
-                        <Button onClick={() => alert("Must be a judge to vote.")} size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>                    </div>
+                        <Button onClick={ (executeVote) => alert("Must be a judge to vote.")} size='lg' color='#e25273' >Confrim & Broadcast Vote</Button>                    </div>
                 </div>
               </div>
             </div>
