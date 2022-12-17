@@ -11,7 +11,6 @@ export const queryJudge = async (client, address ) => {
     )
 }
 
-
 export const getJudge = (weight) => {
     switch (weight) {
         case 1:

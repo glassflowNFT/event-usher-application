@@ -152,7 +152,7 @@ function VotingEntriesDry() {
 
         <div className="container">
           <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
+            <img borderradius="full" className="icon" src={keplrLogo} />
           </Center>
           <Center>
             <Button

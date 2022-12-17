@@ -143,7 +143,7 @@ return address && walletStatus === "Connected" ? (
     <Image
  src={rectangle8}
        alt='Green double couch with wooden legs'
-      borderRadius='lg'
+      borderradius='lg'
     />
     <Stack mt='6' spacing='3'>
            <Heading color="white" size='md'>{entry.name}</Heading>
@@ -217,7 +217,7 @@ return address && walletStatus === "Connected" ? (
 
         <div className="container">
           <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} alt="null"  />
+            <img borderradius="full" className="icon" src={keplrLogo} alt="null"  />
           </Center>
           <Center>
             <Button

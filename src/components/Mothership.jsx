@@ -3,9 +3,8 @@ import Navbar from "./Navbar"
 import $footer from "../assets/footer-cropped.png"
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png"
 import msGz1Shirt from "../assets/msxgz1.png"
-import msGz1Couch from "../assets/msgz1 collab1.png"
+import msgzcollab from "../assets/gz1-collab-ms.png"
 import mscamel from "../assets/ms-camel.png"
-import rectangle8 from "../assets/rectangle8.png"
 import { Center, Divider, Heading } from "@chakra-ui/react"
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { Text } from "@chakra-ui/react"
@@ -27,7 +26,7 @@ import {
 import keplrLogo from "../assets/keplrlogo.png"
 import { checkMembership } from "../contracts/checkMembership"
 import { useWallet } from '@cosmos-kit/react'
-
+import { LinkBox, LinkOverlay } from '@chakra-ui/react'
 
 
 function Mothership() {
@@ -117,7 +116,7 @@ function Mothership() {
           <Box boxSize='sm'>
           <Image
             objectFit="cover"
-            maxW={{ base: "100%", sm: "500px" }}
+            maxW={{ base: "100%", sm: "400px" }}
             src={mscamel}
             alt="Caffe Latte"
           />
@@ -125,17 +124,27 @@ function Mothership() {
 
           <Stack>
             <CardBody>
-              <Heading color='white' size="xl">
-                Mint Your Free 2022 Mothership x Legends Attendance Token.
+
+              <Heading color='white' size="xl" p="4">
+                View Your Free 2022 Mothership x Legends Attendance Token.
               </Heading>
-              <Text color='white' py="2">
-                Each Legends guest can mint one official attendance NFT in
-                collaboartion with Mothership Glass.
+              <Text   fontSize='xl' color='white' py="2">
+                Each Legends guest has been airdropped one official attendance NFT in
+                collaboartion with The Mothership Team. 
               </Text>
             </CardBody>
             <Center>
               <CardFooter>
-                <Button onClick={mintFreeNFT}> Mint Free NFT</Button>
+              <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
+  <Heading size='md' my='2'>
+    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/MSxGZ_2022'>
+    <Button> View Your NFT</Button>
+    </LinkOverlay>
+  </Heading>
+  <Text>
+  
+  </Text>
+</LinkBox> 
               </CardFooter>
             </Center>
           </Stack>
@@ -149,25 +158,30 @@ function Mothership() {
         >
           <Image
             objectFit="cover"
-            maxW={{ base: "100%", sm: "500px" }}
-            src={msGz1Couch}
+            maxW={{ base: "100%", sm: "400px" }}
+            src={msgzcollab}
             alt="Caffe Latte"
           />
 
           <Stack>
             <CardBody>
-              <Heading color='white' size="xl">Gz-1 x Mothership Drop </Heading>
-              <Text color='white' py="2">
+              <Heading color='white' size="xl" p="4" >Gz-1 x Mothership Legends Drop </Heading>
+              <Text color='white'  fontSize='xl' py="2">
                 A limited number of guests will be walking away with both a pipe
-                and NFT from GZ1 and Mothership Glass. This button to mint will
-                work for the legends guest who has bought and now owns both the
-                pipe and NFT!.
+                and NFT from GZ1 and the Mothership Team.
               </Text>
             </CardBody>
             <Center>
-              <CardFooter>
-                <Button onClick={mintCollabDrop}> Mint Collab Drop</Button>
-              </CardFooter>
+            <LinkBox as="button" maxW='full' p='5' borderWidth='1px' rounded='md'>
+  <Heading size='md' my='2'>
+    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/MSxGZ_2022'>
+    <Button> View Your NFT</Button>
+    </LinkOverlay>
+  </Heading>
+  <Text>
+  
+  </Text>
+</LinkBox> 
             </Center>
           </Stack>
         </Card>
@@ -180,76 +194,41 @@ function Mothership() {
         >
           <Image
             objectFit="cover"
-            maxW={{ base: "100%", sm: "300px" }}
+            maxW={{ base: "100%", sm: "400px" }}
             src={msGz1Shirt}
             alt="Caffe Latte"
           />
 
           <Stack>
             <CardBody>
-              <Heading color='white' size="xl">
-                Mothership x Legends T-shirt Collection
+              <Heading color='white'  p="4" size="xl">
+                Mothership x Gz1 T-shirt Collection
               </Heading>
-              <Text color='white' py="2">
+              <Text fontSize='xl' color='white' py="2">
                 The First 20 people to purchase the official Mothership &
-                Legends of Hashish merchandise can mint here for their NFT
+                Legends of Hashish merchandise can view the collection here.
               </Text>
               <Heading as="u">
                 <strong></strong>
               </Heading>
             </CardBody>
-            <Divider />
-
-            <Divider p="4" />
             <Center>
               <CardFooter>
                 <Center>
-                  <ButtonGroup gap="4">
-                    <Button onClick={onOpen} ref={btnRef}>
-                      Prepare For Mint-Off
-                    </Button>
-                    <Button onClick={mintTshirt}>Mint</Button>
-                  </ButtonGroup>
+                <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
+  <Heading size='md' my='2'>
+    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/MSxGZ_2022'>
+    <Button> View Your NFT</Button>
+    </LinkOverlay>
+  </Heading>
+  <Text>
+  
+  </Text>
+</LinkBox> 
                 </Center>
               </CardFooter>
             </Center>
-          </Stack>
-
-          <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>You will need</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody></ModalBody>
-
-              <ModalFooter>
-                <Button colorScheme="blue" mr={3} onClick={onClose}>
-                  Close
-                </Button>
-                <Button variant="ghost">Secondary Action</Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
-          <Modal
-            onClose={onClose}
-            finalFocusRef={btnRef}
-            isOpen={isOpen}
-            scrollBehavior={scrollBehavior}
-          >
-            <ModalOverlay />
-            <ModalContent>
-              <ModalHeader>You will need to:</ModalHeader>
-              <ModalCloseButton />
-              <ModalBody>
-                <Heading size="md">1. Download Keplr Mobile</Heading>
-                <Heading size="md">2. Set Up Your Wallet</Heading>
-                <Heading size="md">3. Confirm & Broadcast Mint Msg</Heading>
-              </ModalBody>
-              <ModalFooter>
-                <Button onClick={onClose}>Close</Button>
-              </ModalFooter>
-            </ModalContent>
-          </Modal>
+          </Stack>          
         </Card>
       </div>
       <img className="footer" src={$footer} />

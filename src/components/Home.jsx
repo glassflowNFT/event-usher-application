@@ -109,7 +109,7 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading color="white"  size='md'>Display Your Ticket QR.</Heading>
+      <Heading color="white"  size='md'>Display QR.</Heading>
       <Text color="white" py='2'>
       Ensure you have already installed & imported your Legends Event Mnemonic Seed to Keplr Mobile.
       </Text>
@@ -133,7 +133,7 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading color='white' size='md'>Vote On Entries</Heading>
+      <Heading color='white' size='md'>View Votes</Heading>
       <Text color='white' py='2'>
       Judge allocates points for each of this years entries, not including their own.
       
@@ -158,15 +158,15 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading color='white' size='md'>Legends of Hashish x Mothership NFT's</Heading>
+      <Heading color='white' size='md'>NFT Drop's</Heading>
       <Text py='2' color="white">
-      View Mothership Tokens
+      View all NFT Collections 
       
       </Text>
     </CardBody>
     <CardFooter>
       <Button variant='solid' colorScheme='blue' onClick={toMothership}>
-        Mint
+        View 
       </Button>
     </CardFooter>
   </Stack>
@@ -298,7 +298,7 @@ View Wiki   </Link>
 
         <div className="container">
           <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
+            <img borderradius="full" className="icon" src={keplrLogo} />
           </Center>
           <Center>
             <Button

@@ -122,7 +122,7 @@ function VotingEntriesRosin() {
 
         <div className="container">
           <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo}  alt="n/a"/>
+            <img borderradius="full" className="icon" src={keplrLogo}  alt="n/a"/>
           </Center>
           <Center>
             <Button
