@@ -15,7 +15,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
-import { getJudge, queryJudge } from '../contracts/voteContract'
+import { getJudge, queryJudge, queryVotes } from '../contracts/voteContract'
 import { useWallet } from '@cosmos-kit/react'
 import { useMemo } from "react"
 import { useLocation } from 'react-router-dom'
@@ -41,8 +41,6 @@ function Vote() {
     getSigningCosmWasmClient
   } = walletManager;
 
-  console.log(params);
-
   const [lookValue, setLookValue] = useState("5")
   const [smellValue, setSmellValue] = useState("5")
   const [tasteValue, setTasteValue] = useState("5")
@@ -50,11 +48,9 @@ function Vote() {
   const [judgeWeight, setJudgeWeight] = useState(null)
   const [isJudge, setIsJudge] = useState(false)
   const [entry, setEntry] = useState([])
+  const [votes, setVotes] = useState([])
   const paramIdToNum = params.id
 
-
-
-  console.log(paramIdToNum);
 
     const handleLookChange = e => setLookValue(e.target.value)
     const handleSmellChange = e => setSmellValue(e.target.value)
@@ -89,18 +85,16 @@ function Vote() {
           
       },[address])
 
-      
-
       useEffect(() => {
         const getEntry = async () => {
           const client = await getSigningCosmWasmClient()
           const response = await queryEntry(client, params.category,parseInt(params.id))
           setEntry(response)
+          const voteResponse = await queryVotes(client, parseInt(params.id), entry.maker_addr)
+          setVotes(voteResponse)
         }
           getEntry()
       }, [])
-
-      console.log(entry);
 
       const executeVote = async () => {
         const client = await getSigningCosmWasmClient()
@@ -127,6 +121,8 @@ function Vote() {
           setCurrentChain("juno")
          await connect()
         }
+
+        console.log(votes);
       
 return address && walletStatus === "Connected" ? (
     <div className='base'>
@@ -151,16 +147,15 @@ return address && walletStatus === "Connected" ? (
       <Divider />
       <Heading color="white" size='l'> {entry.maker_name}</Heading>
       <Divider />
-                  <Divider />
                   <Text color="white">{entry.category}</Text>
                   <Divider />
                   <Text color="white">{entry.breeder}</Text>
                   <Divider />
                   <Text color="white">{entry.farmer}</Text>
-
                   <Divider />
                   <Text color="white">{entry.genetics}</Text>
                   <Divider />
+                  <Text color="white">Total Votes: {}</Text>
                 </Stack>
               </CardBody>
             </Card>

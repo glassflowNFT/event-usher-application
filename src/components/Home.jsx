@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import { Center} from '@chakra-ui/react'
@@ -76,13 +76,16 @@ function Home() {
   function toVoteCategories() {
     navigate('/Voting-Categories')
   }
+  function toResults() {
+    navigate('/Results')
+  }
   function toMothership() {
     navigate('/Mothership')
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  return address && walletStatus === "Connected" ? (
+  return (
 
     <div className='base'>
       <Navbar />
@@ -91,7 +94,7 @@ function Home() {
       </div>
       </Center>
     
-      <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
+      <Center><Heading color="white" mb={4}>Transparent Judging  for The Legends of Hashish</Heading></Center>
       <div className='container me-3'>
         <div className="row">
           <div className='col'>          
@@ -140,9 +143,13 @@ function Home() {
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
+      <ButtonGroup><Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
         Vote
       </Button>
+      <Button variant='solid' colorScheme='yellow' p='2' onClick={toResults}>
+        2022 LA Results
+      </Button>
+      </ButtonGroup>
     </CardFooter>
   </Stack>
 </Card>
@@ -282,46 +289,11 @@ View Wiki   </Link>
           <img className="footer" src={$footer} />
          
     </div>
-  ) : (
-    <Container>
-      {" "}
-      <div className="base">
-          <Center>
-            <Container>
-              <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
-                Connect To Access Event Application{" "}
-              </Heading>
-            </Container>{" "}
-          </Center>
-        </div>
-
-        <div className="container">
-          <Center>
-            <img borderradius="full" className="icon" src={keplrLogo} />
-          </Center>
-          <Center>
-            <Button
-              colorScheme="whiteAlpha"
-              color="white"
-              mb={150}
-              onClick={connectOnClick}
-              size='lg'
-            >
-              Connect Keplr
-            </Button>
-                 </Center>
-        </div>
-    </Container>
   )
 }
 function BasicUsage() {
   
-  return (
-    <>
-      
-    </>
-  )
+ 
 }
 
 export default Home
