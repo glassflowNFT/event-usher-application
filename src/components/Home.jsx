@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import { Center} from '@chakra-ui/react'
@@ -76,6 +76,9 @@ function Home() {
   function toVoteCategories() {
     navigate('/Voting-Categories')
   }
+  function toResults() {
+    navigate('/Results')
+  }
   function toMothership() {
     navigate('/Mothership')
   }
@@ -140,9 +143,13 @@ function Home() {
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
+      <ButtonGroup><Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
         Vote
       </Button>
+      <Button variant='solid' colorScheme='yellow' p='2' onClick={toResults}>
+        Vote
+      </Button>
+      </ButtonGroup>
     </CardFooter>
   </Stack>
 </Card>
@@ -317,11 +324,7 @@ View Wiki   </Link>
 }
 function BasicUsage() {
   
-  return (
-    <>
-      
-    </>
-  )
+ 
 }
 
 export default Home
