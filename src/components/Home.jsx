@@ -94,7 +94,7 @@ function Home() {
       </div>
       </Center>
     
-      <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
+      <Center><Heading color="white" mb={4}>Transparent Judging  for The Legends of Hashish</Heading></Center>
       <div className='container me-3'>
         <div className="row">
           <div className='col'>          
@@ -147,7 +147,7 @@ function Home() {
         Vote
       </Button>
       <Button variant='solid' colorScheme='yellow' p='2' onClick={toResults}>
-        Vote
+        2022 LA Results
       </Button>
       </ButtonGroup>
     </CardFooter>
