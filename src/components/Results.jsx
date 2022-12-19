@@ -15,29 +15,35 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel, Tag ,  } from '@chakra-ui/reac
 
 function Results() {
     return (
-      <div>
+      <div className='base'>
           <Center>
       <div>
         <Navbar />
           <img className="title-gold-bg mt-5" src={titleGoldBg} />
       <div>
-        <Container><Tabs isFitted variant='enclosed'>
-  <TabList mb='1em'>
-    <Tab>Hash Rosin</Tab>
-    <Tab>Water Hashish</Tab>
-    <Tab>Dry Sift</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>
-    <Box >
-    
-</Box>
-    </TabPanel>
-    <TabPanel>
-      <p>two!</p>
-    </TabPanel>
-  </TabPanels>
-</Tabs></Container>
+ <Container>
+    <Tabs isFitted variant='enclosed'>
+
+        <TabList mb='1em' color='white'>
+            <Tab>Hash Rosin</Tab>
+            <Tab>Water Hashish</Tab>
+            <Tab>Dry Sift</Tab>
+        </TabList>
+
+        <TabPanels>
+            <TabPanel>
+            <Box >
+            
+            </Box>
+            </TabPanel>
+
+          <TabPanel>
+            <p>two!</p>
+          </TabPanel>
+
+        </TabPanels>
+    </Tabs>
+</Container>
         
       </div>
           <Center><p className="results-base"></p></Center>

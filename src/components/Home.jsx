@@ -85,7 +85,7 @@ function Home() {
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  return address && walletStatus === "Connected" ? (
+  return (
 
     <div className='base'>
       <Navbar />
@@ -289,37 +289,6 @@ View Wiki   </Link>
           <img className="footer" src={$footer} />
          
     </div>
-  ) : (
-    <Container>
-      {" "}
-      <div className="base">
-          <Center>
-            <Container>
-              <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
-                Connect To Access Event Application{" "}
-              </Heading>
-            </Container>{" "}
-          </Center>
-        </div>
-
-        <div className="container">
-          <Center>
-            <img borderradius="full" className="icon" src={keplrLogo} />
-          </Center>
-          <Center>
-            <Button
-              colorScheme="whiteAlpha"
-              color="white"
-              mb={150}
-              onClick={connectOnClick}
-              size='lg'
-            >
-              Connect Keplr
-            </Button>
-                 </Center>
-        </div>
-    </Container>
   )
 }
 function BasicUsage() {
