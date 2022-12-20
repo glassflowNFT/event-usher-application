@@ -51,13 +51,14 @@ function VotingEntriesWater() {
   useEffect(() => {
     const getEntries = async () => {
       const client = await getSigningCosmWasmClient()
+      
       // Query without any pagination
       // Lists 30 entries by default
       const response = await queryEntries(client, 'melt')
       setEntries(response)
     }
 
-     getEntries()
+    getEntries()
   }, [])
 
   const entryArray = []

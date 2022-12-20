@@ -55,11 +55,11 @@ function VotingEntriesRosin() {
       const client = await getSigningCosmWasmClient()
       // Query without any pagination
       // Lists 30 entries by default
-      const response = await queryEntries(client, 'rosin')
-      setEntries(response)
+      const entryResponse = await queryEntries(client, 'rosin')
+      setEntries(entryResponse)
     }
 
-     getEntries()
+    getEntries()
   }, [])
 
   const entryArray = []

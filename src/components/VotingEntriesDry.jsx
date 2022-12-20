@@ -43,7 +43,7 @@ function VotingEntriesDry() {
   let navigate = useNavigate()
   let params = useParams()
 
-  const [ entries, setEntries ] = useState([])
+  const [entries, setEntries] = useState([])
 
   useEffect(() => {
     const getEntries = async () => {
@@ -51,8 +51,8 @@ function VotingEntriesDry() {
       
       // Query without any pagination
       // Lists 30 entries by default
-      const response = await queryEntries(client, 'sift')
-      setEntries(response)
+      const dryResponse = await queryEntries(client, 'sift')
+      setEntries(dryResponse)
     }
 
     getEntries()
@@ -68,7 +68,7 @@ function VotingEntriesDry() {
  entryArray.push(x)
  })
 
- console.log(entryArray);
+
 
   function nextCategory() {
       navigate('/Voting-Entries-Rosin')
@@ -106,31 +106,10 @@ function VotingEntriesDry() {
 </Center>
        <Container s>
        <Grid templateRows='repeat(5, 1fr)' gap={6}>
-         {entries?.map(e => {
-                  <Card direction='row' overflow='hidden' variant='outline'>
-                  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-                  <Stack onClick={toVoteCategories} >
-                    <CardBody>
-                      <Heading color='white' fontSize='xl' fontWeight='bold'>
-                      {e.name}
-                  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-                    {e.maker_name}
-                  </Badge>
-                </Heading>
-                      <Text py='2' color='white'>
-                      {e.breeder}
-                      </Text>
-                    </CardBody>
-                    <CardFooter>
-                      <Flex>
-                      <Button  onClick={toVoteCategories} variant='solid' colorScheme='blue'>
-                        Vote</Button>
-                    <Spacer p='6'/>
-                  <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
-                    </CardFooter>
-                  </Stack>
-                </Card>
-         })}
+         {entryArray?.map(e => {
+ return(
+  <EntryCard key={e.id} e={e} id={e.id} category={e.category} />
+)})}
 </Grid>
 </Container>
 <img className="footer" src={$footer} />

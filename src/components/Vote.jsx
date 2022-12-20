@@ -22,6 +22,7 @@ import { useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { vote } from '../contracts/voteContract'
 import { queryEntry } from '../contracts/voteContract'
+
 import {
   Stat,
   StatLabel,
@@ -57,6 +58,7 @@ function Vote() {
   const [isJudge, setIsJudge] = useState(false)
   const [entry, setEntry] = useState([])
   const [votes, setVotes] = useState([])
+
   const paramIdToNum = params.id
 
 
@@ -130,7 +132,7 @@ function Vote() {
          await connect()
         }
 
-        console.log(votes);
+        console.log(votes);         
       
 return address && walletStatus === "Connected" ? (
     <div className='base'>

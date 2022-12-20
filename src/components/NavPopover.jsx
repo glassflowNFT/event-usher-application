@@ -31,31 +31,31 @@ function NavPopover() {
     setCurrentChain,
     getSigningCosmWasmClient
   } = walletManager;
-//   useEffect(() => {
-//     Array.from(document.querySelectorAll('a[data-bs-toggle="popover"]'))
-//       .forEach(popoverNode => new Popover(popoverNode))
-// })
+   useEffect(() => {
+     Array.from(document.querySelectorAll('a[data-bs-toggle="popover"]'))
+       .forEach(popoverNode => new Popover(popoverNode))
+ })
 
-// const popover = (
-//   <Popover id="popover-basic">
-//       <Popover.Header>
-//         <Stack
-//           as="Stack"
-//           direction="horizontal"
-//           className="align-items-baseline"
-//         >
-//           <h3 className="flex-grow-1 mb-0">{username}</h3>
-//         </Stack>
-//       </Popover.Header>
-//       <Popover.Body>
-//        {address}
-//        <Button colorScheme='blue' className='m-4' >Disconnect</Button>
-//       </Popover.Body>
-//     </Popover>
-//   )
+ const popover = (
+  <Popover id="popover-basic">
+       <Popover.Header>
+         <Stack
+           as="Stack"
+           direction="horizontal"
+           className="align-items-baseline"
+         >
+           <h3 className="flex-grow-1 mb-0">{username}</h3>
+         </Stack>
+       </Popover.Header>
+       <Popover.Body>
+        {address}
+        <Button colorScheme='blue' className='m-4' >Disconnect</Button>
+       </Popover.Body>
+     </Popover>
+   )
 
   return (
-    <Button size='md' colorScheme='white' c>
+    <Button size='md' colorScheme='white' color="Highlight">
 
        {/* <OverlayTrigger 
         trigger={"focus"}
