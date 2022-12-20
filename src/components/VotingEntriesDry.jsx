@@ -52,7 +52,7 @@ function VotingEntriesDry() {
       // Query without any pagination
       // Lists 30 entries by default
       const response = await queryEntries(client, 'sift')
-      setEntries(response.entries)
+      setEntries(response)
     }
 
     getEntries()
