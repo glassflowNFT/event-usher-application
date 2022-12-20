@@ -1,61 +1,107 @@
 import React from 'react'
-import $footer from "../assets/footer-cropped.png";
-import { Center, Text } from '@chakra-ui/react'
-import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import Navbar from './Navbar'
-import { Button, Badge, Spacer, Flex } from '@chakra-ui/react'
-import { CardBody, CardHeader, CardFooter } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Center } from '@chakra-ui/react'
+import { Image } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
-import { Image, Stack, Box, StackD  } from '@chakra-ui/react'
-import { Card  } from 'react-bootstrap';
-import { Container } from 'react-bootstrap';
-import rectangle8 from "../assets/rectangle8.png";
-import { Tabs, TabList, TabPanels, Tab, TabPanel, Tag ,  } from '@chakra-ui/react'
+import { SimpleGrid, Grid } from '@chakra-ui/react'
+import { Box, Button } from '@chakra-ui/react'
+import $footer from "../assets/footer-cropped.png";
+import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
+import drysift from "../assets/dry-sift.png";
+import melt from "../assets/melt.png";
+import rosin from "../assets/rosin.png";
+import { useNavigate } from 'react-router-dom'
+import { Container } from '@chakra-ui/react'
+import keplrLogo from "../assets/keplrlogo.png";
+import { useWallet } from '@cosmos-kit/react'
+
+
 
 
 function Results() {
-    return (
-      <div className='base'>
-          <Center>
-      <div>
-        <Navbar />
-          <img className="title-gold-bg mt-5" src={titleGoldBg} />
-      <div>
- <Container>
-    <Tabs isFitted variant='enclosed'>
 
-        <TabList mb='1em' color='white'>
-            <Tab>Hash Rosin</Tab>
-            <Tab>Water Hashish</Tab>
-            <Tab>Dry Sift</Tab>
-        </TabList>
-
-        <TabPanels>
-            <TabPanel>
-            <Box >
-            
-            </Box>
-            </TabPanel>
-
-          <TabPanel>
-            <p>two!</p>
-          </TabPanel>
-
-        </TabPanels>
-    </Tabs>
-</Container>
-        
-      </div>
-          <Center><p className="results-base"></p></Center>
-          <img className="footer" src={$footer} />
-        </div>
-        </Center>
-    </div>
-    )
-  }
+  const walletManager = useWallet()
+  const {
+    currentChainName,
+    currentWalletName,
+    walletStatus,
+    username,
+    address,
+    message,
+    connect,
+    disconnect,
+    openView,
+    setCurrentChain,
+    getSigningCosmWasmClient
+  } = walletManager;
   
+  let navigate =useNavigate()
 
 
+ 
 
+  async function connectOnClick() {
+    setCurrentChain("juno")
+   await connect()
+  }
 
-export default Results
+  return  (
+    <div className='base'>
+    <Navbar />
+       <div>
+         <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/>
+       </div>
+       <div className='container'>
+         <div className='holder'>
+         <div className='instructions'>
+                  <p className='steps-to-mint'>LA 2022 Results</p>
+  <SimpleGrid rows={3} spacing={4}>
+  <Card variant='outline'  >
+    <CardHeader >
+      <Center>
+      <Heading color="white"  size='xl'> Hashish Winners </Heading>
+      </Center>
+    </CardHeader>
+    <Center>
+    <CardBody>
+    <Center><Grid templateColumns='repeat(5, 1fr)' gap={6}>
+   
+</Grid></Center>
+    </CardBody>
+    </Center>
+    <CardFooter>
+    </CardFooter>
+  </Card>
+  <Card variant='outline'  >
+    <CardHeader>
+      <Center><Heading color="white" size='xl'>Water Hashish Winners </Heading></Center>
+    </CardHeader>
+    <CardBody>
+    <Center></Center>
+    <Center> </Center>
+    </CardBody>
+    <CardFooter>
+   
+    </CardFooter>
+  </Card>
+  <Card variant='outline' >
+    <CardHeader>
+      <Center><Heading  color="white" size='xl'> Dry Sift Winners</Heading></Center>
+    </CardHeader >
+    <CardBody>
+    <Center></Center>
+    <Center></Center>
+    </CardBody>
+  
+  </Card>
+</SimpleGrid>
+              </div>
+         </div>
+       </div>
+       <img className="footer" src={$footer} />
+ </div>
+ ) 
+  }
+
+export default Results 

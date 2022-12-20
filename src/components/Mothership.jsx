@@ -112,7 +112,49 @@ function Mothership() {
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
           variant="outline"
-        >
+>
+          <Box boxSize='sm'>
+          <Image
+            objectFit="cover"
+            maxW={{ base: "100%", sm: "400px" }}
+            src="https://bafybeibu3vlqxaihlr4jqvb4trwulga4mmx2vv24azt5ybbgjezslbia7u.ipfs.nftstorage.link/"
+            alt="Caffe Latte"
+          />
+          </Box>
+
+          <Stack>
+            <CardBody>
+              <Heading color='white' size="xl" p="4">
+                View Your Legends NFT Ticket.
+              </Heading>
+              <Text   fontSize='xl' color='white' py="2">
+                Each Legends guest has been airdropped one official attendance NFT in
+                collaboartion with The Mothership Team. 
+              </Text>
+            </CardBody>
+            <Center>
+              <CardFooter>
+              <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
+  <Heading size='md' my='2'>
+    <LinkOverlay href='https://stashh.io/collection/the-legends-of-hashish-event-access-tokens'>
+    <Button> View Your NFT</Button>
+    </LinkOverlay>
+  </Heading>
+  <Text>
+  
+  </Text>
+</LinkBox> 
+              </CardFooter>
+            </Center>
+          </Stack>
+        </Card>
+        
+        <Card
+          m={[2, 3]}
+          direction={{ base: "column", sm: "row" }}
+          overflow="hidden"
+          variant="outline"
+>
           <Box boxSize='sm'>
           <Image
             objectFit="cover"
@@ -124,9 +166,8 @@ function Mothership() {
 
           <Stack>
             <CardBody>
-
               <Heading color='white' size="xl" p="4">
-                View Your Free 2022 Mothership x Legends Attendance Token.
+                View Your Free 2022 Mothership x Legends NFT.
               </Heading>
               <Text   fontSize='xl' color='white' py="2">
                 Each Legends guest has been airdropped one official attendance NFT in
@@ -137,7 +178,7 @@ function Mothership() {
               <CardFooter>
               <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
   <Heading size='md' my='2'>
-    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/MSxGZ_2022'>
+    <LinkOverlay href='https://stashh.io/collection/mothership-nfts/'>
     <Button> View Your NFT</Button>
     </LinkOverlay>
   </Heading>

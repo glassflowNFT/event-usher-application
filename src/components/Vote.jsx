@@ -22,6 +22,14 @@ import { useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { vote } from '../contracts/voteContract'
 import { queryEntry } from '../contracts/voteContract'
+import {
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  StatArrow,
+  StatGroup,
+} from '@chakra-ui/react'
 
 function Vote() {
   let params = useParams()
@@ -155,7 +163,11 @@ return address && walletStatus === "Connected" ? (
                   <Divider />
                   <Text color="white">{entry.genetics}</Text>
                   <Divider />
-                  <Text color="white">Total Votes: {}</Text>
+                  <Stat>
+  <Heading size='lg'color='Highlight'>Total Points: </Heading>
+  <StatNumber> {}</StatNumber>
+  <StatHelpText></StatHelpText>
+</Stat>
                 </Stack>
               </CardBody>
             </Card>

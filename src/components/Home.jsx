@@ -257,7 +257,7 @@ function Home() {
 </AccordionButton>
 </h2>
 <AccordionPanel pb={4}>
-     Every Guest Can Mint a 2022 Legends Attendance Token. Only Those who are either owners of the gz1 x mothershp collab pipes, or was one of the first 20 people to buy a gz1 x Mothership collaboration shirt can mint those tokens. 
+     Every Guest now owns a 2022 Legends Attendance Token. Only Those who are either owners of the gz1 x mothershp collab pipes, or was one of the first 20 people to buy a gz1 x Mothership collaboration shirt can mint those tokens. 
     </AccordionPanel>
   </AccordionItem>
 </Accordion>
