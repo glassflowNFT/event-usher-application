@@ -54,7 +54,7 @@ function VotingEntriesWater() {
       // Query without any pagination
       // Lists 30 entries by default
       const response = await queryEntries(client, 'melt')
-      setEntries(response.entries)
+      setEntries(response)
     }
 
      getEntries()
