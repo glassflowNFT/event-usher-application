@@ -8,6 +8,7 @@ import Mothership from './components/Mothership'
 import Mint from './components/Mint'
 import Scan from './components/Scan'
 import Fourohfour from './components/Fourohfour'
+import Results from './components/Results'
 import VotingCategories from "./components/VotingCategories";
 import VotingEntriesWater from "./components/VotingEntriesWater";
 import VotingEntriesRosin from "./components/VotingEntriesRosin";
@@ -49,6 +50,7 @@ function App() {
         <Route path='/Voting-Entries-Sift' element={<VotingEntriesDry />}></Route>
         <Route path='/Vote/:category/:id' element={<Vote />}></Route>
         <Route path='/Browse' element={<AllImages />}></Route>
+        <Route path='/Results' element={<Results />}></Route>
       </Routes>
     </Router>
     </WalletProvider>

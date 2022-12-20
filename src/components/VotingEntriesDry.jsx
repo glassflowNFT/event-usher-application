@@ -52,7 +52,7 @@ function VotingEntriesDry() {
       // Query without any pagination
       // Lists 30 entries by default
       const response = await queryEntries(client, 'sift')
-      setEntries(response.entries)
+      setEntries(response)
     }
 
     getEntries()
@@ -152,7 +152,7 @@ function VotingEntriesDry() {
 
         <div className="container">
           <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
+            <img borderradius="full" className="icon" src={keplrLogo} />
           </Center>
           <Center>
             <Button

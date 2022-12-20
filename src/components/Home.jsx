@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@chakra-ui/react'
-import { Button } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react'
 import { Center} from '@chakra-ui/react'
@@ -76,13 +76,16 @@ function Home() {
   function toVoteCategories() {
     navigate('/Voting-Categories')
   }
+  function toResults() {
+    navigate('/Results')
+  }
   function toMothership() {
     navigate('/Mothership')
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  return address && walletStatus === "Connected" ? (
+  return (
 
     <div className='base'>
       <Navbar />
@@ -91,7 +94,7 @@ function Home() {
       </div>
       </Center>
     
-      <Center><Heading color="white" mb={4}>Transparent Judging Application for The Legends of Hashish: 2022</Heading></Center>
+      <Center><Heading color="white" mb={4}>Transparent Judging  for The Legends of Hashish</Heading></Center>
       <div className='container me-3'>
         <div className="row">
           <div className='col'>          
@@ -109,7 +112,7 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading color="white"  size='md'>Display Your Ticket QR.</Heading>
+      <Heading color="white"  size='md'>Display QR.</Heading>
       <Text color="white" py='2'>
       Ensure you have already installed & imported your Legends Event Mnemonic Seed to Keplr Mobile.
       </Text>
@@ -133,16 +136,20 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading color='white' size='md'>Vote On Entries</Heading>
+      <Heading color='white' size='md'>View Votes</Heading>
       <Text color='white' py='2'>
       Judge allocates points for each of this years entries, not including their own.
       
       </Text>
     </CardBody>
     <CardFooter>
-      <Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
+      <ButtonGroup><Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
         Vote
       </Button>
+      <Button variant='solid' colorScheme='yellow' p='2' onClick={toResults}>
+        2022 LA Results
+      </Button>
+      </ButtonGroup>
     </CardFooter>
   </Stack>
 </Card>
@@ -158,15 +165,15 @@ function Home() {
   />
   <Stack>
     <CardBody>
-      <Heading color='white' size='md'>Legends of Hashish x Mothership NFT's</Heading>
+      <Heading color='white' size='md'>NFT Drop's</Heading>
       <Text py='2' color="white">
-      View Mothership Tokens
+      View all NFT Collections 
       
       </Text>
     </CardBody>
     <CardFooter>
       <Button variant='solid' colorScheme='blue' onClick={toMothership}>
-        Mint
+        View 
       </Button>
     </CardFooter>
   </Stack>
@@ -250,7 +257,7 @@ function Home() {
 </AccordionButton>
 </h2>
 <AccordionPanel pb={4}>
-     Every Guest Can Mint a 2022 Legends Attendance Token. Only Those who are either owners of the gz1 x mothershp collab pipes, or was one of the first 20 people to buy a gz1 x Mothership collaboration shirt can mint those tokens. 
+     Every Guest now owns a 2022 Legends Attendance Token. Only Those who are either owners of the gz1 x mothershp collab pipes, or was one of the first 20 people to buy a gz1 x Mothership collaboration shirt can mint those tokens. 
     </AccordionPanel>
   </AccordionItem>
 </Accordion>
@@ -282,46 +289,11 @@ View Wiki   </Link>
           <img className="footer" src={$footer} />
          
     </div>
-  ) : (
-    <Container>
-      {" "}
-      <div className="base">
-          <Center>
-            <Container>
-              <img className="connect-title-gold-bg" src={titleGoldBg} />
-              <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
-                Connect To Access Event Application{" "}
-              </Heading>
-            </Container>{" "}
-          </Center>
-        </div>
-
-        <div className="container">
-          <Center>
-            <img borderRadius="full" className="icon" src={keplrLogo} />
-          </Center>
-          <Center>
-            <Button
-              colorScheme="whiteAlpha"
-              color="white"
-              mb={150}
-              onClick={connectOnClick}
-              size='lg'
-            >
-              Connect Keplr
-            </Button>
-                 </Center>
-        </div>
-    </Container>
   )
 }
 function BasicUsage() {
   
-  return (
-    <>
-      
-    </>
-  )
+ 
 }
 
 export default Home
