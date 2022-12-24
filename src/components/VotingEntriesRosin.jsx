@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import { Heading } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import { Button } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Center } from '@chakra-ui/react'
 import { Grid} from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
@@ -12,7 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import keplrLogo from "../assets/keplrlogo.png";
 import { useWallet } from '@cosmos-kit/react'
 import { useEffect, useState } from 'react';
-import { queryEntries } from '../contracts/voteContract';
+import { queryRosinEntries } from '../contracts/voteContract';
 import EntryCard from './EntryCard';
 
 
@@ -40,7 +40,7 @@ function VotingEntriesRosin() {
     navigate('/Voting-Categories')
   }
 
-  const [ entries, setEntries ] = useState([])
+  const [ entries, setRosinEntries ] = useState([])
 
   function nextCategory() {
     navigate('/Voting-Entries-Melt')
@@ -51,15 +51,15 @@ function VotingEntriesRosin() {
   }
 
   useEffect(() => {
-    const getEntries = async () => {
+    const getRosinEntries = async () => {
       const client = await getSigningCosmWasmClient()
       // Query without any pagination
       // Lists 30 entries by default
-      const entryResponse = await queryEntries(client, 'rosin')
-      setEntries(entryResponse)
+      const entryResponse = await queryRosinEntries(client, 'rosin')
+      setRosinEntries(entryResponse)
     }
 
-    getEntries()
+    getRosinEntries()
   }, [])
 
   const entryArray = []
@@ -86,12 +86,14 @@ function VotingEntriesRosin() {
     <div className='base'>
     <Navbar />
        <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg} alt="n/a"/>
-         <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Hash Rosin Entries</Heading>
-         <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Dry Sift</Button>
-  <Spacer />
-<Button colorScheme='teal' onClick={nextCategory} variant='outline'> Water Hash</Button>
-</Flex>  
-<Center><Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button></Center>
+         <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Hash Rosin Entries</Heading>
+       <Center>
+        <ButtonGroup spacing='2'>
+        <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Dry Sift</Button>
+        <Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button> 
+        <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Water Hashish </Button>
+        </ButtonGroup>
+        |</Center>     
        </div>  
 
 <Container s>

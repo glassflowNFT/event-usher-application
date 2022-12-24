@@ -4,7 +4,7 @@ import $footer from "../assets/footer-cropped.png";
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import { Button} from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Stack } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { Center} from '@chakra-ui/react'
@@ -18,7 +18,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import { useWallet } from '@cosmos-kit/react'
-import { queryEntries } from '../contracts/voteContract';
+import { queryDryEntries } from '../contracts/voteContract';
 import { useEffect } from 'react';
 import EntryCard from './EntryCard';
 
@@ -43,19 +43,19 @@ function VotingEntriesDry() {
   let navigate = useNavigate()
   let params = useParams()
 
-  const [entries, setEntries] = useState([])
+  const [entries, setDryEntries] = useState([])
 
   useEffect(() => {
-    const getEntries = async () => {
+    const getDryEntries = async () => {
       const client = await getSigningCosmWasmClient()
       
       // Query without any pagination
       // Lists 30 entries by default
-      const dryResponse = await queryEntries(client, 'sift')
-      setEntries(dryResponse)
+      const dryResponse = await queryDryEntries(client, 'sift')
+      setDryEntries(dryResponse)
     }
 
-    getEntries()
+    getDryEntries()
   }, [])
 
   const entryArray = []
@@ -92,15 +92,16 @@ function VotingEntriesDry() {
     <Navbar />
        <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg}/> 
        </div>
-       <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Dry Sift Entries</Heading>
-       <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Water</Button>
-  <Spacer />
-  <Button colorScheme='teal' onClick={nextCategory} variant='outline'> Hashish Rosin </Button>
-        </Flex>         <Center> <div className='container me-3'>
-        <Center><Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button></Center>
-                <div className='holder'>
-
-                </div>
+       <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Dry Sift Entries</Heading>
+       <Center>
+ 
+        <ButtonGroup spacing='2'>
+        <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Water Hashish</Button>
+        <Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button> 
+        <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Hashish Rosin </Button>
+        </ButtonGroup>
+        |</Center>     
+        <Center> <div className='container me-3'>
 </div>
 
 </Center>

@@ -125,19 +125,18 @@ function Mothership() {
           <Stack>
             <CardBody>
               <Heading color='white' size="xl" p="4">
-                View Your Legends NFT Ticket.
+                Claim Your Legends Event Access NFT .
               </Heading>
               <Text   fontSize='xl' color='white' py="2">
-                Each Legends guest has been airdropped one official attendance NFT in
-                collaboartion with The Mothership Team. 
+                Each Legends guest can claim their guest specific NFT. Make sure you have a bit of $SCRT for gas!
               </Text>
             </CardBody>
             <Center>
               <CardFooter>
               <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
   <Heading size='md' my='2'>
-    <LinkOverlay href='https://stashh.io/collection/the-legends-of-hashish-event-access-tokens'>
-    <Button> View Your NFT</Button>
+    <LinkOverlay href='https://stashh.io/collection/legends-of-hashish-event-access-tokens'>
+    <Button> Claim Your NFT</Button>
     </LinkOverlay>
   </Heading>
   <Text>
@@ -167,10 +166,10 @@ function Mothership() {
           <Stack>
             <CardBody>
               <Heading color='white' size="xl" p="4">
-                View Your Free 2022 Mothership x Legends NFT.
+                Claim Your Free 2022 Mothership x Legends NFT.
               </Heading>
               <Text   fontSize='xl' color='white' py="2">
-                Each Legends guest has been airdropped one official attendance NFT in
+                Each Legends guest has been whitelisted for  one official attendance NFT in
                 collaboartion with The Mothership Team. 
               </Text>
             </CardBody>
@@ -178,7 +177,7 @@ function Mothership() {
               <CardFooter>
               <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
   <Heading size='md' my='2'>
-    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/Mothership_x_Legends'>
+    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/Free_Mint_Mothership_x_Legends'>
     <Button> View Your NFT</Button>
     </LinkOverlay>
   </Heading>

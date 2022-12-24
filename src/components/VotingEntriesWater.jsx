@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import $footer from "../assets/footer-cropped.png";
 import { Heading } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import { Button } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Center } from '@chakra-ui/react'
 import { Grid} from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
@@ -85,12 +85,16 @@ function VotingEntriesWater() {
     <div className='base'>
     <Navbar />
        <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg} alt="n/a"/>
-         <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Water Hashish Entries</Heading>
-         <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Hashish Rosin</Button>
+         <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Water Hashish Entries</Heading>
   <Spacer />
-<Button colorScheme='teal' onClick={nextCategory} variant='outline'> Dry Sift</Button>
-</Flex>  
-<Center><Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button></Center>
+       <Center>
+        <ButtonGroup spacing='2'>
+        <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Hashish Rosin</Button>
+        <Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button> 
+        <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'>  Dry Sift </Button>
+        </ButtonGroup>
+        |</Center>     
+        <Center> </Center>
        </div>  
 
 <Container s>
