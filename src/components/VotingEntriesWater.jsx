@@ -14,6 +14,23 @@ import { useWallet } from '@cosmos-kit/react'
 import { useEffect, useState } from 'react';
 import { queryEntries } from '../contracts/voteContract';
 import EntryCard from './EntryCard';
+import three from '../assets/Compressed pics/three.png'
+import four from '../assets/Compressed pics/four.png'
+import five from '../assets/Compressed pics/five.png'
+import six from '../assets/Compressed pics/six.png'
+import seven from '../assets/Compressed pics/seven.png'
+import eight from '../assets/Compressed pics/eight.png'
+import nine from '../assets/Compressed pics/nine.png'
+import ten from '../assets/Compressed pics/ten.png'
+import eleven from '../assets/Compressed pics/eleven.png'
+import twelve from '../assets/Compressed pics/tweleve.png'
+import thirteen from '../assets/Compressed pics/thirteen.png'
+import fourteen from '../assets/Compressed pics/fourteen.png'
+import fifteen from '../assets/Compressed pics/fifteen.png'
+import sixteen from '../assets/Compressed pics/sixteen.png'
+import seventeen from '../assets/Compressed pics/seventeen.png'
+import { FormGroup } from 'react-bootstrap';
+import { Input, Stack } from '@chakra-ui/react';
 
 function VotingEntriesWater() {
 
@@ -33,7 +50,7 @@ function VotingEntriesWater() {
   } = walletManager;
 
   let navigate = useNavigate()
-  let params = useParams()
+
 
   function nextCategory() {
     navigate('/Voting-Entries-Sift')  }
@@ -47,6 +64,7 @@ function VotingEntriesWater() {
   }
 
   const [ entries, setEntries ] = useState([])
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     const getEntries = async () => {
@@ -62,46 +80,60 @@ function VotingEntriesWater() {
   }, [])
 
   const entryArray = []
+  let waterPhotoArray = []
+  let newArray = []
 
- entries?.forEach(function (e) {
+  waterPhotoArray.push(null, null, null, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen)
 
-  var x = e.data
-  x.id = e.id
+ entries?.forEach((e, i) => {
 
+   var x = e.data
+   x.id = e.id
+
+  waterPhotoArray?.map((p, i) => {
+   if (i === x.id) {
+     x.photo = p
+   }
+ })
  entryArray.push(x)
  })
 
  console.log(entryArray);
-//   const element = array[];
-
-// }
   
   async function connectOnClick() {
     setCurrentChain("juno")
    await connect()
   }
 
+  const handleQuery = e => {
+    setQuery(e.target.value)
+   }
+
+  const filteredEntryArray = entryArray?.filter(e => e.name.toLowerCase().includes(query.toLowerCase()))
+
   return address && walletStatus === "Connected" ?(
     <div className='base'>
     <Navbar />
        <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg} alt="n/a"/>
          <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Water Hashish Entries</Heading>
-  <Spacer />
        <Center>
+         <Stack>
+       <Input placeholder='Search...' onChange={handleQuery} color={'white'}/>
         <ButtonGroup spacing='2'>
         <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Hashish Rosin</Button>
         <Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button> 
         <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'>  Dry Sift </Button>
         </ButtonGroup>
+        </Stack>
         |</Center>     
         <Center> </Center>
        </div>  
 
 <Container s>
 <Grid templateRows='repeat(5, 1fr)' gap={6}>
-      {entryArray?.map(e => {       
+      {filteredEntryArray?.map(e => {       
            return(
-              <EntryCard key={e.id} e={e} id={e.id} category={e.category} />
+              <EntryCard key={e.id} e={e} id={e.id} category={e.category} src={e.photo} />
          )})}
 </Grid>
 </Container>

@@ -95,14 +95,14 @@ function Connect() {
 
             <Center>
             { show ? <Button size='lg' onClick={showQrCode}>Generate QR Code</Button> : null}
-              <Stack>
+              <Center>
               <Image
                 width="500" height="500"
                 objectFit="contain"
                 // className="logo mt-3"
                 src={qrcode}
               />
-              </Stack>
+              </Center>
             </Center>
           </div>
         </div>

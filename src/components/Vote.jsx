@@ -22,6 +22,8 @@ import { useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { vote } from '../contracts/voteContract'
 import { queryEntry } from '../contracts/voteContract'
+import first from '../assets/Compressed pics/one.png'
+import second from '../assets/Compressed pics/two.png'
 
 import {
   Stat,
@@ -33,6 +35,7 @@ import {
 } from '@chakra-ui/react'
 
 function Vote() {
+
   let params = useParams()
 
   const walletManager = useWallet()
@@ -98,13 +101,16 @@ function Vote() {
       useEffect(() => {
         const getEntry = async () => {
           const client = await getSigningCosmWasmClient()
-          const response = await queryEntry(client, params.category,parseInt(params.id))
+          const response = await queryEntry(client, params.category, parseInt(params.id))
           setEntry(response)
           const voteResponse = await queryVotes(client, parseInt(params.id), entry.maker_addr)
           setVotes(voteResponse)
         }
           getEntry()
       }, [])
+
+      console.log(entry);
+      console.log(params.id);
 
       const executeVote = async () => {
         const client = await getSigningCosmWasmClient()
@@ -130,9 +136,7 @@ function Vote() {
         async function connectOnClick() {
           setCurrentChain("juno")
          await connect()
-        }
-
-        console.log(votes);         
+        }       
       
 return address && walletStatus === "Connected" ? (
     <div className='base'>
@@ -147,7 +151,7 @@ return address && walletStatus === "Connected" ? (
 <Card variant='outline' boxShadow='xl' maxW='sm'>
   <CardBody>
     <Image
- src={rectangle8}
+ src={`/static/media/${params.src}`}
        alt='Green double couch with wooden legs'
       borderradius='lg'
     />

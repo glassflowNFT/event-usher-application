@@ -5,7 +5,6 @@ import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import { Button, ButtonGroup } from '@chakra-ui/react'
-import { Stack } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
 import { Center} from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
@@ -21,7 +20,9 @@ import { useWallet } from '@cosmos-kit/react'
 import { queryDryEntries } from '../contracts/voteContract';
 import { useEffect } from 'react';
 import EntryCard from './EntryCard';
-
+import first from '../assets/Compressed pics/one.png'
+import second from '../assets/Compressed pics/two.png'
+import { Input, Stack } from '@chakra-ui/react';
 
 function VotingEntriesDry() {
 
@@ -44,6 +45,7 @@ function VotingEntriesDry() {
   let params = useParams()
 
   const [entries, setDryEntries] = useState([])
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
     const getDryEntries = async () => {
@@ -59,16 +61,25 @@ function VotingEntriesDry() {
   }, [])
 
   const entryArray = []
+  let siftPhotoArray = []
+  let newArray = []
 
- entries?.forEach(function (e) {
+  siftPhotoArray.push(null, first, second)
 
-  var x = e.data
-  x.id = e.id
+ entries?.forEach((e, i) => {
 
+   var x = e.data
+   x.id = e.id
+
+  siftPhotoArray?.map((p, i) => {
+   if (i === x.id) {
+     x.photo = p
+   }
+ })
  entryArray.push(x)
  })
 
-
+ console.log(entryArray);
 
   function nextCategory() {
       navigate('/Voting-Entries-Rosin')
@@ -87,6 +98,12 @@ function VotingEntriesDry() {
    await connect()
   }
 
+  const handleQuery = e => {
+    setQuery(e.target.value)
+   }
+
+  const filteredEntryArray = entryArray?.filter(e => e.name.toLowerCase().includes(query.toLowerCase()))
+
   return address && walletStatus === "Connected" ?  (
     <div className='base'>
     <Navbar />
@@ -94,12 +111,14 @@ function VotingEntriesDry() {
        </div>
        <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Dry Sift Entries</Heading>
        <Center>
- 
+         <Stack>
+       <Input placeholder='Search...' onChange={handleQuery} color={'white'}/>
         <ButtonGroup spacing='2'>
         <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Water Hashish</Button>
         <Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button> 
         <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Hashish Rosin </Button>
         </ButtonGroup>
+        </Stack>
         |</Center>     
         <Center> <div className='container me-3'>
 </div>
@@ -107,9 +126,9 @@ function VotingEntriesDry() {
 </Center>
        <Container s>
        <Grid templateRows='repeat(5, 1fr)' gap={6}>
-         {entryArray?.map(e => {
+         {filteredEntryArray?.map(e => {
  return(
-  <EntryCard key={e.id} e={e} id={e.id} category={e.category} />
+  <EntryCard key={e.id} e={e} id={e.id} category={e.category} src={e.photo} />
 )})}
 </Grid>
 </Container>

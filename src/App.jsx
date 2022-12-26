@@ -48,7 +48,7 @@ function App() {
         <Route path='/Voting-Entries-Melt' element={<VotingEntriesWater />}></Route>
         <Route path='/Voting-Entries-Rosin' element={<VotingEntriesRosin />}></Route>
         <Route path='/Voting-Entries-Sift' element={<VotingEntriesDry />}></Route>
-        <Route path='/Vote/:category/:id' element={<Vote />}></Route>
+        <Route path='/Vote/:category/:id/:src' element={<Vote />}></Route>
         <Route path='/Browse' element={<AllImages />}></Route>
         <Route path='/Results' element={<Results />}></Route>
       </Routes>

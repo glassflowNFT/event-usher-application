@@ -14,11 +14,12 @@ import { useWallet } from '@cosmos-kit/react'
 import { queryEntries } from '../contracts/voteContract';
 import { useEffect, useState } from 'react';
 
-function EntryCard({e, id, category}) {
+
+function EntryCard({e, id, category, src}) {
     let navigate = useNavigate()
 
     function toVoting(){
-        navigate(`/Vote/${category}/${id}`)   
+        navigate(`/Vote/${category}/${id}/${src.slice(14)}`)   
  }
 
   return (
@@ -41,7 +42,7 @@ function EntryCard({e, id, category}) {
         <Button  onClick={toVoting} variant='solid' colorScheme='blue'>
           Vote</Button>
       <Spacer p='6'/>
-    <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
+    <Tag colorScheme={'blue'}>Successfully Voted</Tag></Flex>
       </CardFooter>
     </Stack>
   </Card>
