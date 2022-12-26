@@ -24,7 +24,7 @@ function EntryCard({e, id, category, src}) {
 
   return (
     <Card onClick={toVoting} direction='row' overflow='hidden' variant='outline'>
-    <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
+    <Image objectFit='cover' maxW='200px' src={src} alt='EntryCover'/>
     <Stack  >
       <CardBody>
         <Heading color='white' fontSize='xl' fontWeight='bold'>

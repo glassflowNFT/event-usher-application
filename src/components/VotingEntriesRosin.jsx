@@ -151,7 +151,7 @@ function VotingEntriesRosin() {
         |</Center>     
        </div>  
 
-<Container s>
+<Container>
 <Grid templateRows='repeat(5, 1fr)' gap={6}>
       {filteredEntryArray?.map(e => {       
            return(
