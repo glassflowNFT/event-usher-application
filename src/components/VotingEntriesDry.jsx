@@ -112,11 +112,11 @@ function VotingEntriesDry() {
        <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Dry Sift Entries</Heading>
        <Center>
          <Stack>
-       <Input placeholder='Search...' onChange={handleQuery} color={'white'}/>
+       <Input placeholder='Search...' m={'auto'} w='200px' onChange={handleQuery} color={'white'}/>
         <ButtonGroup spacing='2'>
-        <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Water Hashish</Button>
-        <Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button> 
-        <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Hashish Rosin </Button>
+        <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Water</Button>
+        <Button mb={5} w='100px' onClick={toVoteCategories}>All Entries</Button> 
+        <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Rosin </Button>
         </ButtonGroup>
         </Stack>
         |</Center>     

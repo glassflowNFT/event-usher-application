@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Card, CardBody } from '@chakra-ui/react'
 import Navbar from './Navbar'
-import { Image } from '@chakra-ui/react'
+import { Image, HStack } from '@chakra-ui/react'
 import { Stack } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
@@ -22,6 +22,7 @@ import { useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { vote } from '../contracts/voteContract'
 import { queryEntry } from '../contracts/voteContract'
+import { queryTallyVotes } from '../contracts/voteContract'
 import first from '../assets/Compressed pics/one.png'
 import second from '../assets/Compressed pics/two.png'
 
@@ -103,15 +104,15 @@ function Vote() {
           const client = await getSigningCosmWasmClient()
           const response = await queryEntry(client, params.category, parseInt(params.id))
           setEntry(response)
-          const voteResponse = await queryVotes(client, parseInt(params.id), entry.maker_addr)
-          setVotes(voteResponse)
+          const voteResponse = await queryTallyVotes(client, parseInt(params.id))
+          setVotes(voteResponse.votes)
         }
           getEntry()
       }, [])
 
-      console.log(entry);
-      console.log(params.id);
+      console.log(votes);
 
+  
       const executeVote = async () => {
         const client = await getSigningCosmWasmClient()
 
@@ -170,9 +171,12 @@ return address && walletStatus === "Connected" ? (
                   <Text color="white">{entry.genetics}</Text>
                   <Divider />
                   <Stat>
+  <HStack>                
   <Heading size='lg'color='Highlight'>Total Points: </Heading>
-  <StatNumber> {}</StatNumber>
+  {votes.length > 0 ? <StatNumber color={"white"}> {votes[0].sum}</StatNumber> : <StatNumber fontSize={'x-small'} color={"white"}> No Votes submitted</StatNumber> }
+  
   <StatHelpText></StatHelpText>
+  </HStack>  
 </Stat>
                 </Stack>
               </CardBody>

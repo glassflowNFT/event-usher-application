@@ -97,7 +97,7 @@ export const queryVotes = (client, entryId, makerAddress) => {
   })
 }
 
-export const queryTallyVotes = (client, entryId, startAfter, limit) => {
+export const queryTallyVotes = (client, entryId, startAfter = undefined, limit = undefined) => {
   return client.queryContractSmart(VOTING_CONTRACT, {
     tally_votes: {
       entry_id: entryId,
