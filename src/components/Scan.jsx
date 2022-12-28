@@ -37,19 +37,19 @@ function Scan() {
 
   async function connectOnClick() {
     setCurrentChain("juno")
-   await connect()
+    await connect()
   }
 
   return address && walletStatus === "Connected" ? (
     <div className='base'>
 
-       <Navbar />
-          <div>
-            <img className="connect-title-gold-bg mt-5" src={titleGoldBg}/>
-          </div>
-          <BarcodeScanner />
-          <img className="footer" src={$footer} />
-        </div>
+      <Navbar />
+      <div>
+        <img className="connect-title-gold-bg mt-5" src={titleGoldBg} />
+      </div>
+      <BarcodeScanner />
+      <img className="footer" src={$footer} />
+    </div>
   ) : (
     <Container>
       {" "}
@@ -79,12 +79,12 @@ function Scan() {
             >
               Connect Keplr
             </Button>
-                 </Center>
+          </Center>
         </div>
       </div>
     </Container>
   )
 }
- 
+
 
 export default Scan

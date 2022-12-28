@@ -35,6 +35,21 @@ export const queryEntries = (
   })
 }
 
+export const queryDryWinners = (
+  client,
+  category,
+  startAfter = undefined,
+  limit = undefined
+) => {
+  return client.queryContractSmart(VOTING_CONTRACT, {
+    entries: {
+      category,
+      start_after: startAfter,
+      limit,
+    },
+  })
+}
+
 export const queryDryEntries = (
   client,
   category,
@@ -65,6 +80,21 @@ export const queryMeltEntries = (
   })
 }
 
+export const queryMeltWinners = (
+  client,
+  category,
+  startAfter = undefined,
+  limit = undefined
+) => {
+  return client.queryContractSmart(VOTING_CONTRACT, {
+    entries: {
+      category,
+      start_after: startAfter,
+      limit,
+    },
+  })
+}
+
 export const queryRosinEntries = (
   client,
   category,
@@ -79,6 +109,22 @@ export const queryRosinEntries = (
     },
   })
 }
+
+export const queryRosinWinners = (
+  client,
+  category,
+  startAfter = undefined,
+  limit = undefined
+) => {
+  return client.queryContractSmart(VOTING_CONTRACT, {
+    entries: {
+      category,
+      start_after: startAfter,
+      limit,
+    },
+  })
+}
+
 export const queryEntry = (client, category, entryId) => {
   return client.queryContractSmart(VOTING_CONTRACT, {
     entry: {

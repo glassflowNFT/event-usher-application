@@ -1,19 +1,18 @@
-
 /* Home */
 
 .base {
     background: #222222;
 }
 
-.title-gold-bg{
+.title-gold-bg {
     padding-top: 4%;
-   width: 75%;
-   margin-left: 11%;
-   padding-bottom: 5%;
-   background: #222222;
+    width: 75%;
+    margin-left: 11%;
+    padding-bottom: 5%;
+    background: #222222;
 }
 
-.grid-text{
+.grid-text {
     color: #E5E5E5;
     float: right;
 
@@ -23,19 +22,19 @@
     border-radius: 5%;
     margin-bottom: 5%;
     width: 90%;
-     background-color: #222222;
+    background-color: #222222;
 }
 
 .row {
     width: 100%;
-    
+
 }
 
-.card-body{
+.card-body {
     background: #222222;
 }
 
-.card-title{
+.card-title {
     color: #e25273;
     font-size: 1.5rem
 }
@@ -48,15 +47,17 @@
     display: flex;
     flex: 1 1 auto;
     width: 105%;
-  }
+}
 
-.rectangle-10{
+.rectangle-10 {
     border-radius: 5%;
 }
-.rectangle-9{
+
+.rectangle-9 {
     border-radius: 5%;
 }
-.rectangle-8{
+
+.rectangle-8 {
     border-radius: 5%;
 }
 
@@ -71,30 +72,31 @@
     margin-right: auto;
 }
 
-.navbar{
+.navbar {
     background: #222222;
 }
 
-.navbar p{
+.navbar p {
     color: #e25273;
 }
-.navbar p:hover{
+
+.navbar p:hover {
     color: #ffca7b;
 }
 
-.navbar a{
+.navbar a {
     color: #e25273;
     margin-left: 25%;
     text-decoration: none;
     font-size: large;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     color: #ffca7b;
 }
 
 
-.transparent-judging{
+.transparent-judging {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 700;
@@ -102,7 +104,7 @@
     line-height: 100px;
     color: #E5E5E5;
     text-align: left;
-    }
+}
 
 .plain-text {
     font-family: 'Quicksand';
@@ -112,8 +114,8 @@
     line-height: 38px;
     color: #F2FDEC;
     text-align: left;
-    
-}    
+
+}
 
 .huge-thank-you-to-al {
     font-family: 'Quicksand';
@@ -204,11 +206,11 @@
 
 /* Connect */
 
-.connect-title-gold-bg{
+.connect-title-gold-bg {
     padding-top: 4%;
-   width: 75%;
-   margin-left: 11%;
-   padding-bottom: 1%;
+    width: 75%;
+    margin-left: 11%;
+    padding-bottom: 1%;
 }
 
 .connect-holder {
@@ -219,7 +221,7 @@
     padding-bottom: 10%;
 }
 
-.connect-plain-text{
+.connect-plain-text {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 400;
@@ -235,13 +237,13 @@
     padding-bottom: 5%;
 }
 
-.logo{
+.logo {
     width: 5%;
 }
 
 /* Mothership */
 
-.ms-navigate-button{
+.ms-navigate-button {
     color: #e25273;
     background-color: #fbf4d7;
     border: none;
@@ -262,12 +264,13 @@
     bottom: 0;
     right: 20;
 }
-.ms-navigate-button:hover{
+
+.ms-navigate-button:hover {
     color: #f5f1f1;
     background-color: #1c0062;
 }
 
-.ms-left-navigate-button{
+.ms-left-navigate-button {
     color: #e25273;
     background-color: #fbf4d7;
     border: none;
@@ -287,7 +290,7 @@
     bottom: 0;
 }
 
-.ms-left-navigate-button:hover{
+.ms-left-navigate-button:hover {
     color: #f5f1f1;
     background-color: #1c0062;
 }
@@ -304,16 +307,16 @@
 }
 
 .ms-card-text {
-    color: #F2FDEC; 
+    color: #F2FDEC;
 }
 
 .ms-holder {
-        width: 75%;
-        margin: auto;
-        text-align: center;
+    width: 75%;
+    margin: auto;
+    text-align: center;
 }
 
-.buy-limited{
+.buy-limited {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 700;
@@ -329,7 +332,7 @@
     margin-left: 20%;
 }
 
-.buy-pic{
+.buy-pic {
     width: 45%;
 }
 
@@ -340,7 +343,7 @@
 
 
 
-.usdc{
+.usdc {
     color: #E5E5E5;
     text-align: left;
     margin-left: 5%;
@@ -352,7 +355,7 @@
     margin-left: 5%;
 }
 
-.confirm-mint{
+.confirm-mint {
     background-color: plum;
     margin-left: 25%;
     border-radius: 10px;
@@ -365,7 +368,7 @@
     margin-bottom: 3%;
 }
 
-.confirm-mint:hover{
+.confirm-mint:hover {
     background-color: #E5E5E5;
 }
 
@@ -381,7 +384,7 @@
     box-shadow: rgba(216, 211, 211, 0.138) 0px 30px 90px;
 }
 
-.holder-benefits{
+.holder-benefits {
     z-index: 1;
     background-color: #d16bed54;
     border-radius: 10px;
@@ -395,7 +398,7 @@
     margin-left: 20%;
 }
 
-.steps-to-mint{
+.steps-to-mint {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 700;
@@ -408,14 +411,14 @@
 
 /* Voting Categories */
 
-.c-card-title{
+.c-card-title {
     color: #ffffff;
     font-size: 1.5rem;
     text-align: center;
-    
+
 }
 
-.water-hash-title{
+.water-hash-title {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 700;
@@ -425,7 +428,7 @@
     text-align: center;
 }
 
-.prev-category{
+.prev-category {
     color: #e25273;
     background-color: #fbf4d7;
     border: none;
@@ -446,7 +449,7 @@
     margin-left: 2%;
 }
 
-.next-category{
+.next-category {
     color: #e25273;
     background-color: #fbf4d7;
     border: none;
@@ -482,7 +485,7 @@
     align-items: stretch;
 }
 
- .hash-name{
+.hash-name {
     background-color: #5400bb1b;
     border-radius: 10px;
     flex-direction: row;
@@ -491,7 +494,8 @@
     font-size: xx-large;
     text-align: center;
 }
-.hash-category{
+
+.hash-category {
     background-color: #5400bb1b;
     border-radius: 10px;
     flex-direction: row;
@@ -500,7 +504,8 @@
     font-size: xx-large;
     text-align: center;
 }
-.hash-breeder{
+
+.hash-breeder {
     background-color: #5400bb1b;
     border-radius: 10px;
     flex-direction: row;
@@ -509,7 +514,8 @@
     font-size: xx-large;
     text-align: center;
 }
-.hash-farmer{
+
+.hash-farmer {
     background-color: #5400bb1b;
     border-radius: 10px;
     flex-direction: row;
@@ -518,7 +524,8 @@
     font-size: xx-large;
     text-align: center;
 }
-.hash-genetics{
+
+.hash-genetics {
     background-color: #5400bb1b;
     border-radius: 10px;
     flex-direction: row;
@@ -526,7 +533,7 @@
     align-items: stretch;
     font-size: xx-large;
     text-align: center;
-} 
+}
 
 .description {
     background-color: #5400bb1b;
@@ -538,7 +545,7 @@
     text-align: center;
 }
 
-.name-text{
+.name-text {
     color: #E5E5E5;
 }
 
@@ -578,7 +585,7 @@
 
 /* Mint - Admins */
 
-.mint-admins{
+.mint-admins {
     font-family: 'Quicksand';
     font-style: normal;
     font-weight: 700;
@@ -589,7 +596,7 @@
 
 }
 
-.entry-name-input{
+.entry-name-input {
     margin-left: 25%;
     background-color: #696969;
     border-radius: 10px;
@@ -599,8 +606,8 @@
 }
 
 .label-name {
-   color: #9c5bc7; 
-   margin-left: 45%;
+    color: #9c5bc7;
+    margin-left: 45%;
 }
 
 .label-category {
@@ -618,7 +625,7 @@
     padding-top: 1px;
 }
 
-.mint-button{
+.mint-button {
     color: #e25273;
     background-color: #fbf4d7;
     border-radius: 10px;

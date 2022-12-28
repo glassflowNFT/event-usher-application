@@ -47,7 +47,7 @@ function Connect() {
 
   async function connectOnClick() {
     setCurrentChain("juno")
-   await connect()
+    await connect()
 
   }
 
@@ -75,7 +75,7 @@ function Connect() {
 
   console.log(memberWeight);
 
-  return address && walletStatus === "Connected" ?  (
+  return address && walletStatus === "Connected" ? (
     <div className="base">
       <Navbar />
       <div>
@@ -85,7 +85,7 @@ function Connect() {
       <Container>
         <div className="container">
           <Center>
-            <img  src={keplrLogo} />
+            <img src={keplrLogo} />
           </Center>
           <div className="connect-holder">
             <Text>
@@ -94,14 +94,14 @@ function Connect() {
             </Text>
 
             <Center>
-            { show ? <Button size='lg' onClick={showQrCode}>Generate QR Code</Button> : null}
+              {show ? <Button size='lg' onClick={showQrCode}>Generate QR Code</Button> : null}
               <Center>
-              <Image
-                width="500" height="500"
-                objectFit="contain"
-                // className="logo mt-3"
-                src={qrcode}
-              />
+                <Image
+                  width="500" height="500"
+                  objectFit="contain"
+                  // className="logo mt-3"
+                  src={qrcode}
+                />
               </Center>
             </Center>
           </div>
@@ -115,7 +115,7 @@ function Connect() {
                     Connected Wallet is a:{" "}
                   </Heading>
                 </Center>
-                 <Center><Heading color="#F3C674">{getGuestType(memberWeight)}</Heading></Center>
+                <Center><Heading color="#F3C674">{getGuestType(memberWeight)}</Heading></Center>
               </CardBody>
               <Center>
               </Center>
@@ -125,7 +125,7 @@ function Connect() {
       </Container>
 
       <img className="footer" src={$footer} />
-</div>
+    </div>
   ) : (
     <Container>
       {" "}
@@ -155,7 +155,7 @@ function Connect() {
             >
               Connect Keplr
             </Button>
-                 </Center>
+          </Center>
         </div>
       </div>
     </Container>

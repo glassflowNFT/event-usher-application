@@ -31,39 +31,39 @@ function NavPopover() {
     setCurrentChain,
     getSigningCosmWasmClient
   } = walletManager;
-   useEffect(() => {
-     Array.from(document.querySelectorAll('a[data-bs-toggle="popover"]'))
-       .forEach(popoverNode => new Popover(popoverNode))
- })
+  useEffect(() => {
+    Array.from(document.querySelectorAll('a[data-bs-toggle="popover"]'))
+      .forEach(popoverNode => new Popover(popoverNode))
+  })
 
- const popover = (
-  <Popover id="popover-basic">
-       <Popover.Header>
-         <Stack
-           as="Stack"
-           direction="horizontal"
-           className="align-items-baseline"
-         >
-           <h3 className="flex-grow-1 mb-0">{username}</h3>
-         </Stack>
-       </Popover.Header>
-       <Popover.Body>
+  const popover = (
+    <Popover id="popover-basic">
+      <Popover.Header>
+        <Stack
+          as="Stack"
+          direction="horizontal"
+          className="align-items-baseline"
+        >
+          <h3 className="flex-grow-1 mb-0">{username}</h3>
+        </Stack>
+      </Popover.Header>
+      <Popover.Body>
         {address}
         <Button colorScheme='blue' className='m-4' >Disconnect</Button>
-       </Popover.Body>
-     </Popover>
-   )
+      </Popover.Body>
+    </Popover>
+  )
 
   return (
     <Button size='md' colorScheme='white' color="Highlight">
 
-       {/* <OverlayTrigger 
+      {/* <OverlayTrigger 
         trigger={"focus"}
         placement="center"
      overlay={popover}> */}
-          <li onClick={disconnect}>Disconnect</li>
-        {/* </OverlayTrigger> */}
-        </Button>
+      <li onClick={disconnect}>Disconnect</li>
+      {/* </OverlayTrigger> */}
+    </Button>
   )
 }
 

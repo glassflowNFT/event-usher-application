@@ -5,7 +5,7 @@ import { Heading } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Center } from '@chakra-ui/react'
-import { Grid} from '@chakra-ui/react'
+import { Grid } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { Container } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -79,7 +79,7 @@ function VotingEntriesRosin() {
     navigate('/Voting-Categories')
   }
 
-  const [ entries, setRosinEntries ] = useState([])
+  const [entries, setRosinEntries] = useState([])
   const [query, setQuery] = useState('')
 
   function nextCategory() {
@@ -106,62 +106,63 @@ function VotingEntriesRosin() {
   let rosinPhotoArray = []
   let newArray = []
 
-   rosinPhotoArray.push(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone,thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, fourty, fourtyone, fourtytwo, fourtythree, fourtyfour, fourtyfive, fourtysix, fourtyseven, fourtyeight, fourtynine, rectangle8, fiftyone, fiftytwo, fiftythree, fiftyfour, fiftyfive)
+  rosinPhotoArray.push(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix, twentyseven, twentyeight, twentynine, thirty, thirtyone, thirtytwo, thirtythree, thirtyfour, thirtyfive, thirtysix, thirtyseven, thirtyeight, thirtynine, fourty, fourtyone, fourtytwo, fourtythree, fourtyfour, fourtyfive, fourtysix, fourtyseven, fourtyeight, fourtynine, rectangle8, fiftyone, fiftytwo, fiftythree, fiftyfour, fiftyfive)
 
- entries?.forEach((e, i) => {
+  entries?.forEach((e, i) => {
 
-   var x = e.data
-   x.id = e.id
+    var x = e.data
+    x.id = e.id
 
-  rosinPhotoArray?.map((p, i) => {
-   if (i === x.id) {
-     x.photo = p
-   }
- })
- entryArray.push(x)
- })
+    rosinPhotoArray?.map((p, i) => {
+      if (i === x.id) {
+        x.photo = p
+      }
+    })
+    entryArray.push(x)
+  })
 
- console.log(entryArray);
-  
+  console.log(entryArray);
+
   async function connectOnClick() {
     setCurrentChain("juno")
-   await connect()
+    await connect()
   }
 
   const handleQuery = e => {
     setQuery(e.target.value)
-   }
+  }
 
   const filteredEntryArray = entryArray?.filter(e => e.name.toLowerCase().includes(query.toLowerCase()))
 
-  return address && walletStatus === "Connected" ?(
+  return address && walletStatus === "Connected" ? (
     <div className='base'>
-    <Navbar />
-       <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg} alt="n/a"/>
-         <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Hash Rosin Entries</Heading>
-       <Center>
-         <Stack>
-        <Input placeholder='Search...' m={'auto'} w='200px' onChange={handleQuery} color={'white'}/>
-        <ButtonGroup spacing='2'>
-        <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Sift</Button>
-        <Button mb={5} w='100px'  onClick={toVoteCategories}> All Entries</Button> 
-        <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Water </Button>
-        </ButtonGroup>
-        </Stack>
-        </Center>     
-       </div>  
+      <Navbar />
+      <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg} alt="n/a" />
+        <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Hash Rosin Entries</Heading>
+        <Center>
+          <Stack>
+            <Input placeholder='Search...' m={'auto'} w='200px' onChange={handleQuery} color={'white'} />
+            <ButtonGroup spacing='2'>
+              <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Sift</Button>
+              <Button mb={5} w='100px' onClick={toVoteCategories}> All Entries</Button>
+              <Button p='5' colorScheme='teal' onClick={nextCategory} variant='outline'> Water </Button>
+            </ButtonGroup>
+          </Stack>
+        </Center>
+      </div>
 
-<Container>
-<Grid templateRows='repeat(5, 1fr)' gap={6}>
-      {filteredEntryArray?.map(e => {       
-           return(
+      <Container>
+        <Grid templateRows='repeat(5, 1fr)' gap={6}>
+          {filteredEntryArray?.map(e => {
+            return (
               <EntryCard key={e.id} e={e} id={e.id} category={e.category} src={e.photo} />
-         )})}
-</Grid>
-</Container>
+            )
+          })}
+        </Grid>
+      </Container>
 
-       <img className="footer" src={$footer} alt="n/a" />
- </div>
+      <img className="footer" src={$footer} alt="n/a" />
+    </div>
   ) : (
     <Container>
       {" "}
@@ -169,7 +170,7 @@ function VotingEntriesRosin() {
         <div>
           <Center>
             <Container>
-              <img className="connect-title-gold-bg" src={titleGoldBg}  alt="n/a"/>
+              <img className="connect-title-gold-bg" src={titleGoldBg} alt="n/a" />
               <Heading color='white' textAlign='center' mb={10} px="7" noOfLines={2}>
                 Connect To Access Event Application{" "}
               </Heading>
@@ -179,7 +180,7 @@ function VotingEntriesRosin() {
 
         <div className="container">
           <Center>
-            <img borderradius="full" className="icon" src={keplrLogo}  alt="n/a"/>
+            <img borderradius="full" className="icon" src={keplrLogo} alt="n/a" />
           </Center>
           <Center>
             <Button
@@ -191,7 +192,7 @@ function VotingEntriesRosin() {
             >
               Connect Keplr
             </Button>
-                 </Center>
+          </Center>
         </div>
       </div>
     </Container>

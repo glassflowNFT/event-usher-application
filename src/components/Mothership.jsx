@@ -97,11 +97,11 @@ function Mothership() {
 
   async function connectOnClick() {
     setCurrentChain("juno")
-   await connect()
+    await connect()
   }
 
-  return address && walletStatus === "Connected" ?(
- <div className="base">
+  return address && walletStatus === "Connected" ? (
+    <div className="base">
       <Navbar />
       <div>
         <img className="title-gold-bg mt-5" src={titleGoldBg} />
@@ -112,14 +112,14 @@ function Mothership() {
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
           variant="outline"
->
+        >
           <Box boxSize='sm'>
-          <Image
-            objectFit="cover"
-            maxW={{ base: "100%", sm: "400px" }}
-            src="https://bafybeibu3vlqxaihlr4jqvb4trwulga4mmx2vv24azt5ybbgjezslbia7u.ipfs.nftstorage.link/"
-            alt="Caffe Latte"
-          />
+            <Image
+              objectFit="cover"
+              maxW={{ base: "100%", sm: "400px" }}
+              src="https://bafybeibu3vlqxaihlr4jqvb4trwulga4mmx2vv24azt5ybbgjezslbia7u.ipfs.nftstorage.link/"
+              alt="Caffe Latte"
+            />
           </Box>
 
           <Stack>
@@ -127,40 +127,40 @@ function Mothership() {
               <Heading color='white' size="xl" p="4">
                 Claim Your Legends Event Access NFT .
               </Heading>
-              <Text   fontSize='xl' color='white' py="2">
+              <Text fontSize='xl' color='white' py="2">
                 Each Legends guest can claim their guest specific NFT. Make sure you have a bit of $SCRT for gas!
               </Text>
             </CardBody>
             <Center>
               <CardFooter>
-              <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
-  <Heading size='md' my='2'>
-    <LinkOverlay href='https://stashh.io/collection/legends-of-hashish-event-access-tokens'>
-    <Button> Claim Your NFT</Button>
-    </LinkOverlay>
-  </Heading>
-  <Text>
-  
-  </Text>
-</LinkBox> 
+                <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
+                  <Heading size='md' my='2'>
+                    <LinkOverlay href='https://stashh.io/collection/legends-of-hashish-event-access-tokens'>
+                      <Button> Claim Your NFT</Button>
+                    </LinkOverlay>
+                  </Heading>
+                  <Text>
+
+                  </Text>
+                </LinkBox>
               </CardFooter>
             </Center>
           </Stack>
         </Card>
-        
+
         <Card
           m={[2, 3]}
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
           variant="outline"
->
+        >
           <Box boxSize='sm'>
-          <Image
-            objectFit="cover"
-            maxW={{ base: "100%", sm: "400px" }}
-            src={mscamel}
-            alt="Caffe Latte"
-          />
+            <Image
+              objectFit="cover"
+              maxW={{ base: "100%", sm: "400px" }}
+              src={mscamel}
+              alt="Caffe Latte"
+            />
           </Box>
 
           <Stack>
@@ -168,23 +168,23 @@ function Mothership() {
               <Heading color='white' size="xl" p="4">
                 Claim Your Free 2022 Mothership x Legends NFT.
               </Heading>
-              <Text   fontSize='xl' color='white' py="2">
+              <Text fontSize='xl' color='white' py="2">
                 Each Legends guest has been whitelisted for  one official attendance NFT in
-                collaboartion with The Mothership Team. 
+                collaboartion with The Mothership Team.
               </Text>
             </CardBody>
             <Center>
               <CardFooter>
-              <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
-  <Heading size='md' my='2'>
-    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/Free_Mint_Mothership_x_Legends'>
-    <Button> View Your NFT</Button>
-    </LinkOverlay>
-  </Heading>
-  <Text>
-  
-  </Text>
-</LinkBox> 
+                <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
+                  <Heading size='md' my='2'>
+                    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/Free_Mint_Mothership_x_Legends'>
+                      <Button> View Your NFT</Button>
+                    </LinkOverlay>
+                  </Heading>
+                  <Text>
+
+                  </Text>
+                </LinkBox>
               </CardFooter>
             </Center>
           </Stack>
@@ -206,22 +206,22 @@ function Mothership() {
           <Stack>
             <CardBody>
               <Heading color='white' size="xl" p="4" >Gz-1 x Mothership Legends Drop </Heading>
-              <Text color='white'  fontSize='xl' py="2">
+              <Text color='white' fontSize='xl' py="2">
                 A limited number of guests will be walking away with both a pipe
                 and NFT from GZ1 and the Mothership Team.
               </Text>
             </CardBody>
             <Center>
-            <LinkBox as="button" maxW='full' p='5' borderWidth='1px' rounded='md'>
-  <Heading size='md' my='2'>
-    <LinkOverlay href='https://stashh.io/collection/mothership-glass-drop-gz1-collab/'>
-    <Button> View Your NFT</Button>
-    </LinkOverlay>
-  </Heading>
-  <Text>
-  
-  </Text>
-</LinkBox> 
+              <LinkBox as="button" maxW='full' p='5' borderWidth='1px' rounded='md'>
+                <Heading size='md' my='2'>
+                  <LinkOverlay href='https://stashh.io/collection/mothership-glass-drop-gz1-collab/'>
+                    <Button> View Your NFT</Button>
+                  </LinkOverlay>
+                </Heading>
+                <Text>
+
+                </Text>
+              </LinkBox>
             </Center>
           </Stack>
         </Card>
@@ -241,7 +241,7 @@ function Mothership() {
 
           <Stack>
             <CardBody>
-              <Heading color='white'  p="4" size="xl">
+              <Heading color='white' p="4" size="xl">
                 Mothership x Gz1 T-shirt Collection
               </Heading>
               <Text fontSize='xl' color='white' py="2">
@@ -255,20 +255,20 @@ function Mothership() {
             <Center>
               <CardFooter>
                 <Center>
-                <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
-  <Heading size='md' my='2'>
-    <LinkOverlay href='https://stashh.io/asset/mothership-nfts/MSxGZ_2022'>
-    <Button> View Your NFT</Button>
-    </LinkOverlay>
-  </Heading>
-  <Text>
-  
-  </Text>
-</LinkBox> 
+                  <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
+                    <Heading size='md' my='2'>
+                      <LinkOverlay href='https://stashh.io/asset/mothership-nfts/MSxGZ_2022'>
+                        <Button> View Your NFT</Button>
+                      </LinkOverlay>
+                    </Heading>
+                    <Text>
+
+                    </Text>
+                  </LinkBox>
                 </Center>
               </CardFooter>
             </Center>
-          </Stack>          
+          </Stack>
         </Card>
       </div>
       <img className="footer" src={$footer} />
@@ -302,7 +302,7 @@ function Mothership() {
             >
               Connect Keplr
             </Button>
-                 </Center>
+          </Center>
         </div>
       </div>
     </Container>
