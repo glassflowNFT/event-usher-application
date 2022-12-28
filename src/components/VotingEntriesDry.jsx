@@ -119,7 +119,7 @@ function VotingEntriesDry() {
         <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Rosin </Button>
         </ButtonGroup>
         </Stack>
-        |</Center>     
+        </Center>     
         <Center> <div className='container me-3'>
 </div>
 

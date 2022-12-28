@@ -148,7 +148,7 @@ function VotingEntriesRosin() {
         <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Water </Button>
         </ButtonGroup>
         </Stack>
-        |</Center>     
+        </Center>     
        </div>  
 
 <Container>

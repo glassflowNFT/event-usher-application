@@ -125,7 +125,7 @@ function VotingEntriesWater() {
         <Button p='5'colorScheme='teal' onClick={nextCategory} variant='outline'> Sift </Button>
         </ButtonGroup>
         </Stack>
-        |</Center>     
+        </Center>     
         <Center> </Center>
        </div>  
 

@@ -60,7 +60,7 @@ function Results() {
   <Card variant='outline'  >
     <CardHeader >
       <Center>
-      <Heading color="white"  size='xl'> Hashish Winners </Heading>
+      <Heading color="white"  size='xl'> Rosin Winners </Heading>
       </Center>
     </CardHeader>
     <Center>
@@ -75,7 +75,7 @@ function Results() {
   </Card>
   <Card variant='outline'  >
     <CardHeader>
-      <Center><Heading color="white" size='xl'>Water Hashish Winners </Heading></Center>
+      <Center><Heading color="white" size='xl'>Melt Winners </Heading></Center>
     </CardHeader>
     <CardBody>
     <Center></Center>

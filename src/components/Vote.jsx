@@ -160,14 +160,19 @@ return address && walletStatus === "Connected" ? (
            <Heading color="white" size='md'>{entry.name}</Heading>
 
       <Divider />
+      <Heading color="#deb887" size='md'>Maker Name</Heading>
       <Heading color="white" size='l'> {entry.maker_name}</Heading>
       <Divider />
+      <Heading color="#deb887" size='md'> Category</Heading>
                   <Text color="white">{entry.category}</Text>
                   <Divider />
+     <Heading color="#deb887" size='md'>  Breeder</Heading>
                   <Text color="white">{entry.breeder}</Text>
                   <Divider />
+     <Heading color="#deb887" size='md'>  Farmer</Heading>
                   <Text color="white">{entry.farmer}</Text>
                   <Divider />
+     <Heading color="#deb887" size='md'>  Genetics</Heading>
                   <Text color="white">{entry.genetics}</Text>
                   <Divider />
                   <Stat>
