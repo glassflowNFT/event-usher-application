@@ -60,16 +60,16 @@ function BarcodeScanner() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result])
 
- useEffect(() => {
+  useEffect(() => {
     const query = async () => {
       const client = await getSigningCosmWasmClient()
 
-         if (result) {
+      if (result) {
         queryDayOneArrival(client, result)
           .then(() => setDayOneArrival(true))
           .catch((err) => setDayOneArrival(false))
 
-          queryDayTwoArrival(client, result)
+        queryDayTwoArrival(client, result)
           .then(() => setDayTwoArrival(true))
           .catch((err) => setDayTwoArrival(false))
       }
@@ -187,4 +187,4 @@ function BarcodeScanner() {
 }
 
 
-  export default BarcodeScanner
+export default BarcodeScanner

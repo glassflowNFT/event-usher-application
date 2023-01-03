@@ -4,13 +4,12 @@ import $footer from "../assets/footer-cropped.png";
 import { Card, CardBody, CardFooter } from '@chakra-ui/react'
 import { Text } from '@chakra-ui/react'
 import titleGoldBg from "../assets/LOH_LONG_CURVED_COLOR_2.png";
-import { Button} from '@chakra-ui/react'
-import { Stack } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
 import { Heading } from '@chakra-ui/react'
-import { Center} from '@chakra-ui/react'
+import { Center } from '@chakra-ui/react'
 import { Flex, Spacer } from '@chakra-ui/react'
 import { Image } from '@chakra-ui/react'
-import { Grid} from '@chakra-ui/react'
+import { Grid } from '@chakra-ui/react'
 import { Tag } from '@chakra-ui/react'
 import { Badge } from '@chakra-ui/react'
 import rectangle8 from "../assets/rectangle8.png";
@@ -18,10 +17,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Container } from '@chakra-ui/react'
 import keplrLogo from "../assets/keplrlogo.png";
 import { useWallet } from '@cosmos-kit/react'
-import { queryEntries } from '../contracts/voteContract';
+import { queryDryEntries } from '../contracts/voteContract';
 import { useEffect } from 'react';
 import EntryCard from './EntryCard';
-
+import first from '../assets/Compressed pics/one.png'
+import second from '../assets/Compressed pics/two.png'
+import { Input, Stack } from '@chakra-ui/react';
 
 function VotingEntriesDry() {
 
@@ -39,39 +40,49 @@ function VotingEntriesDry() {
     setCurrentChain,
     getSigningCosmWasmClient
   } = walletManager;
-  
+
   let navigate = useNavigate()
   let params = useParams()
 
-  const [ entries, setEntries ] = useState([])
+  const [entries, setDryEntries] = useState([])
+  const [query, setQuery] = useState('')
 
   useEffect(() => {
-    const getEntries = async () => {
+    const getDryEntries = async () => {
       const client = await getSigningCosmWasmClient()
-      
+
       // Query without any pagination
       // Lists 30 entries by default
-      const response = await queryEntries(client, 'sift')
-      setEntries(response)
+      const dryResponse = await queryDryEntries(client, 'sift')
+      setDryEntries(dryResponse)
     }
 
-    getEntries()
+    getDryEntries()
   }, [])
 
   const entryArray = []
+  let siftPhotoArray = []
+  let newArray = []
 
- entries?.forEach(function (e) {
+  siftPhotoArray.push(null, first, second)
 
-  var x = e.data
-  x.id = e.id
+  entries?.forEach((e, i) => {
 
- entryArray.push(x)
- })
+    var x = e.data
+    x.id = e.id
 
- console.log(entryArray);
+    siftPhotoArray?.map((p, i) => {
+      if (i === x.id) {
+        x.photo = p
+      }
+    })
+    entryArray.push(x)
+  })
+
+  console.log(entryArray);
 
   function nextCategory() {
-      navigate('/Voting-Entries-Rosin')
+    navigate('/Voting-Entries-Rosin')
   }
 
   function prevCategory() {
@@ -84,57 +95,46 @@ function VotingEntriesDry() {
 
   async function connectOnClick() {
     setCurrentChain("juno")
-   await connect()
+    await connect()
   }
 
-  return address && walletStatus === "Connected" ?  (
+  const handleQuery = e => {
+    setQuery(e.target.value)
+  }
+
+  const filteredEntryArray = entryArray?.filter(e => e.name.toLowerCase().includes(query.toLowerCase()))
+
+  return address && walletStatus === "Connected" ? (
     <div className='base'>
-    <Navbar />
-       <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg}/> 
-       </div>
-       <Heading noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Dry Sift Entries</Heading>
-       <Flex  px='12'  py='5'> <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Water</Button>
-  <Spacer />
-  <Button colorScheme='teal' onClick={nextCategory} variant='outline'> Hashish Rosin </Button>
-        </Flex>         <Center> <div className='container me-3'>
-        <Center><Button mb={5}  onClick={toVoteCategories}> Return to All Entries</Button></Center>
-                <div className='holder'>
+      <Navbar />
+      <div><img className="connect-title-gold-bg mt-5" src={titleGoldBg} />
+      </div>
+      <Heading p='4' noOfLines={2} color='#F3C674' className='water-hash-title me-1' > Dry Sift Entries</Heading>
+      <Center>
+        <Stack>
+          <Input placeholder='Search...' m={'auto'} w='200px' onChange={handleQuery} color={'white'} />
+          <ButtonGroup spacing='2'>
+            <Button colorScheme='teal' onClick={prevCategory} variant='outline'> Water</Button>
+            <Button mb={5} w='100px' onClick={toVoteCategories}>All Entries</Button>
+            <Button p='5' colorScheme='teal' onClick={nextCategory} variant='outline'> Rosin </Button>
+          </ButtonGroup>
+        </Stack>
+      </Center>
+      <Center> <div className='container me-3'>
+      </div>
 
-                </div>
-</div>
-
-</Center>
-       <Container s>
-       <Grid templateRows='repeat(5, 1fr)' gap={6}>
-         {entries?.map(e => {
-                  <Card direction='row' overflow='hidden' variant='outline'>
-                  <Image objectFit='cover' maxW='20px' src={rectangle8} alt='EntryCover'/>
-                  <Stack onClick={toVoteCategories} >
-                    <CardBody>
-                      <Heading color='white' fontSize='xl' fontWeight='bold'>
-                      {e.name}
-                  <Badge ml='1' fontSize='0.8em' colorScheme='green'>
-                    {e.maker_name}
-                  </Badge>
-                </Heading>
-                      <Text py='2' color='white'>
-                      {e.breeder}
-                      </Text>
-                    </CardBody>
-                    <CardFooter>
-                      <Flex>
-                      <Button  onClick={toVoteCategories} variant='solid' colorScheme='blue'>
-                        Vote</Button>
-                    <Spacer p='6'/>
-                  <Tag colorScheme='white'>Successfully Voted</Tag></Flex>
-                    </CardFooter>
-                  </Stack>
-                </Card>
-         })}
-</Grid>
-</Container>
-<img className="footer" src={$footer} />
- </div>
+      </Center>
+      <Container>
+        <Grid templateRows='repeat(5, 1fr)' gap={6}>
+          {filteredEntryArray?.map(e => {
+            return (
+              <EntryCard key={e.id} e={e} id={e.id} category={e.category} src={e.photo} />
+            )
+          })}
+        </Grid>
+      </Container>
+      <img className="footer" src={$footer} />
+    </div>
   ) : (
     <Container>
       {" "}
@@ -164,7 +164,7 @@ function VotingEntriesDry() {
             >
               Connect Keplr
             </Button>
-                 </Center>
+          </Center>
         </div>
       </div>
     </Container>
