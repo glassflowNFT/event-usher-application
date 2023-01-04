@@ -29,7 +29,7 @@ import { useWallet } from '@cosmos-kit/react'
 import { LinkBox, LinkOverlay } from '@chakra-ui/react'
 
 
-function Mothership() {
+function Drop() {
 
   const walletManager = useWallet()
   const {
@@ -125,10 +125,10 @@ function Mothership() {
           <Stack>
             <CardBody>
               <Heading color='white' size="xl" p="4">
-                Claim Your Legends Event Access NFT .
+                View Your Legends Event Access NFT 
               </Heading>
               <Text fontSize='xl' color='white' py="2">
-                Each Legends guest can claim their guest specific NFT. Make sure you have a bit of $SCRT for gas!
+                Each guest of Legends can claim their guest specific NFT. Make sure you have a bit of $SCRT for gas!
               </Text>
             </CardBody>
             <Center>
@@ -136,11 +136,11 @@ function Mothership() {
                 <LinkBox as="button" maxW='sm' p='5' borderWidth='1px' rounded='md'>
                   <Heading size='md' my='2'>
                     <LinkOverlay href='https://stashh.io/collection/legends-of-hashish-event-access-tokens'>
-                      <Button> Claim Your NFT</Button>
+                      <Button> View Your NFT</Button>
                     </LinkOverlay>
                   </Heading>
-                  <Text>
-
+                  <Text color='#F3C674'>
+                  Minting function supported only by desktop.
                   </Text>
                 </LinkBox>
               </CardFooter>
@@ -163,13 +163,13 @@ function Mothership() {
             />
           </Box>
 
-          <Stack>
+          <Stack> 
             <CardBody>
               <Heading color='white' size="xl" p="4">
-                Claim Your Free 2022 Mothership x Legends NFT.
+                View Your Free 2022 Mothership x Legends NFT
               </Heading>
               <Text fontSize='xl' color='white' py="2">
-                Each Legends guest has been whitelisted for  one official attendance NFT in
+                Each guest of Legends has been whitelisted for one official attendance NFT in
                 collaboartion with The Mothership Team.
               </Text>
             </CardBody>
@@ -181,8 +181,8 @@ function Mothership() {
                       <Button> View Your NFT</Button>
                     </LinkOverlay>
                   </Heading>
-                  <Text>
-
+                  <Text color='#F3C674'>
+Minting function supported only by desktop.
                   </Text>
                 </LinkBox>
               </CardFooter>
@@ -190,7 +190,7 @@ function Mothership() {
           </Stack>
         </Card>
 
-        <Card
+       {/*} <Card
           m={[2, 3]}
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
@@ -224,9 +224,9 @@ function Mothership() {
               </LinkBox>
             </Center>
           </Stack>
-        </Card>
+        </Card> */}
 
-        <Card
+       {/* <Card
           m={[2, 3]}
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
@@ -269,7 +269,8 @@ function Mothership() {
               </CardFooter>
             </Center>
           </Stack>
-        </Card>
+  </Card>*/}
+
       </div>
       <img className="footer" src={$footer} />
     </div>
@@ -309,4 +310,4 @@ function Mothership() {
   )
 }
 
-export default Mothership
+export default Drop

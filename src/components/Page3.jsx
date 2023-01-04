@@ -24,7 +24,7 @@ import first from '../assets/Compressed pics/one.png'
 import second from '../assets/Compressed pics/two.png'
 import { Input, Stack } from '@chakra-ui/react';
 
-function VotingEntriesDry() {
+function Page3() {
 
   const walletManager = useWallet()
   const {
@@ -82,11 +82,11 @@ function VotingEntriesDry() {
   console.log(entryArray);
 
   function nextCategory() {
-    navigate('/Voting-Entries-Rosin')
+    navigate('/Page-2')
   }
 
   function prevCategory() {
-    navigate('/Voting-Entries-Melt')
+    navigate('/Page-1')
   }
 
   function toVoteCategories() {
@@ -171,4 +171,4 @@ function VotingEntriesDry() {
   )
 }
 
-export default VotingEntriesDry
+export default Page3

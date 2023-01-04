@@ -77,7 +77,7 @@ function Vote() {
   const urlParams = useMemo(() => new URLSearchParams(search), [search])
 
   function toVoteCategories() {
-    navigate(`/Voting-Entries-${params.category}`)
+    navigate(`/Voting-Categories`)
   }
 
   useEffect(() => {

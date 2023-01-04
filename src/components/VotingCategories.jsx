@@ -38,14 +38,14 @@ function VotingCategories() {
   let navigate = useNavigate()
 
   function toRosin() {
-    navigate('/Voting-Entries-Rosin')
+    navigate('/Page-2')
   }
   function toWater() {
-    navigate('/Voting-Entries-MELT')
+    navigate('/Page-1')
 
   }
   function toSift() {
-    navigate('/Voting-Entries-Sift')
+    navigate('/Page-3')
   }
 
   async function connectOnClick() {

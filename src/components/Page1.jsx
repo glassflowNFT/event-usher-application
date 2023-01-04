@@ -32,7 +32,7 @@ import seventeen from '../assets/Compressed pics/seventeen.png'
 import { FormGroup } from 'react-bootstrap';
 import { Input, Stack } from '@chakra-ui/react';
 
-function VotingEntriesWater() {
+function Page1() {
 
   const walletManager = useWallet()
   const {
@@ -53,11 +53,11 @@ function VotingEntriesWater() {
 
 
   function nextCategory() {
-    navigate('/Voting-Entries-Sift')
+    navigate('/Page-3')
   }
 
   function prevCategory() {
-    navigate('/Voting-Entries-Rosin')
+    navigate('/Page-2')
   }
 
   function toVoteCategories() {
@@ -178,4 +178,4 @@ function VotingEntriesWater() {
   )
 }
 
-export default VotingEntriesWater
+export default Page1

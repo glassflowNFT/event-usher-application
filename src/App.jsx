@@ -4,15 +4,15 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ScrollToTop from "./components/ScrollToTop";
 import Home from './components/Home'
 import Connect from './components/Connect'
-import Mothership from './components/Mothership'
+import Drop from './components/Drop'
 import Mint from './components/Mint'
 import Scan from './components/Scan'
 import Fourohfour from './components/Fourohfour'
 import Results from './components/Results'
 import VotingCategories from "./components/VotingCategories";
-import VotingEntriesWater from "./components/VotingEntriesWater";
-import VotingEntriesRosin from "./components/VotingEntriesRosin";
-import VotingEntriesDry from "./components/VotingEntriesDry";
+import Page1 from "./components/Results";
+import Page2 from "./components/Page2";
+import Page3 from "./components/Page3";
 import Vote from "./components/Vote";
 import AllImages from "./components/AllImages"
 import { ChakraProvider } from '@chakra-ui/react';
@@ -40,14 +40,14 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />}></Route>
             <Route path='/Connect' element={<Connect />}></Route>
-            <Route path='/Mothership' element={<Mothership />}></Route>
+            <Route path='/Drop' element={<Drop />}></Route>
             <Route path='/Mint' element={<Mint />}></Route>
             <Route path='/Scan' element={<Scan />}></Route>
             <Route path='/404' element={<Fourohfour />}></Route>
             <Route path='/Voting-Categories' element={<VotingCategories />}></Route>
-            <Route path='/Voting-Entries-Melt' element={<VotingEntriesWater />}></Route>
-            <Route path='/Voting-Entries-Rosin' element={<VotingEntriesRosin />}></Route>
-            <Route path='/Voting-Entries-Sift' element={<VotingEntriesDry />}></Route>
+            <Route path='/Page-1' element={<Page1 />}></Route>
+            <Route path='/Page-2' element={<Page2 />}></Route>
+            <Route path='/Page-3' element={<Page3 />}></Route>
             <Route path='/Vote/:category/:id/:src' element={<Vote />}></Route>
             <Route path='/Browse' element={<AllImages />}></Route>
             <Route path='/Results' element={<Results />}></Route>

@@ -55,7 +55,7 @@ import fiftyfive from '../assets/Compressed pics/fiftyfive.png'
 import { Input, Stack } from '@chakra-ui/react';
 
 
-function VotingEntriesRosin() {
+function Page2() {
 
   const walletManager = useWallet()
   const {
@@ -83,11 +83,11 @@ function VotingEntriesRosin() {
   const [query, setQuery] = useState('')
 
   function nextCategory() {
-    navigate('/Voting-Entries-Melt')
+    navigate('/Page-1')
   }
 
   function prevCategory() {
-    navigate('/Voting-Entries-Sift')
+    navigate('/Page-3')
   }
 
   useEffect(() => {
@@ -199,4 +199,4 @@ function VotingEntriesRosin() {
   )
 }
 
-export default VotingEntriesRosin
+export default Page2

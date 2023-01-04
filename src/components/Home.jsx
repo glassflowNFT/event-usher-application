@@ -79,8 +79,8 @@ function Home() {
   function toResults() {
     navigate('/Results')
   }
-  function toMothership() {
-    navigate('/Mothership')
+  function toDrop() {
+    navigate('/Drop')
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -123,13 +123,13 @@ function Home() {
                   2022 LA Results
                 </Button>
               </CardBody>
-              <CardFooter>
-                <Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
+          {  /*  <CardFooter>
+             <Button variant='solid' colorScheme='blue' onClick={toVoteCategories}>
                   All Entries
-                </Button>
+  </Button>
 
 
-              </CardFooter>
+  </CardFooter>*/}
             </Stack>
           </Card>
         </Box>
@@ -139,7 +139,7 @@ function Home() {
             <Image
               objectFit='cover'
               maxW='150px'
-              src="https://bafkreiet6izx5ts3n5mi4fuw6h626t44wzbkgfkxwq4cyqllwvuzjwarue.ipfs.nftstorage.link/"
+              src="https://bafybeigyltl2mqxvenvuxt6ypchmb3s5o4wcq3w7c2kexxbr4b4tzbcghe.ipfs.nftstorage.link/"
               alt='Couch Locked'
             />
             <Stack>
@@ -151,7 +151,7 @@ function Home() {
                 </Text>
               </CardBody>
               <CardFooter>
-                <Button variant='solid' colorScheme='blue' onClick={toMothership}>
+                <Button variant='solid' colorScheme='blue' onClick={toDrop}>
                   View
                 </Button>
               </CardFooter>
@@ -163,8 +163,8 @@ function Home() {
           <Card direction='row' overflow='hidden' variant='outline'>
             <Image
               objectFit='cover'
-              maxW='150px'
-              src="https://bafybeigyltl2mqxvenvuxt6ypchmb3s5o4wcq3w7c2kexxbr4b4tzbcghe.ipfs.nftstorage.link/"
+              maxW='200pxx'
+              src="https://bafkreidz2wnlped5buzfok2cbat6ywyu3kjzxzos2g7w2nq6uvpvesvg4e.ipfs.nftstorage.link/"
               alt='NFT Ticket'
             />
             <Stack>
@@ -287,7 +287,7 @@ function Home() {
 
         </p></Center>
 
-        <img className="sponsors-1" src={sponsors1} />
+     
       </div>
       <img className="footer" src={$footer} />
 
