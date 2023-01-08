@@ -10,7 +10,7 @@ import Scan from './components/Scan'
 import Fourohfour from './components/Fourohfour'
 import Results from './components/Results'
 import VotingCategories from "./components/VotingCategories";
-import Page1 from "./components/Results";
+import Page1 from "./components/Page1";
 import Page2 from "./components/Page2";
 import Page3 from "./components/Page3";
 import Vote from "./components/Vote";
